@@ -7,7 +7,6 @@ function getAllLocations(){
     .from('Location_Data')
     .select()
     .then((response)=>{
-        console.log(response, 'api')
         return response.data
     })
     .catch((err)=>{
@@ -15,4 +14,18 @@ function getAllLocations(){
     })
 }
 
-export { getAllLocations}
+function getSingleLocation(location_id){
+
+    return supabase
+    .from('Location_Data')
+    .select()
+    .eq('id', location_id)
+    .then((response)=>{
+        return response.data[0]
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+}
+
+export { getAllLocations, getSingleLocation}
