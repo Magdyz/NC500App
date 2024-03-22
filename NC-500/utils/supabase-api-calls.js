@@ -3,10 +3,11 @@ import supabase from './supabase';
 
 function getAllLocations(){
 
-    supabase
-    .from('locations')
+    return supabase
+    .from('Location_Data')
     .select()
     .then((response)=>{
+        console.log(response, 'api')
         return response.data
     })
     .catch((err)=>{
