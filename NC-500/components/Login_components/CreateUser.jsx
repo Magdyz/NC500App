@@ -81,9 +81,8 @@ function errorAlert({title, message}){
         }
       
 
-    return supabase.from('user_data').insert({user_id:response.data.user.id, username:data.username})
+    return supabase.from('user_data').insert({user_id:response.data.user.id, username:data.username}).select()
     .then((response)=>{
-      
         if(response?.error){
             errorAlert({title:'There was an error creating a new user', message: response.error.message})
             return

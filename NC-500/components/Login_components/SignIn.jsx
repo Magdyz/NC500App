@@ -1,13 +1,17 @@
 import { View, Text, Button, Card, Title, Alert } from "react-native";
 import { TextInput, StyleSheet } from "react-native";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {yupResolver} from '@hookform/resolvers/yup'
 import supabase from "../../utils/supabase";
 import CreateUser from "./CreateUser";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+
+
 import {useForm} from "react-hook-form"
 import * as yup from "yup"
+import AuthContext from "../../contexts/AuthContext";
+import { NavigationHelpersContext } from "@react-navigation/native";
 
 export const loginSchema = yup.object().shape({
   email: yup
@@ -37,6 +41,19 @@ export function ErrorText({name, errors}){
 
 
 const  SignIn = ({ navigation })=>{
+
+
+
+  const auth = useContext(AuthContext)
+  useEffect(()=>{
+
+    if(auth.auth!==null){
+      navigation.navigate('Root')
+    }
+
+
+
+  },[auth])
 
   const {register,
         setValue,
@@ -68,6 +85,7 @@ function doSignIn(userData){
         errorAlert({title:'Could not be signed in', message: response.error.message} )
         return
       }
+     this.props.navigation.navigate('HomePage')
  })
  .catch((err)=>{
   console.log(err)
@@ -82,12 +100,14 @@ function doSignIn(userData){
     {text:'OK'}
   ])
  }
+ console.log(auth)
 
   return (
  
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      
     
-        <Text>Sign In</Text>
+        <Text>{auth.auth!==null?`Signed in as ${auth.auth.user.id}`:'Not signed in'}</Text>
         <Text>Email Address</Text>
         <TextInput
         id='email'
