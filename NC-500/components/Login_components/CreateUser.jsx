@@ -34,10 +34,7 @@ import * as yup from "yup"
 
         const {register,
               setValue,
-              getValues, 
-              control,
-              handleSubmit,
-              reset,
+              handleSubmit,            
               formState: {errors}} =
               useForm({
                 resolver: yupResolver(createUserSchema),
@@ -82,9 +79,11 @@ function errorAlert({title, message}){
             errorAlert({title:'There was an error creating a new user', message: response.error.message})
             return
         }
+      
 
-    return supabase.from(users).insert([{user_id:response?.user.id, username:data.username}])
+    return supabase.from('user_data').insert({user_id:response.data.user.id, username:data.username})
     .then((response)=>{
+      
         if(response?.error){
             errorAlert({title:'There was an error creating a new user', message: response.error.message})
             return
@@ -92,7 +91,7 @@ function errorAlert({title, message}){
         }
     })
      })
-     .then((err)=>{
+     .catch((err)=>{
         console.log(err)
      })
 

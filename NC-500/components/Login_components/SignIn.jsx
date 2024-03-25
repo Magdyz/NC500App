@@ -40,10 +40,7 @@ const  SignIn = ({ navigation })=>{
 
   const {register,
         setValue,
-        getValues, 
-        control,
         handleSubmit,
-        reset,
         formState: {errors}} =
         useForm({
           resolver: yupResolver(loginSchema),
@@ -66,10 +63,7 @@ function doSignIn(userData){
 
  return supabase.auth.signInWithPassword({email:userData.email, password:userData.password})
  .then((response)=>{
-  console.log(1)
-    console.log(response)
-    console.log(response.error)
-    console.log(response.data)
+  
       if (response.error!==undefined){
         errorAlert({title:'Could not be signed in', message: response.error.message} )
         return

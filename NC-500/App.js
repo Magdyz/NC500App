@@ -23,16 +23,18 @@ function LogoTitle() {
 const App = () => {
  
 
-  // const [auth, setAuth] = useState(false)
-  // useEffect(()=>{
-  //   setAuth(supabase.auth.setSession());
-  //   supabase.auth.onAuthStateChange((_event, session)=>{
-  //     console.log(auth)
-  //     setAuth(session)
-  //   })
+  const [auth, setAuth] = useState(null)
+
+  useEffect(()=>{
+    setAuth(supabase.auth.setSession());
+    supabase.auth.onAuthStateChange((event, session)=>{
+      console.log(response)
+      console.log(auth)
+      setAuth(session)
+    })
 
 
-  // },[])
+  },[])
 
   return (
     <NavigationContainer> 
