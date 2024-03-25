@@ -107,7 +107,6 @@ const App = () => {
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="CreateUser" component={CreateUser} />
         <Stack.Screen name="Maps" component={Maps} />
-        <Stack.Screen name="nav" component={BottomBarNavigation} />
       </Stack.Navigator>
     </NavigationContainer>
     </AuthContext.Provider>
