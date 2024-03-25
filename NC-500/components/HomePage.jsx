@@ -1,6 +1,5 @@
 import { View, Text, Button } from "react-native";
 import supabase from "../utils/supabase";
-import AboutPage from "./AboutPage";
 
 const HomePage = ({ navigation }) => {
 
