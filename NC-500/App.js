@@ -9,6 +9,7 @@ import HomePage from "./components/HomePage";
 import supabase from "./utils/supabase";
 import SignIn from "./components/Login_components/SignIn";
 import CreateUser from "./components/Login_components/CreateUser";
+import AuthContext from "./contexts/AuthContext";
 
 
 const Stack = createNativeStackNavigator();
@@ -26,17 +27,26 @@ const App = () => {
   const [auth, setAuth] = useState(null)
 
   useEffect(()=>{
-    setAuth(supabase.auth.setSession());
-    supabase.auth.onAuthStateChange((event, session)=>{
-      console.log(response)
-      console.log(auth)
+    supabase.auth.getSession()
+    .then(({data: { session }})=>{
       setAuth(session)
     })
+
+    supabase.auth.onAuthStateChange((_event, session)=>{
+
+      setAuth(session)
+    })
+  
+    
 
 
   },[])
 
+  console.log(auth, 'auth')
+
   return (
+
+    <AuthContext.Provider value={{auth:auth, setAuth:setAuth}}>
     <NavigationContainer> 
       
       <Stack.Navigator
@@ -59,7 +69,7 @@ const App = () => {
             headerRight: () => (
               
               <Button
-                onPress={() => alert("This is a button!")}
+                onPress={() => alert(auth!==null?`User ${auth.user.id}  is logged in`:"Nobody is logged in")}
                 title='Info'
                 color="black"
               />
@@ -71,6 +81,7 @@ const App = () => {
         <Stack.Screen name="Maps" component={Maps} />
       </Stack.Navigator>
     </NavigationContainer>
+    </AuthContext.Provider>
   );
 };
 
