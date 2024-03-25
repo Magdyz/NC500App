@@ -9,7 +9,8 @@ import HomePage from "./components/HomePage";
 import supabase from "./utils/supabase";
 import SignIn from "./components/Login_components/SignIn";
 import CreateUser from "./components/Login_components/CreateUser";
-
+import { View } from "react-native-web";
+import BottomBarNavigation from "./components/BottomBarNavigation";
 
 const Stack = createNativeStackNavigator();
 function LogoTitle() {
@@ -21,24 +22,19 @@ function LogoTitle() {
   );
 }
 const App = () => {
- 
+  const [auth, setAuth] = useState(null);
 
-  const [auth, setAuth] = useState(null)
-
-  useEffect(()=>{
+  useEffect(() => {
     setAuth(supabase.auth.setSession());
-    supabase.auth.onAuthStateChange((event, session)=>{
-      console.log(response)
-      console.log(auth)
-      setAuth(session)
-    })
-
-
-  },[])
+    supabase.auth.onAuthStateChange((event, session) => {
+      console.log(response);
+      console.log(auth);
+      setAuth(session);
+    });
+  }, []);
 
   return (
-    <NavigationContainer> 
-      
+    <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
           headerTitle: (props) => <LogoTitle {...props} />,
@@ -52,28 +48,33 @@ const App = () => {
         }}
       >
         <Stack.Screen
+          name="BottomBar"
+          component={BottomBarNavigation}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
           name="Home"
           component={HomePage}
           options={{
             title: "NC500",
             headerRight: () => (
-              
               <Button
                 onPress={() => alert("This is a button!")}
-                title='Info'
+                title="Info"
                 color="black"
               />
             ),
           }}
         />
-        <Stack.Screen name='SignIn' component={SignIn}/>
-        <Stack.Screen name='CreateUser' component={CreateUser}/>
+        <Stack.Screen name="SignIn" component={SignIn} />
+        <Stack.Screen name="CreateUser" component={CreateUser} />
         <Stack.Screen name="Maps" component={Maps} />
+        <Stack.Screen name="nav" component={BottomBarNavigation} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
-
 
 const styles = StyleSheet.create({});
 
