@@ -15,6 +15,7 @@ import AuthContext from "./contexts/AuthContext";
 
 import { View } from "react-native-web";
 import BottomBarNavigation from "./components/BottomBarNavigation";
+import AboutPage from "./components/AboutPage";
 
 
 const Stack = createNativeStackNavigator();
@@ -84,6 +85,20 @@ const App = () => {
                 onPress={() => alert(auth!==null?`User ${auth.user.id}  is logged in`:"Nobody is logged in")}
                 title='Info'
 
+                color="black"
+              />
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="AboutPage"
+          component={AboutPage}
+          options={{
+            title: "NC500",
+            headerRight: () => (
+              <Button
+                onPress={() => alert("This is a button!")}
+                title="Info"
                 color="black"
               />
             ),

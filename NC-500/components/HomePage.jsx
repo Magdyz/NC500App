@@ -9,8 +9,9 @@ const HomePage = ({ navigation }) => {
       <Text>Homepage</Text>
       
       <Button title="Go to Map" onPress={() => navigation.navigate("Maps")} />
-      
-  
+
+      <Button title="Go to about" onPress={() => navigation.navigate("AboutPage")} />
+
     </View>
   );
 };
