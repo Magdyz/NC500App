@@ -8,10 +8,17 @@ import Maps from "./Maps";
 import HomePage from "./HomePage";
 import Itinerary from "./Itinerary";
 import Profile from "./Profile";
+import SignIn from "./Login_components/SignIn";
+import CreateUser from "./Login_components/CreateUser";
+import { useContext, useState } from "react";
+import AuthContext from "../contexts/AuthContext";
 
 const Tab = createBottomTabNavigator();
 
 const BottomBarNavigation = () => {
+
+ const auth = useContext(AuthContext)
+ const [isNewUser, setIsNewUser] = useState(false);
   return (
     <Tab.Navigator
       screenOptions={{
@@ -92,7 +99,8 @@ const BottomBarNavigation = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={Profile}
+          children={()=>auth.auth!==null?<Profile/>:isNewUser===false?<SignIn isNewUser={isNewUser} setIsNewUser={setIsNewUser}/>:<CreateUser isNewUser={isNewUser} setIsNewUser={setIsNewUser}/>}
+        
         options={{
           tabBarLabel: "Profile",
           tabBarIcon: ({ color, size }) => {

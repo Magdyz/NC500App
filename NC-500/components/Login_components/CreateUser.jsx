@@ -10,7 +10,10 @@ import * as yup from "yup"
 
 
 
-  function CreateUser({navigation}){
+  function CreateUser(props){
+
+    const setIsNewUser = props.setIsNewUser
+
 
    const createUserSchema = yup.object().shape({
     
@@ -88,6 +91,7 @@ function errorAlert({title, message}){
             return
 
         }
+        setIsNewUser(false)
     })
      })
      .catch((err)=>{
@@ -97,6 +101,11 @@ function errorAlert({title, message}){
 
 
         
+    }
+  
+    function signInButton(e){
+      e.preventDefault()
+      setIsNewUser(false)
     }
 
 return (<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -134,7 +143,9 @@ autoCapitalize="none"
 onChangeText={(text)=>setValue("password", text)}
 />
  <ErrorText name='password' errors={errors}/>
-<Button title='Sign In' onPress={handleSubmit(doCreateUser)}/>
+<Button title='Create profile' onPress={handleSubmit(doCreateUser)}/>
+<Button title='Sign in as existing user' onPress={(e)=>{signInButton(e)}}/>
+
 
 
 </View>)
