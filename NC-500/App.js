@@ -9,9 +9,14 @@ import HomePage from "./components/HomePage";
 import supabase from "./utils/supabase";
 import SignIn from "./components/Login_components/SignIn";
 import CreateUser from "./components/Login_components/CreateUser";
+
+import AuthContext from "./contexts/AuthContext";
+
+
 import { View } from "react-native-web";
 import BottomBarNavigation from "./components/BottomBarNavigation";
 import AboutPage from "./components/AboutPage";
+
 
 const Stack = createNativeStackNavigator();
 function LogoTitle() {
@@ -25,17 +30,32 @@ function LogoTitle() {
 const App = () => {
   const [auth, setAuth] = useState(null);
 
-  useEffect(() => {
-    setAuth(supabase.auth.setSession());
-    supabase.auth.onAuthStateChange((event, session) => {
-      console.log(response);
-      console.log(auth);
-      setAuth(session);
-    });
-  }, []);
+
+  useEffect(()=>{
+    supabase.auth.getSession()
+    .then(({data: { session }})=>{
+      setAuth(session)
+    })
+
+    supabase.auth.onAuthStateChange((_event, session)=>{
+
+      setAuth(session)
+    })
+  
+    
+
+
+  },[])
+
+
+  console.log(auth, 'auth')
 
   return (
-    <NavigationContainer>
+
+
+    <AuthContext.Provider value={{auth:auth, setAuth:setAuth}}>
+    <NavigationContainer> 
+
       <Stack.Navigator
         screenOptions={{
           headerTitle: (props) => <LogoTitle {...props} />,
@@ -61,8 +81,10 @@ const App = () => {
             title: "NC500",
             headerRight: () => (
               <Button
-                onPress={() => alert("This is a button!")}
-                title="Info"
+
+                onPress={() => alert(auth!==null?`User ${auth.user.id}  is logged in`:"Nobody is logged in")}
+                title='Info'
+
                 color="black"
               />
             ),
@@ -88,6 +110,7 @@ const App = () => {
         <Stack.Screen name="nav" component={BottomBarNavigation} />
       </Stack.Navigator>
     </NavigationContainer>
+    </AuthContext.Provider>
   );
 };
 
