@@ -11,6 +11,7 @@ import SignIn from "./components/Login_components/SignIn";
 import CreateUser from "./components/Login_components/CreateUser";
 import { View } from "react-native-web";
 import BottomBarNavigation from "./components/BottomBarNavigation";
+import AboutPage from "./components/AboutPage";
 
 const Stack = createNativeStackNavigator();
 function LogoTitle() {
@@ -56,6 +57,20 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={HomePage}
+          options={{
+            title: "NC500",
+            headerRight: () => (
+              <Button
+                onPress={() => alert("This is a button!")}
+                title="Info"
+                color="black"
+              />
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="AboutPage"
+          component={AboutPage}
           options={{
             title: "NC500",
             headerRight: () => (
