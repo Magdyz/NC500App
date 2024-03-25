@@ -64,18 +64,6 @@ const Maps = () => {
             }}
             title="Destination"
           />
-          {waypoints.map((waypoint, index) => (
-            <Marker
-              key={index}
-              pinColor="orange"
-              coordinate={{
-                latitude: parseFloat(waypoint.split(",")[0]),
-                longitude: parseFloat(waypoint.split(",")[1]),
-              }}
-              title={`Location ${index + 1}`}
-              description="nc500 point of interest"
-            />
-          ))}
           <MapViewDirections
             origin={origin}
             waypoints={waypoints}
