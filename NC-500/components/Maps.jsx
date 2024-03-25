@@ -17,11 +17,11 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const GOOGLE_MAPS_APIKEY = apiKey;
 
 // destination and origin values for markers
-const destination = "57.9088991,-4.0573518";
+const destination = "57.5029169,-4.2386349";
 const origin = "57.5029169,-4.2386349";
 
 // Waypoints for markers
-const waypoints = ["57.5971317,-4.4235946", "57.6975343,-4.2713497"];
+const waypoints = [ "58.43906,-3.09424", "58.475708,-4.4173601", "58.6384,-3.0689", "57.89872000,-5.16039000", "58.56842,-4.74691", "58.3519,-5.15084", "58.23667,-5.17586","58.19312,-5.33629","57.83448,-5.57998", "57.5778,-5.80871","57.43314,-5.81501","57.545695,-5.512301"];
 
 const Maps = () => {
   const [directions, setDirections] = useState(null);
@@ -51,11 +51,17 @@ const Maps = () => {
           }}
         >
           <Marker
-            coordinate={{ latitude: 57.5029169, longitude: -4.2386349 }}
+            coordinate={{
+              latitude: parseFloat(origin.split(",")[0]),
+              longitude: parseFloat(origin.split(",")[1]),
+            }}
             title="Start"
           />
           <Marker
-            coordinate={{ latitude: 57.9088991, longitude: -4.0573518 }}
+            coordinate={{
+              latitude: parseFloat(destination.split(",")[0]),
+              longitude: parseFloat(destination.split(",")[1]),
+            }}
             title="Destination"
           />
           {waypoints.map((waypoint, index) => (
