@@ -5,6 +5,23 @@ import MapViewDirections from "react-native-maps-directions";
 import getDirections from "../utils/MapsApiCalls";
 import apiKey from "../apiKey";
 import { getMarkersData } from "../utils/supabase-api-calls";
+import museum from "../assets/Church_7.png"
+import Leaf from "../assets/Leaf_8.png"
+import Food from "../assets/Fork & Knife_6.png"
+import OutdoorActivities from "../assets/Tennis_5-2.png"
+import Accomodation from "../assets/Home_8.png"
+import Tour from "../assets/Tour_8.png"
+import History from "../assets/history.png"
+
+const categoryImg = {
+  1: museum, 
+  2: Food, 
+  3: Leaf, 
+  4: History,
+  5: OutdoorActivities,
+  6: Tour,
+  8: Accomodation
+}
 
 // default Coordinates when map opens
 const { width, height } = Dimensions.get("window");
@@ -13,10 +30,6 @@ const LATITUDE = 57.7038169;
 let LONGITUDE = -4.1384248;
 let LATITUDE_DELTA = 2.2922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
-
-
-
-
 
 // Get API key
 const GOOGLE_MAPS_APIKEY = apiKey;
@@ -64,17 +77,16 @@ const endOfDayCityArray = [
 ];
 
 const Maps = () => {
-   // get directions from directions function
+  // get directions from directions function
   const [directions, setDirections] = useState(null);
   // getting all locations for the markers from the database
-const [allMarkers, setAllMarkers] = useState([]);
+  const [allMarkers, setAllMarkers] = useState([]);
 
-
-useEffect(() => {
-  getMarkersData().then((markerResponse) => {
-    setAllMarkers(markerResponse);
-  });
-}, []);
+  useEffect(() => {
+    getMarkersData().then((markerResponse) => {
+      setAllMarkers(markerResponse);
+    });
+  }, []);
 
   useEffect(() => {
     const fetchDirections = async () => {
@@ -119,24 +131,23 @@ useEffect(() => {
                 description={city.description}
               />
             );
-          }
-          )}
-
-          {allMarkers.map((location) => {
-            return (
-              <Marker
-              key= {location.location_id}
-              coordinate={{
-                latitude: location.lat,
-                longitude: location.long
-              }}
-              title={location.name}
-              />
-            )
-
           })}
 
-          
+          {allMarkers.map((location) => {
+            const {category_id, location_id, lat, long, name} = location
+            if(categoryImg[category_id])
+            return (
+              <Marker
+                key={location_id}
+                coordinate={{
+                  latitude: lat,
+                  longitude: long,
+                }}
+                image= {categoryImg[category_id]}
+                title={name}
+              />
+            );
+        })}
 
           <MapViewDirections
             origin={origin}
@@ -162,6 +173,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
 
 export default Maps;

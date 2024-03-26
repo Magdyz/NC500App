@@ -33,7 +33,6 @@ function getMarkersData() {
     .from('Location_Data')
     .select("location_id, lat, long, category_id, name")
     .then((res) => {
-        console.log(res.data)
         return res.data
     })
 }
