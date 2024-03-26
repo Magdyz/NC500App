@@ -99,7 +99,7 @@ const BottomBarNavigation = () => {
       />
       <Tab.Screen
         name="Profile"
-          children={()=>auth.auth!==null?<Profile/>:isNewUser===false?<SignIn isNewUser={isNewUser} setIsNewUser={setIsNewUser}/>:<CreateUser isNewUser={isNewUser} setIsNewUser={setIsNewUser}/>}
+          children={()=>auth.auth!==null&&isNewUser===false?<Profile/>:isNewUser===false?<SignIn isNewUser={isNewUser} setIsNewUser={setIsNewUser}/>:<CreateUser isNewUser={isNewUser} setIsNewUser={setIsNewUser}/>}
         
         options={{
           tabBarLabel: "Profile",

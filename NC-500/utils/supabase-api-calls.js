@@ -28,4 +28,26 @@ function getSingleLocation(location_id){
     })
 }
 
-export { getAllLocations, getSingleLocation}
+function getUserInfo(auth){
+   
+    const authUserEmail = auth.auth.user.email
+ 
+
+    return supabase
+    .from('user_data')
+    .select()
+    .eq('email', authUserEmail)
+    .then((response)=>{
+       
+        return response.data[0]
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+
+
+
+}
+
+
+export { getAllLocations, getSingleLocation, getUserInfo}
