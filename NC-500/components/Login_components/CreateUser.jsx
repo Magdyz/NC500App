@@ -28,7 +28,8 @@ import * as yup from "yup"
         username: yup
           .string()
           .required("Username is a required field")
-          .min(6, "Username must be at least 6 characters")
+          .min(6, "Username must be at least 6 characters"),
+    
             
       
       })
@@ -44,7 +45,8 @@ import * as yup from "yup"
                 defaultValues :{
                   email:"",
                   password:"",
-                  username:""
+                  username:"",
+                
 
                 }
               })
@@ -54,10 +56,13 @@ import * as yup from "yup"
         register("password")
         register("username")
       
+      
        }, [])
 
 function ErrorText({name, errors}){
+    console.log(name, errors)
     return (
+    
       <View style={{color: "red"}}>
         {errors[name] && (
           <Text style={{color: "red"}}>{errors?.[name]?.message}</Text>
@@ -84,7 +89,7 @@ function errorAlert({title, message}){
         }
       
 
-    return supabase.from('user_data').insert({user_id:response.data.user.id, username:data.username}).select()
+    return supabase.from('user_data').insert({user_id:response.data.user.id, username:data.username, email:data.email}).select()
     .then((response)=>{
         if(response?.error){
             errorAlert({title:'There was an error creating a new user', message: response.error.message})
@@ -143,6 +148,9 @@ autoCapitalize="none"
 onChangeText={(text)=>setValue("password", text)}
 />
  <ErrorText name='password' errors={errors}/>
+
+
+ 
 <Button title='Create profile' onPress={handleSubmit(doCreateUser)}/>
 <Button title='Sign in as existing user' onPress={(e)=>{signInButton(e)}}/>
 
@@ -154,6 +162,7 @@ onChangeText={(text)=>setValue("password", text)}
   const styles = StyleSheet.create({
     input: {
       height: 40,
+      width: 300,
       margin: 12,
       borderWidth: 1,
       padding: 10,
