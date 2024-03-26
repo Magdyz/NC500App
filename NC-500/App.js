@@ -9,9 +9,9 @@ import HomePage from "./components/HomePage";
 import supabase from "./utils/supabase";
 import SignIn from "./components/Login_components/SignIn";
 import CreateUser from "./components/Login_components/CreateUser";
-
+import ThingsToDo from "./components/ThingsToDo";
 import AuthContext from "./contexts/AuthContext";
-
+import JourneyPlanner from "./components/JourneyPlanner";
 
 import { View } from "react-native-web";
 import BottomBarNavigation from "./components/BottomBarNavigation";
@@ -104,6 +104,8 @@ const App = () => {
             ),
           }}
         />
+        <Stack.Screen name="JourneyPlanner" component={JourneyPlanner} />
+        <Stack.Screen name="ThingsToDo" component={ThingsToDo} />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="CreateUser" component={CreateUser} />
         <Stack.Screen name="Maps" component={Maps} />
