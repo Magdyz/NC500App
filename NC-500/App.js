@@ -48,7 +48,7 @@ const App = () => {
   },[])
 
 
-  console.log(auth, 'auth')
+
 
   return (
 

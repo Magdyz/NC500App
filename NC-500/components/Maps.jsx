@@ -17,11 +17,50 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const GOOGLE_MAPS_APIKEY = apiKey;
 
 // destination and origin values for markers
-const destination = "57.9088991,-4.0573518";
+const destination = "57.5029169,-4.2386349";
 const origin = "57.5029169,-4.2386349";
 
 // Waypoints for markers
-const waypoints = ["57.5971317,-4.4235946", "57.6975343,-4.2713497"];
+const waypoints = [
+  "58.43906,-3.09424",
+  "58.475708,-4.4173601",
+  "58.6384,-3.0689",
+  "57.89872000,-5.16039000",
+  "58.56842,-4.74691",
+  "58.3519,-5.15084",
+  "58.23667,-5.17586",
+  "58.19312,-5.33629",
+  "57.83448,-5.57998",
+  "57.5778,-5.80871",
+  "57.43314,-5.81501",
+  "57.545695,-5.512301",
+];
+const endOfDayCityArray = [
+  {
+    name: "Wick",
+    description:
+      "A town and royal burgh in Caithness.",
+    coordinates: "58.43906,-3.09424",
+  },
+  {
+    name: "Tongue",
+    description:
+      "Tongue is one of the main crofting townships.",
+    coordinates: "58.475708,-4.4173601",
+  },
+  {
+    name: "Ullapool",
+    description:
+      "The picturesque fishing town of Ullapool.",
+    coordinates: "57.89872000,-5.16039000",
+  },
+  {
+    name: "Torridon",
+    description:
+      "Torridon has a dramatic and desolate setting.",
+    coordinates: "57.545695,-5.512301",
+  },
+];
 
 const Maps = () => {
   const [directions, setDirections] = useState(null);
@@ -51,25 +90,26 @@ const Maps = () => {
           }}
         >
           <Marker
-            coordinate={{ latitude: 57.5029169, longitude: -4.2386349 }}
-            title="Start"
+            coordinate={{
+              latitude: parseFloat(origin.split(",")[0]),
+              longitude: parseFloat(origin.split(",")[1]),
+            }}
+            title="Inverness"
+            description="Start and end of your journey"
           />
-          <Marker
-            coordinate={{ latitude: 57.9088991, longitude: -4.0573518 }}
-            title="Destination"
-          />
-          {waypoints.map((waypoint, index) => (
-            <Marker
-              key={index}
-              pinColor="orange"
-              coordinate={{
-                latitude: parseFloat(waypoint.split(",")[0]),
-                longitude: parseFloat(waypoint.split(",")[1]),
-              }}
-              title={`Location ${index + 1}`}
-              description="nc500 point of interest"
-            />
-          ))}
+          {endOfDayCityArray.map((city) => {
+            return (
+              <Marker key={city.name}
+                coordinate={{
+                  latitude: parseFloat(city.coordinates.split(",")[0]),
+                  longitude: parseFloat(city.coordinates.split(",")[1]),
+                }}
+                title={city.name}
+                description={city.description}
+              />
+            );
+          })}
+
           <MapViewDirections
             origin={origin}
             waypoints={waypoints}
