@@ -6,7 +6,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 // Tabs
 import Maps from "./Maps";
 import HomePage from "./HomePage";
-import Itinerary from "./Things_To_Do/Itinerary";
+import Itinerary from "./Things_To_Do/ThingsToDo";
 import Profile from "./Profile";
 import SignIn from "./Login_components/SignIn";
 import CreateUser from "./Login_components/CreateUser";

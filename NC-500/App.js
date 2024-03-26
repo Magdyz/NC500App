@@ -9,15 +9,13 @@ import HomePage from "./components/HomePage";
 import supabase from "./utils/supabase";
 import SignIn from "./components/Login_components/SignIn";
 import CreateUser from "./components/Login_components/CreateUser";
-import ThingsToDo from "./components/ThingsToDo";
+import ThingsToDo from "./components/Things_To_Do/ThingsToDo.jsx";
 import AuthContext from "./contexts/AuthContext";
 import JourneyPlanner from "./components/JourneyPlanner";
 
 import { View } from "react-native-web";
 import BottomBarNavigation from "./components/BottomBarNavigation";
 import AboutPage from "./components/AboutPage";
-import ToDoSingleEventMaximised from "./components/Things_To_Do/ToDoSingleEventMaximised";
-
 
 const Stack = createNativeStackNavigator();
 function LogoTitle() {
@@ -111,7 +109,7 @@ const App = () => {
         <Stack.Screen name="SignIn" component={SignIn} />
           <Stack.Screen name="CreateUser" component={CreateUser} />
           <Stack.Screen name="Maps" component={Maps} />
-          <Stack.Screen name="ToDoEvent" component={ToDoSingleEventMaximised} />
+          <Stack.Screen name="ToDoEvent" component={ThingsToDo} />
         </Stack.Navigator>
       </NavigationContainer>
     </AuthContext.Provider>

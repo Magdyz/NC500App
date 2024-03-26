@@ -4,7 +4,7 @@ import { Appbar } from "react-native-paper";
 import { SegmentedButtons } from "react-native-paper";
 import ToDoSingleEvent from "./ToDoSingleEvent";
 
-const Itinerary = ({ navigation }) => {
+const ThingsToDo = ({ navigation }) => {
   const [value, setValue] = useState("");
   const [checkedItems, setCheckedItems] = useState({});
   console.log(checkedItems);
@@ -19,12 +19,6 @@ const Itinerary = ({ navigation }) => {
 
   return (
     <ScrollView>
-      <Appbar.Header>
-        <Appbar.BackAction onPress={() => navigation.navigate("Home")} />
-        <Appbar.Content title="Things To Do" />
-        <Appbar.Action icon="magnify" onPress={handleSearch} />
-        <Appbar.Action icon="dots-vertical" onPress={handleMore} />
-      </Appbar.Header>
       <SegmentedButtons
         value={value}
         onValueChange={setValue}
@@ -72,4 +66,4 @@ const styles = StyleSheet.create({
 const handleSearch = () => {};
 const handleMore = () => {};
 
-export default Itinerary;
+export default ThingsToDo;
