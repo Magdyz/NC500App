@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { StyleSheet, ScrollView } from "react-native";
-import { Appbar } from "react-native-paper";
 import { SegmentedButtons } from "react-native-paper";
 import ToDoSingleEvent from "./ToDoSingleEvent";
 
-const ThingsToDo = ({ navigation }) => {
+const ThingsToDo = () => {
   const [value, setValue] = useState("");
   const [checkedItems, setCheckedItems] = useState({});
   console.log(checkedItems);
@@ -20,6 +19,7 @@ const ThingsToDo = ({ navigation }) => {
   return (
     <ScrollView>
       <SegmentedButtons
+        style={styles.segmentedButtons}
         value={value}
         onValueChange={setValue}
         buttons={[
@@ -31,39 +31,40 @@ const ThingsToDo = ({ navigation }) => {
         ]}
       />
       <ToDoSingleEvent
-        title="Downright Gabbler"
-        body="newBody"
-        link="https://whereverly.com/wp-content/uploads/2022/07/nc500-case-study.jpg"
-        label="item1"
-        status={checkedItems["item1"] ? "checked" : "unchecked"}
+        title="Groam House Museum"
+        body="This lovely museum is an outstanding centre for Pictish and Celtic Art in Ross-shire. The unique display is focused on 15 carved Pictish stones which all originated in the village, an important centre of early Christianity. The sculptures are amongst the works of Pictish Art that inspired George Bain, the ‘father of modern Celtic design’, most of whose surviving artwork is in the care of the museum."
+        link="https://upload.wikimedia.org/wikipedia/commons/2/21/Groam_House_Museum_exterior.jpg"
+        label="add"
+        status={checkedItems["Groam House Museum"] ? "checked" : "unchecked"}
         onPress={() => {
-          toggleChecked("item1");
+          toggleChecked("Groam House Museum");
         }}
-        navigation={navigation}
+        website="https://groamhouse.org.uk/"
       />
       <ToDoSingleEvent
-        title="Downright Gabbler"
-        body="newBody"
-        link="https://whereverly.com/wp-content/uploads/2022/07/nc500-case-study.jpg"
-        label="item2"
-        status={checkedItems["item2"] ? "checked" : "unchecked"}
+        title="Inverness Cathedral"
+        body="Victorian Episcopalian cathedral church built of red stone and granite and hosting regular services."
+        link="https://business.northcoast500.com/wp-content/uploads/nc500-members/332/288/89uip.jpg"
+        label="add"
+        status={checkedItems["Inverness Cathedral"] ? "checked" : "unchecked"}
         onPress={() => {
-          toggleChecked("item2");
+          toggleChecked("Inverness Cathedral");
         }}
-        navigation={navigation}
+        website="https://moray.anglican.org/inverness-cathedral/"
       />
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  segmentedButtons: {
+    flexDirection: "row",
     alignItems: "center",
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ccc",
   },
 });
-
-const handleSearch = () => {};
-const handleMore = () => {};
 
 export default ThingsToDo;
