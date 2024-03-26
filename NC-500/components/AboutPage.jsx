@@ -14,7 +14,7 @@ const AboutPage = ({ navigation }) => {
             <Text>
             This App is designed for you to get the best out of your roadtrip. Use our journey planner to view a list or a map of the activities you can choose from to get the most out of each day. Select which activities or places you want to visit, then select a campsite or hotel to end your journey for the day and thats your journey planned! Once all your days are planned, you can visit the Itinerary page to view a breakdown of each days activities and the optimal route to get the most out of your time!
             </Text>
-            <Button title="Start Your Journey" onPress={() => navigation.navigate("maps")} />
+            <Button title="Start Your Journey" onPress={() => navigation.navigate("Maps")} />
         </View>
     );
 };
