@@ -16,6 +16,7 @@ import AuthContext from "./contexts/AuthContext";
 import { View } from "react-native-web";
 import BottomBarNavigation from "./components/BottomBarNavigation";
 import AboutPage from "./components/AboutPage";
+import ToDoSingleEventMaximised from "./components/Things_To_Do/ToDoSingleEventMaximised";
 
 
 const Stack = createNativeStackNavigator();
@@ -51,65 +52,66 @@ const App = () => {
 
 
   return (
-
-
-    <AuthContext.Provider value={{auth:auth, setAuth:setAuth}}>
-    <NavigationContainer> 
-
-      <Stack.Navigator
-        screenOptions={{
-          headerTitle: (props) => <LogoTitle {...props} />,
-          headerStyle: {
-            backgroundColor: "white",
-          },
-          headerTintColor: "",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-        }}
-      >
-        <Stack.Screen
-          name="BottomBar"
-          component={BottomBarNavigation}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name="Home"
-          component={HomePage}
-          options={{
-            title: "NC500",
-            headerRight: () => (
-              <Button
-
-                onPress={() => alert(auth!==null?`User ${auth.user.id}  is logged in`:"Nobody is logged in")}
-                title='Info'
-
-                color="black"
-              />
-            ),
+    <AuthContext.Provider value={{ auth: auth, setAuth: setAuth }}>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerTitle: (props) => <LogoTitle {...props} />,
+            headerStyle: {
+              backgroundColor: "white",
+            },
+            headerTintColor: "",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
           }}
-        />
-        <Stack.Screen
-          name="AboutPage"
-          component={AboutPage}
-          options={{
-            title: "NC500",
-            headerRight: () => (
-              <Button
-                onPress={() => alert("This is a button!")}
-                title="Info"
-                color="black"
-              />
-            ),
-          }}
-        />
-        <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="CreateUser" component={CreateUser} />
-        <Stack.Screen name="Maps" component={Maps} />
-        <Stack.Screen name="nav" component={BottomBarNavigation} />
-      </Stack.Navigator>
-    </NavigationContainer>
+        >
+          <Stack.Screen
+            name="BottomBar"
+            component={BottomBarNavigation}
+            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="Home"
+            component={HomePage}
+            options={{
+              title: "NC500",
+              headerRight: () => (
+                <Button
+                  onPress={() =>
+                    alert(
+                      auth !== null
+                        ? `User ${auth.user.id}  is logged in`
+                        : "Nobody is logged in"
+                    )
+                  }
+                  title="Info"
+                  color="black"
+                />
+              ),
+            }}
+          />
+          <Stack.Screen
+            name="AboutPage"
+            component={AboutPage}
+            options={{
+              title: "NC500",
+              headerRight: () => (
+                <Button
+                  onPress={() => alert("This is a button!")}
+                  title="Info"
+                  color="black"
+                />
+              ),
+            }}
+          />
+          <Stack.Screen name="SignIn" component={SignIn} />
+          <Stack.Screen name="CreateUser" component={CreateUser} />
+          <Stack.Screen name="Maps" component={Maps} />
+          <Stack.Screen name="ToDoEvent" component={ToDoSingleEventMaximised} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </AuthContext.Provider>
   );
 };

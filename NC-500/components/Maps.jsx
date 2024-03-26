@@ -38,26 +38,22 @@ const waypoints = [
 const endOfDayCityArray = [
   {
     name: "Wick",
-    description:
-      "A town and royal burgh in Caithness.",
+    description: "A town and royal burgh in Caithness.",
     coordinates: "58.43906,-3.09424",
   },
   {
     name: "Tongue",
-    description:
-      "Tongue is one of the main crofting townships.",
+    description: "Tongue is one of the main crofting townships.",
     coordinates: "58.475708,-4.4173601",
   },
   {
     name: "Ullapool",
-    description:
-      "The picturesque fishing town of Ullapool.",
+    description: "The picturesque fishing town of Ullapool.",
     coordinates: "57.89872000,-5.16039000",
   },
   {
     name: "Torridon",
-    description:
-      "Torridon has a dramatic and desolate setting.",
+    description: "Torridon has a dramatic and desolate setting.",
     coordinates: "57.545695,-5.512301",
   },
 ];
@@ -99,7 +95,8 @@ const Maps = () => {
           />
           {endOfDayCityArray.map((city) => {
             return (
-              <Marker key={city.name}
+              <Marker
+                key={city.name}
                 coordinate={{
                   latitude: parseFloat(city.coordinates.split(",")[0]),
                   longitude: parseFloat(city.coordinates.split(",")[1]),
