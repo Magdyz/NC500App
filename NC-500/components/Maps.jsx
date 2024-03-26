@@ -4,6 +4,8 @@ import MapView, { Marker } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
 import getDirections from "../utils/MapsApiCalls";
 import apiKey from "../apiKey";
+import { getMarkersData } from "../utils/supabase-api-calls";
+
 
 // default Coordinates when map opens
 const { width, height } = Dimensions.get("window");
