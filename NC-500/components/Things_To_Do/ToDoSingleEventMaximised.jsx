@@ -31,9 +31,6 @@ const ToDoSingleEventMaximised = ({
       </Card.Content>
       <Card.Cover source={{ uri: link }} />
       <Card.Actions>
-        <Checkbox.Item label={label} status={status} onPress={onPress} />
-      </Card.Actions>
-      <Card.Actions>
         <Button onPress={() => Linking.openURL(website)}>Website</Button>
         <Button onPress={toggleButtonAddToItinerary}>{buttonText}</Button>
         <Button onPress={toggleMaximised}>Close</Button>
