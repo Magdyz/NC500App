@@ -6,7 +6,6 @@ import getDirections from "../utils/MapsApiCalls";
 import apiKey from "../apiKey";
 import { getMarkersData } from "../utils/supabase-api-calls";
 
-
 // default Coordinates when map opens
 const { width, height } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
@@ -14,6 +13,10 @@ const LATITUDE = 57.7038169;
 let LONGITUDE = -4.1384248;
 let LATITUDE_DELTA = 2.2922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+
+
+
+
 
 // Get API key
 const GOOGLE_MAPS_APIKEY = apiKey;
@@ -40,34 +43,39 @@ const waypoints = [
 const endOfDayCityArray = [
   {
     name: "Wick",
-    description:
-      "A town and royal burgh in Caithness.",
+    description: "A town and royal burgh in Caithness.",
     coordinates: "58.43906,-3.09424",
   },
   {
     name: "Tongue",
-    description:
-      "Tongue is one of the main crofting townships.",
+    description: "Tongue is one of the main crofting townships.",
     coordinates: "58.475708,-4.4173601",
   },
   {
     name: "Ullapool",
-    description:
-      "The picturesque fishing town of Ullapool.",
+    description: "The picturesque fishing town of Ullapool.",
     coordinates: "57.89872000,-5.16039000",
   },
   {
     name: "Torridon",
-    description:
-      "Torridon has a dramatic and desolate setting.",
+    description: "Torridon has a dramatic and desolate setting.",
     coordinates: "57.545695,-5.512301",
   },
 ];
 
 const Maps = () => {
+   // get directions from directions function
   const [directions, setDirections] = useState(null);
+  // getting all locations for the markers from the database
+const [allMarkers, setAllMarkers] = useState([]);
 
-  // get directions from directions function
+
+useEffect(() => {
+  getMarkersData().then((markerResponse) => {
+    setAllMarkers(markerResponse);
+  });
+}, []);
+
   useEffect(() => {
     const fetchDirections = async () => {
       const data = await getDirections();
@@ -101,7 +109,8 @@ const Maps = () => {
           />
           {endOfDayCityArray.map((city) => {
             return (
-              <Marker key={city.name}
+              <Marker
+                key={city.name}
                 coordinate={{
                   latitude: parseFloat(city.coordinates.split(",")[0]),
                   longitude: parseFloat(city.coordinates.split(",")[1]),
@@ -110,7 +119,24 @@ const Maps = () => {
                 description={city.description}
               />
             );
+          }
+          )}
+
+          {allMarkers.map((location) => {
+            return (
+              <Marker
+              key= {location.location_id}
+              coordinate={{
+                latitude: location.lat,
+                longitude: location.long
+              }}
+              title={location.name}
+              />
+            )
+
           })}
+
+          
 
           <MapViewDirections
             origin={origin}
@@ -136,5 +162,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
 
 export default Maps;
