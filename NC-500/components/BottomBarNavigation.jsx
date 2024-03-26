@@ -6,7 +6,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 // Tabs
 import Maps from "./Maps";
 import HomePage from "./HomePage";
-import Itinerary from "./Itinerary";
+import Itinerary from "./Things_To_Do/Itinerary";
 import Profile from "./Profile";
 
 const Tab = createBottomTabNavigator();
