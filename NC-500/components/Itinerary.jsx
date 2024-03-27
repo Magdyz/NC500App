@@ -13,10 +13,10 @@ const Itinerary = ({navigation}) => {
   const auth = useContext(AuthContext)
   const [userRoutes, setUserRoutes] = useState([])
 
-  if (auth!==null&&auth.auth!==null){ 
+  
     useEffect(()=>{
 
-
+if (auth!==null&&auth.auth!==null){ 
 
 
     
@@ -24,8 +24,9 @@ const Itinerary = ({navigation}) => {
     .then((response)=>{
       setUserRoutes(response)
     })
+}
+  },[])
 
-  },[])}
 
  
 
