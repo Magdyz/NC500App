@@ -98,5 +98,13 @@ function getAllLocationsPlusCategories() {
     });
 }
 
-export { getAllLocations, getSingleLocation, getUserInfo, getUserRoutes, getRouteLocations, getAllLocationsPlusCategories}
+function getMarkersData() {
+    return supabase
+    .from('Location_Data')
+    .select("location_id, lat, long, category_id, name")
+    .then((res) => {
+        return res.data
+    })
+}
 
+export { getAllLocations, getSingleLocation, getUserInfo, getUserRoutes, getRouteLocations, getAllLocationsPlusCategories, getMarkersData}

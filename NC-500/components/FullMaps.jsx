@@ -5,18 +5,20 @@ import MapViewDirections from "react-native-maps-directions";
 import getDirections from "../utils/MapsApiCalls";
 import apiKey from "../apiKey";
 import { getMarkersData } from "../utils/supabase-api-calls";
-import museum from "../assets/Church_7.png"
-import Leaf from "../assets/Leaf_8.png"
+import Museum from "../assets/Church_7.png"
+import Nature from "../assets/Leaf_8.png"
 import Food from "../assets/Fork & Knife_6.png"
 import OutdoorActivities from "../assets/Tennis_5-2.png"
 import Accomodation from "../assets/Home_8.png"
 import Tour from "../assets/Tour_8.png"
 import History from "../assets/history.png"
 
+
+//markers pngs based on category
 const categoryImg = {
-  1: museum, 
+  1: Museum, 
   2: Food, 
-  3: Leaf, 
+  3: Nature, 
   4: History,
   5: OutdoorActivities,
   6: Tour,
@@ -76,7 +78,7 @@ const endOfDayCityArray = [
   },
 ];
 
-const Maps = () => {
+const FullMaps = () => {
   // get directions from directions function
   const [directions, setDirections] = useState(null);
   // getting all locations for the markers from the database
@@ -174,4 +176,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Maps;
+export default FullMaps;
