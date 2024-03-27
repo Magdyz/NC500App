@@ -13,7 +13,11 @@ const Itinerary = ({navigation}) => {
   const auth = useContext(AuthContext)
   const [userRoutes, setUserRoutes] = useState([])
 
-  useEffect(()=>{
+  if (auth!==null&&auth.auth!==null){ 
+    useEffect(()=>{
+
+
+
 
     
     getUserRoutes(auth)
@@ -21,9 +25,11 @@ const Itinerary = ({navigation}) => {
       setUserRoutes(response)
     })
 
-  },[])
+  },[])}
 
-  if (auth.auth === null){
+ 
+
+  if (auth.auth === null || auth === null){
     return(
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}><Text>Nothing here, sign in</Text></View>
     )
