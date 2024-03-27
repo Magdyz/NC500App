@@ -4,8 +4,13 @@ import { useState, useEffect } from "react";
 import { StyleSheet, Image, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+<<<<<<< HEAD
 import FullMaps from "./components/FullMaps";
 import HomePage from "./components/HomePage";
+=======
+import Maps from "./components/Maps";
+import HomePage from "./components/HomePage/HomePage";
+>>>>>>> HomePage
 import supabase from "./utils/supabase";
 import SignIn from "./components/Login_components/SignIn";
 import CreateUser from "./components/Login_components/CreateUser";

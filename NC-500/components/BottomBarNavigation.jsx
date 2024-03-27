@@ -12,6 +12,7 @@ import CreateUser from "./Login_components/CreateUser";
 import { useContext, useState } from "react";
 import AuthContext from "../contexts/AuthContext";
 import Itinerary from "./Itinerary";
+import HomePage from "./HomePage/HomePage";
 
 const Tab = createBottomTabNavigator();
 

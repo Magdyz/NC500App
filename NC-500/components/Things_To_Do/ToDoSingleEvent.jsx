@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, Text, Checkbox, TouchableRipple } from "react-native-paper";
 import ToDoSingleEventMaximised from "./ToDoSingleEventMaximised";
-import { StyleSheet } from "react-native-web";
+import { StyleSheet } from "react-native";
 
 const ToDoSingleEvent = ({
   title,
@@ -55,21 +55,21 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    borderBottomWidth: 2,
-    borderBottomColor: "#ccc",
     borderRadius: 15,
     paddingVertical: 8,
-    paddingHorizontal: 16,
+    paddingHorizontal: 5,
+    marginTop: "5%",
+    marginBottom: "5%",
   },
   content: {
     flex: 1,
-    paddingRight: 16,
+    paddingRight: 5,
   },
   title: {
     fontWeight: "bold",
     marginBottom: 4,
     flex: 1,
-    marginRight: 16,
+    marginRight: 5,
   },
   body: {
     marginBottom: 4,
@@ -79,9 +79,10 @@ const styles = StyleSheet.create({
     textDecorationLine: "underline",
   },
   image: {
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
     borderRadius: 25,
+    marginRight:5,
   },
 });
 
