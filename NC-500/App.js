@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { StyleSheet, Image, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Maps from "./components/Maps";
+import FullMaps from "./components/FullMaps";
 import HomePage from "./components/HomePage";
 import supabase from "./utils/supabase";
 import SignIn from "./components/Login_components/SignIn";
@@ -106,7 +106,7 @@ const App = () => {
         />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="CreateUser" component={CreateUser} />
-        <Stack.Screen name="Maps" component={Maps} />
+        <Stack.Screen name="Maps" component={FullMaps} />
         <Stack.Screen name="nav" component={BottomBarNavigation} />
       </Stack.Navigator>
     </NavigationContainer>
