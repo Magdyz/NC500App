@@ -42,7 +42,7 @@ const Profile = ({navigation}) => {
     </View>)
    }
 
-   console.log(userInfo)
+ 
 
  
     return (

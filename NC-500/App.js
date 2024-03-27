@@ -9,6 +9,7 @@ import HomePage from "./components/HomePage";
 import supabase from "./utils/supabase";
 import SignIn from "./components/Login_components/SignIn";
 import CreateUser from "./components/Login_components/CreateUser";
+import SingleDayList from "./components/itineraryComponents/SingleDayList";
 
 import AuthContext from "./contexts/AuthContext";
 
@@ -16,6 +17,8 @@ import AuthContext from "./contexts/AuthContext";
 import { View } from "react-native-web";
 import BottomBarNavigation from "./components/BottomBarNavigation";
 import AboutPage from "./components/AboutPage";
+import DayList from "./components/itineraryComponents/DayList";
+// import SingleDayList f
 
 
 const Stack = createNativeStackNavigator();
@@ -107,6 +110,9 @@ const App = () => {
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="CreateUser" component={CreateUser} />
         <Stack.Screen name="Maps" component={Maps} />
+        <Stack.Screen name="DayList" component={DayList} />
+        <Stack.Screen name='SingleDayList' component={SingleDayList}/>
+
         <Stack.Screen name="nav" component={BottomBarNavigation} />
       </Stack.Navigator>
     </NavigationContainer>

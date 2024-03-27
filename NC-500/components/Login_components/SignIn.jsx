@@ -91,7 +91,7 @@ const SignIn = (props) => {
   function errorAlert({ title, message }) {
     Alert.alert(title, message, [{ text: "OK" }]);
   }
-  console.log(auth);
+ 
 
   function newUserButton(e){
     e.preventDefault()
