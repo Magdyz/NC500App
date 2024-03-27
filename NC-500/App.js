@@ -15,7 +15,6 @@ import ThingsToDo from "./components/Things_To_Do/ThingsToDo.jsx";
 import AuthContext from "./contexts/AuthContext";
 import JourneyPlanner from "./components/JourneyPlanner";
 
-import { View } from "react-native-web";
 import BottomBarNavigation from "./components/BottomBarNavigation";
 import AboutPage from "./components/AboutPage";
 import DayList from "./components/itineraryComponents/DayList";

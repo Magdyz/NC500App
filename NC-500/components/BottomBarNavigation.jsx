@@ -5,7 +5,6 @@ import { CommonActions } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 // Tabs
 import FullMaps from "./FullMaps";
-import HomePage from "./HomePage";
 import Profile from "./Profile";
 import SignIn from "./Login_components/SignIn";
 import CreateUser from "./Login_components/CreateUser";
