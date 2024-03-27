@@ -1,54 +1,45 @@
-import { useState } from "react";
-import { Card, Text, Checkbox, TouchableRipple } from "react-native-paper";
+import React, { useState } from "react";
+import { Card, Text, Checkbox } from "react-native-paper";
 import ToDoSingleEventMaximised from "./ToDoSingleEventMaximised";
-import { StyleSheet } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
-const ToDoSingleEvent = ({
-  title,
-  body,
-  link,
-  label,
-  status,
-  onPress,
-  website,
-}) => {
-  const [maximised, setMaximised] = useState(false);
+const ToDoSingleEvent = React.memo(
+  ({ title, body, link, label, status, onPress, website }) => {
+    const [maximised, setMaximised] = useState(false);
 
-  const toggleMaximised = () => {
-    setMaximised(!maximised);
-  };
+    const toggleMaximised = () => {
+      setMaximised(!maximised);
+    };
 
-  if (maximised) {
+    if (maximised) {
+      return (
+        <ToDoSingleEventMaximised
+          title={title}
+          body={body}
+          link={link}
+          label={label}
+          status={status}
+          onPress={onPress}
+          toggleMaximised={toggleMaximised}
+          website={website}
+        />
+      );
+    }
     return (
-      <ToDoSingleEventMaximised
-        title={title}
-        body={body}
-        link={link}
-        label={label}
-        status={status}
-        onPress={onPress}
-        toggleMaximised={toggleMaximised}
-        website={website}
-      />
+      <Card>
+        <TouchableOpacity onPress={toggleMaximised}>
+          <Card.Actions style={styles.container}>
+            <Card.Cover source={{ uri: link }} style={styles.image} />
+            <Text style={styles.title} variant="titleLarge">
+              {title}
+            </Text>
+            <Checkbox.Item label={label} status={status} onPress={onPress} />
+          </Card.Actions>
+        </TouchableOpacity>
+      </Card>
     );
   }
-  return (
-    <Card>
-      <TouchableRipple
-        onPress={toggleMaximised}
-        rippleColor="rgba(0, 0, 0, .32)"
-      >
-        <Card.Actions style={styles.container}>
-          <Card.Cover source={{ uri: link }} style={styles.image} />
-          <Text style={styles.title} variant="titleLarge">
-            {title}
-          </Text>
-          <Checkbox.Item label={label} status={status} onPress={onPress} />
-        </Card.Actions>
-      </TouchableRipple>
-    </Card>
-  );
-};
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -82,7 +73,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 25,
-    marginRight:5,
+    marginRight: 5,
   },
 });
 

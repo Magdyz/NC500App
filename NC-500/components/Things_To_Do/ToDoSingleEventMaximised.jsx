@@ -14,14 +14,18 @@ const ToDoSingleEventMaximised = ({
   website,
 }) => {
   const [addToItineraryClicked, setAddToItineraryClicked] = useState(false);
-  const [buttonText, setButtonText] = useState("Add to Itinerary");
+  const [buttonText, setButtonText] = useState(
+    status === "unchecked" ? "Add to Itinerary" : "Remove From Itinerary"
+  );
 
   const toggleButtonAddToItinerary = () => {
-    setAddToItineraryClicked(!addToItineraryClicked);
-    setButtonText(
-      addToItineraryClicked ? "Add to Itinerary" : "Remove From Itinerary"
-    );
     onPress();
+    setAddToItineraryClicked((prevValue) => !prevValue);
+    setButtonText((prevText) =>
+      prevText === "Add to Itinerary"
+        ? "Remove From Itinerary"
+        : "Add to Itinerary"
+    );
   };
 
   return (
