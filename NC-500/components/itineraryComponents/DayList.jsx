@@ -25,6 +25,7 @@ const DayList = (props) => {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>{`Itinerary for ${routeName}, ID:${route_id}`}</Text>
+        <FullRouteButton navigation={navigation} route_id={route_id}></FullRouteButton>
         <DayButton dayNum={1} navigation={navigation} route_id={route_id}></DayButton>
         <DayButton dayNum={2} navigation={navigation} route_id={route_id}></DayButton>
         <DayButton dayNum={3} navigation={navigation} route_id={route_id}></DayButton>
@@ -35,16 +36,25 @@ const DayList = (props) => {
 }
 
 function dayButtonNav(e, dayNum, navigation, route_id){
-  console.log(1)
+navigation.navigate('SingleDayList', {dayNum:dayNum, route_id:route_id})
+}
 
-  navigation.navigate('SingleDayList', {dayNum:dayNum, route_id:route_id})
-
-
+function fullRouteButtonNav(e, navigation, route_id){
+  navigation.navigate('WholeRouteList',{route_id:route_id})
 
 }
 
+function FullRouteButton({navigation, route_id}){
+  return <View style={{borderWidth: 3, width:300, height:80, marginTop: 30}}>
+    <TouchableOpacity onPress={(e)=>fullRouteButtonNav(e, navigation, route_id)}>
+      <Text style={{textAlign: 'center'}}>{`Full Route`}</Text>
+    </TouchableOpacity>
+
+  </View>
+}
+
 function DayButton({dayNum, navigation, route_id}){
-  return <View style={{borderWidth: 3, width:300, height:100, marginTop: 30}}>
+  return <View style={{borderWidth: 3, width:300, height:80, marginTop: 30}}>
     <TouchableOpacity onPress={(e)=>dayButtonNav(e,dayNum, navigation, route_id)}>
       <Text style={{textAlign: 'center'}}>{`Day ${dayNum}`}</Text>
     </TouchableOpacity>

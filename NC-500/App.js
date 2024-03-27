@@ -19,6 +19,7 @@ import { View } from "react-native-web";
 import BottomBarNavigation from "./components/BottomBarNavigation";
 import AboutPage from "./components/AboutPage";
 import DayList from "./components/itineraryComponents/DayList";
+import WholeRouteList from "./components/itineraryComponents/WholeRouteList.jsx";
 // import SingleDayList f
 
 const Stack = createNativeStackNavigator();
@@ -115,6 +116,8 @@ const App = () => {
         <Stack.Screen name="Maps" component={Maps} />
         <Stack.Screen name="DayList" component={DayList} />
         <Stack.Screen name='SingleDayList' component={SingleDayList}/>
+        <Stack.Screen name='WholeRouteList' component={WholeRouteList}/>
+
         <Stack.Screen name="ToDoEvent" component={ThingsToDo} />
         <Stack.Screen name="nav" component={BottomBarNavigation} />
       </Stack.Navigator>
