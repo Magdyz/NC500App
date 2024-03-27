@@ -29,8 +29,8 @@ const ToDoSingleEventMaximised = ({
       <Icon
         name="close"
         onPress={toggleMaximised}
-        size={25}
-        style={{ margin: 5 }}
+        size={32}
+        style={{ marginLeft: 15, marginTop: 15 }}
       />
       <Card.Content style={styles.cardContent}>
         <Text variant="headlineLarge">{title}</Text>
