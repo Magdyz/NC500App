@@ -10,13 +10,16 @@ import supabase from "./utils/supabase";
 import SignIn from "./components/Login_components/SignIn";
 import CreateUser from "./components/Login_components/CreateUser";
 
+import SingleDayList from "./components/itineraryComponents/SingleDayList";
+import ThingsToDo from "./components/Things_To_Do/ThingsToDo.jsx";
 import AuthContext from "./contexts/AuthContext";
-
+import JourneyPlanner from "./components/JourneyPlanner";
 
 import { View } from "react-native-web";
 import BottomBarNavigation from "./components/BottomBarNavigation";
 import AboutPage from "./components/AboutPage";
-
+import DayList from "./components/itineraryComponents/DayList";
+// import SingleDayList f
 
 const Stack = createNativeStackNavigator();
 function LogoTitle() {
@@ -48,65 +51,71 @@ const App = () => {
   },[])
 
 
-  console.log(auth, 'auth')
+
 
   return (
-
-
-    <AuthContext.Provider value={{auth:auth, setAuth:setAuth}}>
-    <NavigationContainer> 
-
-      <Stack.Navigator
-        screenOptions={{
-          headerTitle: (props) => <LogoTitle {...props} />,
-          headerStyle: {
-            backgroundColor: "white",
-          },
-          headerTintColor: "",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-        }}
-      >
-        <Stack.Screen
-          name="BottomBar"
-          component={BottomBarNavigation}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name="Home"
-          component={HomePage}
-          options={{
-            title: "NC500",
-            headerRight: () => (
-              <Button
-
-                onPress={() => alert(auth!==null?`User ${auth.user.id}  is logged in`:"Nobody is logged in")}
-                title='Info'
-
-                color="black"
-              />
-            ),
+    <AuthContext.Provider value={{ auth: auth, setAuth: setAuth }}>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerTitle: (props) => <LogoTitle {...props} />,
+            headerStyle: {
+              backgroundColor: "white",
+            },
+            headerTintColor: "",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
           }}
-        />
-        <Stack.Screen
-          name="AboutPage"
-          component={AboutPage}
-          options={{
-            title: "NC500",
-            headerRight: () => (
-              <Button
-                onPress={() => alert("This is a button!")}
-                title="Info"
-                color="black"
-              />
-            ),
-          }}
-        />
+        >
+          <Stack.Screen
+            name="BottomBar"
+            component={BottomBarNavigation}
+            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="Home"
+            component={HomePage}
+            options={{
+              title: "NC500",
+              headerRight: () => (
+                <Button
+                  onPress={() =>
+                    alert(
+                      auth !== null
+                        ? `User ${auth.user.id}  is logged in`
+                        : "Nobody is logged in"
+                    )
+                  }
+                  title="Info"
+                  color="black"
+                />
+              ),
+            }}
+          />
+          <Stack.Screen
+            name="AboutPage"
+            component={AboutPage}
+            options={{
+              title: "NC500",
+              headerRight: () => (
+                <Button
+                  onPress={() => alert("This is a button!")}
+                  title="Info"
+                  color="black"
+                />
+              ),
+            }}
+          />
+          <Stack.Screen name="JourneyPlanner" component={JourneyPlanner} />
+        <Stack.Screen name="ThingsToDo" component={ThingsToDo} />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="CreateUser" component={CreateUser} />
         <Stack.Screen name="Maps" component={FullMaps} />
+        <Stack.Screen name="DayList" component={DayList} />
+        <Stack.Screen name='SingleDayList' component={SingleDayList}/>
+        <Stack.Screen name="ToDoEvent" component={ThingsToDo} />
         <Stack.Screen name="nav" component={BottomBarNavigation} />
       </Stack.Navigator>
     </NavigationContainer>

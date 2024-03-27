@@ -3,13 +3,12 @@ import { TextInput, StyleSheet } from "react-native";
 import { useContext, useEffect, useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import supabase from "../../utils/supabase";
-import CreateUser from "./CreateUser";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import AuthContext from "../../contexts/AuthContext";
-import { NavigationHelpersContext } from "@react-navigation/native";
+
 
 export const loginSchema = yup.object().shape({
   email: yup
@@ -92,7 +91,7 @@ const SignIn = (props) => {
   function errorAlert({ title, message }) {
     Alert.alert(title, message, [{ text: "OK" }]);
   }
-  console.log(auth);
+ 
 
   function newUserButton(e){
     e.preventDefault()
@@ -101,11 +100,7 @@ const SignIn = (props) => {
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>
-        {auth.auth !== null
-          ? `Signed in as ${auth.auth.user.id}`
-          : "Not signed in"}
-      </Text>
+     
       <Text>Email Address</Text>
       <TextInput
         id="email"
@@ -138,6 +133,7 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     margin: 12,
+    width:300,
     borderWidth: 1,
     padding: 10,
   },
