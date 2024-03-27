@@ -5,13 +5,13 @@ import { CommonActions } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 // Tabs
 import Maps from "./Maps";
-import HomePage from "./HomePage";
 import Profile from "./Profile";
 import SignIn from "./Login_components/SignIn";
 import CreateUser from "./Login_components/CreateUser";
 import { useContext, useState } from "react";
 import AuthContext from "../contexts/AuthContext";
 import Itinerary from "./Itinerary";
+import HomePage from "./HomePage/HomePage";
 
 const Tab = createBottomTabNavigator();
 

@@ -5,7 +5,7 @@ import { StyleSheet, Image, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Maps from "./components/Maps";
-import HomePage from "./components/HomePage";
+import HomePage from "./components/HomePage/HomePage";
 import supabase from "./utils/supabase";
 import SignIn from "./components/Login_components/SignIn";
 import CreateUser from "./components/Login_components/CreateUser";

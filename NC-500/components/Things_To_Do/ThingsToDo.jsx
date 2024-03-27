@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { StyleSheet, ScrollView, Picker, View } from "react-native";
+import { StyleSheet, ScrollView, View } from "react-native";
 import { SegmentedButtons } from "react-native-paper";
 import ToDoSingleEvent from "./ToDoSingleEvent";
 import { getAllLocationsPlusCategories } from "../../utils/supabase-api-calls";

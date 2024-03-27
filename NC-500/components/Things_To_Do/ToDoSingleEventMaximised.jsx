@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Linking } from "react-native";
-import { Card, Text, Checkbox, Button } from "react-native-paper";
+import { Linking, StyleSheet } from "react-native";
+import { Card, Text, Button } from "react-native-paper";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const ToDoSingleEventMaximised = ({
   title,
@@ -24,19 +25,46 @@ const ToDoSingleEventMaximised = ({
   };
 
   return (
-    <Card>
-      <Card.Content>
-        <Text variant="titleLarge">{title}</Text>
+    <Card style={styles.card}>
+      <Icon
+        name="close"
+        onPress={toggleMaximised}
+        size={25}
+        style={{ margin: 5 }}
+      />
+      <Card.Content style={styles.cardContent}>
+        <Text variant="headlineLarge">{title}</Text>
         <Text variant="bodyMedium">{body}</Text>
       </Card.Content>
-      <Card.Cover source={{ uri: link }} />
-      <Card.Actions>
+      <Card.Cover style={styles.cardImage} source={{ uri: link }} />
+      <Card.Actions style={styles.buttons}>
         <Button onPress={() => Linking.openURL(website)}>Website</Button>
         <Button onPress={toggleButtonAddToItinerary}>{buttonText}</Button>
-        <Button onPress={toggleMaximised}>Close</Button>
       </Card.Actions>
     </Card>
   );
 };
 
+const styles = StyleSheet.create({
+  card: {
+    paddingHorizontal: 5,
+    height: "auto",
+    marginBottom: "5%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  cardContent: {
+    margin: 10,
+    padding: 5,
+    alignItems: "center",
+  },
+  cardImage: {
+    margin: 10,
+    width: 400,
+    alignSelf: "center",
+  },
+  buttons: {
+    margin: 10,
+  },
+});
 export default ToDoSingleEventMaximised;
