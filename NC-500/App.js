@@ -9,6 +9,8 @@ import HomePage from "./components/HomePage";
 import supabase from "./utils/supabase";
 import SignIn from "./components/Login_components/SignIn";
 import CreateUser from "./components/Login_components/CreateUser";
+
+import SingleDayList from "./components/itineraryComponents/SingleDayList";
 import ThingsToDo from "./components/Things_To_Do/ThingsToDo.jsx";
 import AuthContext from "./contexts/AuthContext";
 import JourneyPlanner from "./components/JourneyPlanner";
@@ -16,6 +18,8 @@ import JourneyPlanner from "./components/JourneyPlanner";
 import { View } from "react-native-web";
 import BottomBarNavigation from "./components/BottomBarNavigation";
 import AboutPage from "./components/AboutPage";
+import DayList from "./components/itineraryComponents/DayList";
+// import SingleDayList f
 
 const Stack = createNativeStackNavigator();
 function LogoTitle() {
@@ -107,11 +111,14 @@ const App = () => {
           <Stack.Screen name="JourneyPlanner" component={JourneyPlanner} />
         <Stack.Screen name="ThingsToDo" component={ThingsToDo} />
         <Stack.Screen name="SignIn" component={SignIn} />
-          <Stack.Screen name="CreateUser" component={CreateUser} />
-          <Stack.Screen name="Maps" component={Maps} />
-          <Stack.Screen name="ToDoEvent" component={ThingsToDo} />
-        </Stack.Navigator>
-      </NavigationContainer>
+        <Stack.Screen name="CreateUser" component={CreateUser} />
+        <Stack.Screen name="Maps" component={Maps} />
+        <Stack.Screen name="DayList" component={DayList} />
+        <Stack.Screen name='SingleDayList' component={SingleDayList}/>
+        <Stack.Screen name="ToDoEvent" component={ThingsToDo} />
+        <Stack.Screen name="nav" component={BottomBarNavigation} />
+      </Stack.Navigator>
+    </NavigationContainer>
     </AuthContext.Provider>
   );
 };
