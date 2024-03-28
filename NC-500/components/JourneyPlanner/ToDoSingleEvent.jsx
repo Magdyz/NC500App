@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card, Text, Checkbox } from "react-native-paper";
 import ToDoSingleEventMaximised from "./ToDoSingleEventMaximised";
 import { StyleSheet, TouchableOpacity } from "react-native";
+import { Image } from "expo-image";
 
 const ToDoSingleEvent = React.memo(
   ({ title, body, link, label, status, onPress, website }) => {
@@ -29,7 +30,13 @@ const ToDoSingleEvent = React.memo(
       <Card>
         <TouchableOpacity onPress={toggleMaximised}>
           <Card.Actions style={styles.container}>
-            <Card.Cover source={{ uri: link }} style={styles.image} />
+            <Image
+              style={styles.image}
+              source={{ uri: link }}
+              contentFit="cover"
+              transition={100}
+            />
+            {/* <Card.Cover source={{ uri: link }} style={styles.image} /> */}
             <Text style={styles.title} variant="titleLarge">
               {title}
             </Text>

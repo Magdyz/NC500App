@@ -11,14 +11,15 @@ import SignIn from "./components/Login_components/SignIn";
 import CreateUser from "./components/Login_components/CreateUser";
 
 import SingleDayList from "./components/itineraryComponents/SingleDayList";
-import ThingsToDo from "./components/Things_To_Do/ThingsToDo.jsx";
+import ThingsToDo from "./components/ThingsToDo.jsx";
 import AuthContext from "./contexts/AuthContext";
-import JourneyPlanner from "./components/JourneyPlanner";
+import JourneyPlanner from "./components/JourneyPlanner/JourneyPlanner.jsx";
 
 import BottomBarNavigation from "./components/BottomBarNavigation";
 import AboutPage from "./components/AboutPage";
 import DayList from "./components/itineraryComponents/DayList";
 import WholeRouteList from "./components/itineraryComponents/WholeRouteList.jsx";
+
 // import SingleDayList f
 
 const Stack = createNativeStackNavigator();

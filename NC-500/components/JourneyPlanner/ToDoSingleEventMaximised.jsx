@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Linking, StyleSheet } from "react-native";
 import { Card, Text, Button } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { Image } from "expo-image";
 
 const ToDoSingleEventMaximised = ({
   title,

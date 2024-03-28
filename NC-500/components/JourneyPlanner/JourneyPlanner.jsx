@@ -6,7 +6,7 @@ import { getAllLocationsPlusCategories } from "../../utils/supabase-api-calls";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import { SelectList } from "react-native-dropdown-select-list";
 
-const ThingsToDo = () => {
+const JourneyPlanner = () => {
   const [value, setValue] = useState("");
 
   // checked items adds to itinarey to be sent to user it in database
@@ -117,4 +117,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ThingsToDo;
+export default JourneyPlanner;
