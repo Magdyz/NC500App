@@ -70,7 +70,7 @@ function SingleDayList(props) {
     )
   }
 
-  function MapSection({ dayNum, dayLocations, dayStart, dayEnd }) {
+  function MapSection({ dayNum, dayLocations, dayStart, dayEnd, route_id }) {
 
     const waypoints = []
 
