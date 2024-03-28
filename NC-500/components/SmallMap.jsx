@@ -1,11 +1,27 @@
-import {  View, Dimensions } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Text, View, StyleSheet, Dimensions, ScrollView, FlatList } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
 import apiKey from "../apiKey";
 
 
+//dayNum should be a single number, 1-5, depending on day
+//dayStart should be a string containing 2 coordinates, e.g ('57.4785, -3.456'). It will default to the city the day starts at if not given.
+//dayEnd should be the same format as dayStart, it will also default to an ending city if not given.
+//selectedLocationId will high a marker on the map
+//dayLocations should be an array in the format: 
+// [{"day": 1,
+//  "img_url": "https://mediaim.expedia.com/destination/2/d1650b51f7741e243883d3e321237496.jpg", 
+//  "lat": 57.573730494101, 
+//  "long": -4.09424845767114,
+//  "location_id": 7,
+//  "name": "Chanonry Point"
+//  "website_url": null}]
 
-function SmallMap({ dayNum, dayLocations, dayStart, dayEnd }) {
+//map is non interactive for the time being, just displays information
+
+
+function SmallMap({ dayNum, dayLocations=[], dayStart, dayEnd, selectedLocationId}) {
 
     const waypoints = []
 
@@ -40,9 +56,6 @@ function SmallMap({ dayNum, dayLocations, dayStart, dayEnd }) {
       5: { name: "Inverness", lat: 57.4700272, long: -4.224261 }
     };
 
-    // function mapMarkerFunc(e){
-
-    // }
     
 
     return (

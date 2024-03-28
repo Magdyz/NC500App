@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Card } from "react-native-paper";
+import { Image } from "expo-image";
 
 
 export default function HomepageButtons({
@@ -19,7 +20,12 @@ export default function HomepageButtons({
         onPress={() => navigation.navigate(navLink)}
         style={styles.button}
       >
-          <Card.Cover source={imageSource} style={styles.imageBackground} />
+        <Image
+          style={styles.imageBackground}
+          source={imageSource}
+          contentFit="cover"
+          transition={100}
+        />
         <Text style={styles.textOverlay}>{text}</Text>
       </TouchableOpacity>
     </Card>

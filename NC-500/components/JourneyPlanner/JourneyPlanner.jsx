@@ -1,29 +1,30 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, Suspense } from "react";
 import { StyleSheet, ScrollView, View } from "react-native";
-import { SegmentedButtons } from "react-native-paper";
-import ToDoSingleEvent from "./ToDoSingleEvent";
 import { getAllLocationsPlusCategories } from "../../utils/supabase-api-calls";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import { SelectList } from "react-native-dropdown-select-list";
+import { Button, Text } from "react-native-paper";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-const ThingsToDo = () => {
-  const [value, setValue] = useState("");
+const ToDoSingleEvent = React.lazy(() => import("./ToDoSingleEvent"));
 
-  // checked items adds to itinarey to be sent to user it in database
-  
+
+const JourneyPlanner = () => {
+  // checked items adds to itinerary to be sent to user it in database
 
   const [checkedItems, setCheckedItems] = useState({});
   const [locations, setLocations] = useState([]);
   const [loading, isLoading] = useState(true);
   const [selected, setSelected] = useState("all");
+  const [day, setDay] = useState(1);
 
   // Function to toggle the checked state of a card
-  const toggleChecked = (label) => {
+  const toggleChecked = useCallback((label) => {
     setCheckedItems((prevCheckedItems) => ({
       ...prevCheckedItems,
       [label]: !prevCheckedItems[label],
     }));
-  };
+  }, []);
 
   const data = [
     { key: "0", value: "all" },
@@ -37,38 +38,48 @@ const ThingsToDo = () => {
     { key: "8", value: "history and heritage" },
   ];
 
+  const handleDayPress = useCallback(
+    (direction) => {
+      if (direction === "minus" && day > 1) {
+        setDay(day - 1);
+      } else if (direction === "plus" && day < 5) {
+        setDay(day + 1);
+      } else {
+        setDay(1);
+      }
+    },
+    [day]
+  );
   useEffect(() => {
     getAllLocationsPlusCategories()
       .then((data) => {
-        if (selected === "all") {
-          setLocations(data);
-        } else {
-          setLocations(
-            data.filter((location) => {
-              return location.category_name === selected;
-            })
-          );
-        }
+        const dataByDay = data.filter((event) => {
+          return event.day === day;
+        });
+        selected === "all"
+          ? setLocations(dataByDay)
+          : setLocations(
+              dataByDay.filter((location) => {
+                return location.category_name === selected;
+              })
+            );
+
         isLoading(false);
       })
       .catch((err) => console.log(err));
-  }, [selected]);
+  }, [selected, day]);
 
   return (
-    <View>
-      <SegmentedButtons
-        style={styles.segmentedButtons}
-        value={value}
-        onValueChange={setValue}
-        search="false"
-        buttons={[
-          {
-            value: "<-",
-            label: "<-",
-          },
-          { value: "->", label: "->" },
-        ]}
-      />
+    <View style={{ height: "100%" }}>
+      <View style={styles.buttonDayToggle}>
+        <Button onPress={() => handleDayPress("minus")}>
+          <Icon name="arrow-left" size={20} />
+        </Button>
+        <Text>Day {day}</Text>
+        <Button onPress={() => handleDayPress("plus")}>
+          <Icon name="arrow-right" size={20} />
+        </Button>
+      </View>
       <SelectList
         setSelected={(val) => setSelected(val)}
         data={data}
@@ -79,7 +90,7 @@ const ThingsToDo = () => {
           locations.map((locationItem, index) => {
             return (
               <ToDoSingleEvent
-                key={index}
+                key={locationItem.location_id}
                 title={locationItem.name}
                 body={locationItem.description}
                 link={locationItem.img_url}
@@ -115,6 +126,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#ccc",
   },
+  buttonDayToggle: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  },
 });
 
-export default ThingsToDo;
+export default JourneyPlanner;

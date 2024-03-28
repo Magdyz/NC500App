@@ -14,6 +14,8 @@ import MapViewDirections from "react-native-maps-directions";
 import apiKey from "../../apiKey";
 import SmallMap from "../SmallMap";
 
+
+
 function SingleDayList(props) {
   const route_id = props.route.params.route_id;
   const dayNum = props.route.params.dayNum;
@@ -80,16 +82,17 @@ function SingleDayList(props) {
         <Card style={{ height: 50, width: 350, backgroundColor: "orange" }}>
           <Text>Get Directions</Text>
         </Card>
-      </View>
-    );
+    </View>
+    )
   }
 
+ 
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <ListSection dayLocations={dayLocations}></ListSection>
       <DirectionsSection></DirectionsSection>
-      <SmallMap dayNum={dayNum} dayLocations={dayLocations} dayStart={dayStart} dayEnd={dayEnd}></SmallMap>
+      <SmallMap dayNum={dayNum} dayLocations={dayLocations} selectedLocationId={selectedLocationId}></SmallMap>
     </View>
   );
 }
