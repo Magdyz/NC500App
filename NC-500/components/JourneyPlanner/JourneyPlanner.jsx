@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, Suspense } from "react";
 import { StyleSheet, ScrollView, View } from "react-native";
-import ToDoSingleEvent from "./ToDoSingleEvent";
 import { getAllLocationsPlusCategories } from "../../utils/supabase-api-calls";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import { SelectList } from "react-native-dropdown-select-list";
 import { Button, Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-const JourneyPlanner = () => {
-  const [value, setValue] = useState("");
+const ToDoSingleEvent = React.lazy(() => import("./ToDoSingleEvent"));
 
+
+const JourneyPlanner = () => {
   // checked items adds to itinerary to be sent to user it in database
 
   const [checkedItems, setCheckedItems] = useState({});
@@ -20,12 +20,12 @@ const JourneyPlanner = () => {
   const [day, setDay] = useState(1);
 
   // Function to toggle the checked state of a card
-  const toggleChecked = (label) => {
+  const toggleChecked = useCallback((label) => {
     setCheckedItems((prevCheckedItems) => ({
       ...prevCheckedItems,
       [label]: !prevCheckedItems[label],
     }));
-  };
+  }, []);
 
   const data = [
     { key: "0", value: "all" },
@@ -39,14 +39,18 @@ const JourneyPlanner = () => {
     { key: "8", value: "history and heritage" },
   ];
 
-  const handleDayPress = (direction) => {
-    if (direction === "minus" && day > 1) {
-      setDay(day - 1);
-    } else if (direction === "plus" && day < 5) setDay(day + 1);
-    else {
-      setDay(1);
-    }
-  };
+  const handleDayPress = useCallback(
+    (direction) => {
+      if (direction === "minus" && day > 1) {
+        setDay(day - 1);
+      } else if (direction === "plus" && day < 5) {
+        setDay(day + 1);
+      } else {
+        setDay(1);
+      }
+    },
+    [day]
+  );
   useEffect(() => {
     getAllLocationsPlusCategories()
       .then((data) => {
@@ -87,7 +91,7 @@ const JourneyPlanner = () => {
           locations.map((locationItem, index) => {
             return (
               <ToDoSingleEvent
-                key={index}
+                key={locationItem.location_id}
                 title={locationItem.name}
                 body={locationItem.description}
                 link={locationItem.img_url}
