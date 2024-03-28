@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, Dimensions, ScrollView, FlatList } from "react-native";
-import { getRouteLocations } from "../utils/supabase-api-calls";
-
+import {  View, Dimensions } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
 import apiKey from "../apiKey";
 
 
 
-function SmallMap({ dayNum, dayLocations, dayStart, dayEnd, route_id }) {
+function SmallMap({ dayNum, dayLocations, dayStart, dayEnd }) {
 
     const waypoints = []
 
     dayLocations.forEach((location)=>{
         waypoints.push((`${location.lat},${location.long}`))
     })
-    console.log(dayLocations)
+ 
+
 
     const dayRegionRef = {
       1: { lat: 57.3022523, long: -3.71908, delta: 2.5 },
@@ -42,9 +40,9 @@ function SmallMap({ dayNum, dayLocations, dayStart, dayEnd, route_id }) {
       5: { name: "Inverness", lat: 57.4700272, long: -4.224261 }
     };
 
-    function mapMarkerFunc(e){
+    // function mapMarkerFunc(e){
 
-    }
+    // }
 
     return (
       <View pointerEvents="none" style={{ flex: 1, backgroundColor: "pink" }}>
@@ -69,16 +67,16 @@ function SmallMap({ dayNum, dayLocations, dayStart, dayEnd, route_id }) {
                         key={location.location_id}
                         coordinate={{latitude: location.lat, longitude:location.long}}
                         title={location.name}
-                        pinColor={location.location_id===selectedLocationId?'aqua':'red'}
+                        // pinColor={location.location_id===selectedLocationId?'aqua':'red'}
                         onClick={(e)=>mapMarkerFunc(e)} >
                             
                         </Marker>
                 )
             })}
              <MapViewDirections
-            origin={dayStart===undefined?`${dayStartRef[dayNum].lat},${dayStartRef[dayNum].long}`:dayStart}
+            origin={dayStart?dayStart:`${dayStartRef[dayNum].lat},${dayStartRef[dayNum].long}`}
            
-            destination={dayEnd===undefined?`${dayEndRef[dayNum].lat},${dayEndRef[dayNum].long}`:dayEnd}
+            destination={dayEnd?dayEnd:`${dayEndRef[dayNum].lat},${dayEndRef[dayNum].long}`}
             apikey={apiKey}
             strokeWidth={5}
             waypoints={waypoints}

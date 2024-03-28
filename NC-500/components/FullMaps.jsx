@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Dimensions } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
-import getDirections from "../utils/MapsApiCalls";
 import apiKey from "../apiKey";
 import { getMarkersData } from "../utils/supabase-api-calls";
 import Museum from "../assets/Church_7.png"
@@ -14,7 +13,7 @@ import Tour from "../assets/Tour_8.png"
 import History from "../assets/history.png"
 
 
-//markers pngs based on category
+//markers pngs based on categoryId
 const categoryImg = {
   1: Museum, 
   2: Food, 
@@ -90,17 +89,10 @@ const FullMaps = () => {
     });
   }, []);
 
-  useEffect(() => {
-    const fetchDirections = async () => {
-      const data = await getDirections();
-      setDirections(data);
-    };
-    fetchDirections();
-  }, []);
 
   return (
     <View style={styles.container}>
-      {directions && (
+      {(
         <MapView
           style={styles.map}
           zoomEnabled={true}
