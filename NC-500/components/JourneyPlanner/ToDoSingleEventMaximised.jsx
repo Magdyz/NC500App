@@ -3,6 +3,7 @@ import { Linking, StyleSheet } from "react-native";
 import { Card, Text, Button } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
+
 const ToDoSingleEventMaximised = ({
   title,
   body,
@@ -12,6 +13,7 @@ const ToDoSingleEventMaximised = ({
   onPress,
   toggleMaximised,
   website,
+ 
 }) => {
   const [addToItineraryClicked, setAddToItineraryClicked] = useState(false);
   const [buttonText, setButtonText] = useState(

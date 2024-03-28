@@ -28,7 +28,8 @@ function SmallMap({ dayNum, dayLocations=[], dayStart, dayEnd, selectedLocationI
     dayLocations.forEach((location)=>{
         waypoints.push((`${location.lat},${location.long}`))
     })
-    console.log(dayLocations)
+ 
+
 
     const dayRegionRef = {
       1: { lat: 57.3022523, long: -3.71908, delta: 2.5 },
@@ -72,6 +73,7 @@ function SmallMap({ dayNum, dayLocations=[], dayStart, dayEnd, selectedLocationI
             latitudeDelta: dayRegionRef[dayNum].delta,
             longitudeDelta: dayRegionRef[dayNum].delta,
           }}
+
         >
 
             {dayLocations.map((location)=>{
@@ -80,23 +82,24 @@ function SmallMap({ dayNum, dayLocations=[], dayStart, dayEnd, selectedLocationI
                         key={location.location_id}
                         coordinate={{latitude: location.lat, longitude:location.long}}
                         title={location.name}
-                        pinColor={location.location_id===selectedLocationId?'aqua':'red'}
+                        // pinColor={location.location_id===selectedLocationId?'aqua':'red'}
                         onClick={(e)=>mapMarkerFunc(e)} >
                             
                         </Marker>
                 )
             })}
-             <MapViewDirections
-            origin={dayStart===undefined?`${dayStartRef[dayNum].lat},${dayStartRef[dayNum].long}`:dayStart}
+            {dayStart!=="noDirection"? (<MapViewDirections
+            origin={dayStart?dayStart:`${dayStartRef[dayNum].lat},${dayStartRef[dayNum].long}`}
            
-            destination={dayEnd===undefined?`${dayEndRef[dayNum].lat},${dayEndRef[dayNum].long}`:dayEnd}
+            destination={dayEnd?dayEnd:`${dayEndRef[dayNum].lat},${dayEndRef[dayNum].long}`}
             apikey={apiKey}
             strokeWidth={5}
             waypoints={waypoints}
             strokeColor="purple"
             mode="DRIVING"
             optimizeWaypoints={true}
-          />
+          />):null
+        }
         </MapView>
       </View>
     );

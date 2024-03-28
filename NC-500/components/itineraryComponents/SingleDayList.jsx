@@ -10,14 +10,15 @@ import SmallMap from "../SmallMap";
 
 
 function SingleDayList(props) {
-
-
   const route_id = props.route.params.route_id;
   const dayNum = props.route.params.dayNum;
+   //created a variable called dayStart and dayEnd to make the smallMaps work - need to discuss more how it works
+   let dayStart = null
+   let dayEnd = null
   const [dayLocations, setDayLocations] = useState([]);
+  
   const [selectedLocationId, setSelectedLocationId] = useState(null)
   const navigation = props.navigation
-
   useEffect(() => {
     getRouteLocations(route_id).then((response) => {
       const dayNumArray = [];
@@ -31,36 +32,45 @@ function SingleDayList(props) {
   }, []);
 
   function ListSection({ dayLocations }) {
-
-
-    function selectCard(id){
-        setSelectedLocationId(id)
+    function selectCard(id) {
+      setSelectedLocationId(id);
     }
-   
+
     return (
       <View
         style={{
           flex: 0.8,
           alignItems: "center",
           justifyContent: "center",
-          
         }}
       >
-       <ScrollView>
-        
-        {dayLocations.map((location, index) => {
-          return <Card style={{height:50, width:350, backgroundColor:location.location_id===selectedLocationId?'pink':'white', marginBottom:10}}>
-            <TouchableRipple onPress={(e)=>selectCard(location.location_id)}>
-           
-            <Text>{location.name}</Text>
-          </TouchableRipple>
-            </Card>;
-        })}
+        <ScrollView>
+          {dayLocations.map((location, index) => {
+            return (
+              <Card
+                style={{
+                  height: 50,
+                  width: 350,
+                  backgroundColor:
+                    location.location_id === selectedLocationId
+                      ? "pink"
+                      : "white",
+                  marginBottom: 10,
+                }}
+              >
+                <TouchableRipple
+                  onPress={(e) => selectCard(location.location_id)}
+                >
+                  <Text>{location.name}</Text>
+                </TouchableRipple>
+              </Card>
+            );
+          })}
         </ScrollView>
-       
       </View>
     );
   }
+
   function DirectionsSection({navigation, dayNum, dayLocations}){
 
     return(

@@ -13,7 +13,6 @@ const JourneyPlanner = () => {
   // checked items adds to itinerary to be sent to user it in database
 
   const [checkedItems, setCheckedItems] = useState({});
-  console.log(checkedItems);
   const [locations, setLocations] = useState([]);
   const [loading, isLoading] = useState(true);
   const [selected, setSelected] = useState("all");

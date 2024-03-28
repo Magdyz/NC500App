@@ -8,7 +8,7 @@ const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 
 const ToDoSingleEvent = React.memo(
-  ({ title, body, link, label, status, onPress, website }) => {
+  ({ title, body, link, label, status, onPress, website}) => {
     const [maximised, setMaximised] = useState(false);
 
     const toggleMaximised = () => {
@@ -26,6 +26,7 @@ const ToDoSingleEvent = React.memo(
           onPress={onPress}
           toggleMaximised={toggleMaximised}
           website={website}
+
         />
       );
     }
