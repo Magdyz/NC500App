@@ -7,7 +7,7 @@ const DayList = (props) => {
 
   const navigation = props.navigation
  
-
+  
  
 
 

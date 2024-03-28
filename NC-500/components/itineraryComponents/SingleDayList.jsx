@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Dimensions,
-  ScrollView,
-  FlatList,
-} from "react-native";
+import { Text, View, StyleSheet, Dimensions, ScrollView, FlatList, Button } from "react-native";
 import { getRouteLocations } from "../../utils/supabase-api-calls";
 import { Card, TouchableRipple } from "react-native-paper";
 import MapView, { Marker } from "react-native-maps";
@@ -23,8 +16,9 @@ function SingleDayList(props) {
    let dayStart = null
    let dayEnd = null
   const [dayLocations, setDayLocations] = useState([]);
-  const [selectedLocationId, setSelectedLocationId] = useState(null);
   
+  const [selectedLocationId, setSelectedLocationId] = useState(null)
+  const navigation = props.navigation
   useEffect(() => {
     getRouteLocations(route_id).then((response) => {
       const dayNumArray = [];
@@ -76,11 +70,13 @@ function SingleDayList(props) {
       </View>
     );
   }
-  function DirectionsSection() {
-    return (
-      <View>
-        <Card style={{ height: 50, width: 350, backgroundColor: "orange" }}>
-          <Text>Get Directions</Text>
+
+  function DirectionsSection({navigation, dayNum, dayLocations}){
+
+    return(
+    <View>
+        <Card style={{height:50, width:350, backgroundColor:'orange'}}>
+            <Button title='Get Directions' onPress={(e)=>navigation.navigate('DayDirections',{dayNum:dayNum, dayLocations:dayLocations})}></Button>
         </Card>
     </View>
     )
@@ -91,7 +87,7 @@ function SingleDayList(props) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <ListSection dayLocations={dayLocations}></ListSection>
-      <DirectionsSection></DirectionsSection>
+      <DirectionsSection navigation={navigation} dayNum ={dayNum} dayLocations = {dayLocations}></DirectionsSection>
       <SmallMap dayNum={dayNum} dayLocations={dayLocations} selectedLocationId={selectedLocationId}></SmallMap>
     </View>
   );

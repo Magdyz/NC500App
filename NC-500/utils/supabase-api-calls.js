@@ -61,7 +61,7 @@ function getUserRoutes(auth){
 
 function getRouteLocations(route_id){
 
-    console.log(route_id, 'api')
+ 
 
     return supabase
     .from('routes_locations')
@@ -74,7 +74,8 @@ function getRouteLocations(route_id){
            locations.push(element.Location_Data)
             
         })
-        console.log(locations)
+       
+        
         return locations
     })
     .catch((err)=>{
