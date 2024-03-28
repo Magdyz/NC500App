@@ -9,7 +9,7 @@ import { SelectList } from "react-native-dropdown-select-list";
 const JourneyPlanner = () => {
   const [value, setValue] = useState("");
 
-  // checked items adds to itinarey to be sent to user it in database
+  // checked items adds to itinerary to be sent to user it in database
 
   const [checkedItems, setCheckedItems] = useState({});
   console.log(checkedItems);
