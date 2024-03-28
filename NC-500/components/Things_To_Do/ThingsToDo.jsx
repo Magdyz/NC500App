@@ -10,9 +10,9 @@ const ThingsToDo = () => {
   const [value, setValue] = useState("");
 
   // checked items adds to itinarey to be sent to user it in database
+  
 
   const [checkedItems, setCheckedItems] = useState({});
-  console.log(checkedItems);
   const [locations, setLocations] = useState([]);
   const [loading, isLoading] = useState(true);
   const [selected, setSelected] = useState("all");
@@ -86,6 +86,7 @@ const ThingsToDo = () => {
                 label="add"
                 lat={locationItem.lat}
                 long={locationItem.long}
+                dayNum={locationItem.day}
                 status={
                   checkedItems[locationItem.name] ? "checked" : "unchecked"
                 }

@@ -43,6 +43,7 @@ function SmallMap({ dayNum, dayLocations, dayStart, dayEnd }) {
     // function mapMarkerFunc(e){
 
     // }
+    
 
     return (
       <View pointerEvents="none" style={{ flex: 1, backgroundColor: "pink" }}>
@@ -59,6 +60,7 @@ function SmallMap({ dayNum, dayLocations, dayStart, dayEnd }) {
             latitudeDelta: dayRegionRef[dayNum].delta,
             longitudeDelta: dayRegionRef[dayNum].delta,
           }}
+
         >
 
             {dayLocations.map((location)=>{
@@ -73,7 +75,7 @@ function SmallMap({ dayNum, dayLocations, dayStart, dayEnd }) {
                         </Marker>
                 )
             })}
-             <MapViewDirections
+            {dayStart!=="noDirection"? (<MapViewDirections
             origin={dayStart?dayStart:`${dayStartRef[dayNum].lat},${dayStartRef[dayNum].long}`}
            
             destination={dayEnd?dayEnd:`${dayEndRef[dayNum].lat},${dayEndRef[dayNum].long}`}
@@ -83,7 +85,8 @@ function SmallMap({ dayNum, dayLocations, dayStart, dayEnd }) {
             strokeColor="purple"
             mode="DRIVING"
             optimizeWaypoints={true}
-          />
+          />):null
+        }
         </MapView>
       </View>
     );

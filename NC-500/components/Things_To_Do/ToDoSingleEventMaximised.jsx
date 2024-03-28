@@ -14,7 +14,8 @@ const ToDoSingleEventMaximised = ({
   toggleMaximised,
   website,
   lat,
-  long
+  long,
+  dayNum
 }) => {
   const [addToItineraryClicked, setAddToItineraryClicked] = useState(false);
   const [buttonText, setButtonText] = useState(
@@ -48,7 +49,7 @@ const ToDoSingleEventMaximised = ({
         <Button onPress={() => Linking.openURL(website)}>Website</Button>
         <Button onPress={toggleButtonAddToItinerary}>{buttonText}</Button>
       </Card.Actions>
-      <SmallMap dayNum={1} dayLocations={[{long:long, lat:lat}]} dayStart={null} dayEnd={null}> </SmallMap>
+      <SmallMap dayNum={dayNum} dayLocations={[{long:long, lat:lat}]} dayStart={"noDirection"} dayEnd={null}> </SmallMap>
 
     </Card>
   );
