@@ -41,7 +41,6 @@ const ToDoSingleEvent = React.memo(
               allowDownscaling={true}
               transition={100}
             />
-            {/* <Card.Cover source={{ uri: link }} style={styles.image} /> */}
             <Text style={styles.title} variant="titleLarge">
               {title}
             </Text>
