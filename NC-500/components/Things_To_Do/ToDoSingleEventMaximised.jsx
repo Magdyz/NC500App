@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Linking, StyleSheet } from "react-native";
 import { Card, Text, Button } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import SmallMap from "../SmallMap"
 
 const ToDoSingleEventMaximised = ({
   title,
@@ -45,6 +46,7 @@ const ToDoSingleEventMaximised = ({
         <Button onPress={() => Linking.openURL(website)}>Website</Button>
         <Button onPress={toggleButtonAddToItinerary}>{buttonText}</Button>
       </Card.Actions>
+      <SmallMap dayNum={1} dayLocations={[]} dayStart={null} dayEnd={null}> </SmallMap>
     </Card>
   );
 };
