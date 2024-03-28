@@ -84,9 +84,6 @@ const ThingsToDo = () => {
                 body={locationItem.description}
                 link={locationItem.img_url}
                 label="add"
-                lat={locationItem.lat}
-                long={locationItem.long}
-                dayNum={locationItem.day}
                 status={
                   checkedItems[locationItem.name] ? "checked" : "unchecked"
                 }

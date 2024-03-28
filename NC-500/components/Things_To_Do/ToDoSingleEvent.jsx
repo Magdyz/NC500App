@@ -4,7 +4,7 @@ import ToDoSingleEventMaximised from "./ToDoSingleEventMaximised";
 import { StyleSheet, TouchableOpacity } from "react-native";
 
 const ToDoSingleEvent = React.memo(
-  ({ title, body, link, label, status, onPress, website, lat, long, dayNum}) => {
+  ({ title, body, link, label, status, onPress, website}) => {
     const [maximised, setMaximised] = useState(false);
 
     const toggleMaximised = () => {
@@ -22,9 +22,7 @@ const ToDoSingleEvent = React.memo(
           onPress={onPress}
           toggleMaximised={toggleMaximised}
           website={website}
-          lat={lat}
-          long={long}
-          dayNum={dayNum}
+
         />
       );
     }
