@@ -17,6 +17,7 @@ const Itinerary = ({navigation}) => {
     useEffect(()=>{
 
 if (auth!==null&&auth.auth!==null){ 
+  console.log(1)
 
 
     
@@ -25,7 +26,7 @@ if (auth!==null&&auth.auth!==null){
       setUserRoutes(response)
     })
 }
-  },[])
+  },[auth])
 
 
  
@@ -41,15 +42,15 @@ if (auth!==null&&auth.auth!==null){
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Itinerary</Text>
-        {userRoutes.map((route)=>{
+        {userRoutes.map((route, index)=>{
           return (
-            <RouteBox routeName={route.route_name} route_id={route.route_id} navigation={navigation}></RouteBox>
+            <RouteBox key ={index} routeName={route.route_name} route_id={route.route_id} navigation={navigation}></RouteBox>
           )
         })}
        
       </View>
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }} >
-        <Button title='Add new route'></Button>
+        
 
       </View>
       </View>
