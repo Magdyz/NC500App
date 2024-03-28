@@ -20,6 +20,8 @@ import AboutPage from "./components/AboutPage";
 import DayList from "./components/itineraryComponents/DayList";
 import WholeRouteList from "./components/itineraryComponents/WholeRouteList.jsx";
 
+import DayDirections from './components/itineraryComponents/DayDirections.jsx'
+
 // import SingleDayList f
 
 const Stack = createNativeStackNavigator();
@@ -99,18 +101,21 @@ const App = () => {
             }}
           />
           <Stack.Screen name="JourneyPlanner" component={JourneyPlanner} />
-          <Stack.Screen name="ThingsToDo" component={ThingsToDo} />
-          <Stack.Screen name="SignIn" component={SignIn} />
-          <Stack.Screen name="CreateUser" component={CreateUser} />
-          <Stack.Screen name="Maps" component={FullMaps} />
-          <Stack.Screen name="DayList" component={DayList} />
-          <Stack.Screen name="SingleDayList" component={SingleDayList} />
-          <Stack.Screen name="WholeRouteList" component={WholeRouteList} />
 
-          <Stack.Screen name="ToDoEvent" component={ThingsToDo} />
-          <Stack.Screen name="nav" component={BottomBarNavigation} />
-        </Stack.Navigator>
-      </NavigationContainer>
+        <Stack.Screen name="ThingsToDo" component={ThingsToDo} />
+        <Stack.Screen name="SignIn" component={SignIn} />
+        <Stack.Screen name="CreateUser" component={CreateUser} />
+        <Stack.Screen name="Maps" component={FullMaps} />
+        <Stack.Screen name="DayList" component={DayList} />
+        <Stack.Screen name='SingleDayList' component={SingleDayList}/>
+        <Stack.Screen name='WholeRouteList' component={WholeRouteList}/>
+        <Stack.Screen name='DayDirections' component ={DayDirections}/>
+
+        <Stack.Screen name="ToDoEvent" component={ThingsToDo} />
+        <Stack.Screen name="nav" component={BottomBarNavigation} />
+      </Stack.Navigator>
+    </NavigationContainer>
+
     </AuthContext.Provider>
   );
 };
