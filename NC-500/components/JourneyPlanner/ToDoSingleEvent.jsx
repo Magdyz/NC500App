@@ -4,6 +4,9 @@ import ToDoSingleEventMaximised from "./ToDoSingleEventMaximised";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { Image } from "expo-image";
 
+const blurhash =
+  "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
+
 const ToDoSingleEvent = React.memo(
   ({ title, body, link, label, status, onPress, website }) => {
     const [maximised, setMaximised] = useState(false);
@@ -34,6 +37,8 @@ const ToDoSingleEvent = React.memo(
               style={styles.image}
               source={{ uri: link }}
               contentFit="cover"
+              placeholder={blurhash}
+              allowDownscaling={true}
               transition={100}
             />
             {/* <Card.Cover source={{ uri: link }} style={styles.image} /> */}

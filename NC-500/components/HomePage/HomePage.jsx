@@ -9,6 +9,7 @@ import {
 import HomepageButton from "./HomepageButtons";
 import { Card } from "react-native-paper";
 
+
 const HomePage = ({ navigation }) => {
   const { height } = Dimensions.get("window");
   const cardHeight = (height - 190 - 50 - 235 - 20) / 2; 
