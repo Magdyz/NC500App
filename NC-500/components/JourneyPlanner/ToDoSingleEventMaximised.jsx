@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Linking, StyleSheet } from "react-native";
 import { Card, Text, Button } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -18,7 +18,7 @@ const ToDoSingleEventMaximised = ({
     status === "unchecked" ? "Add to Itinerary" : "Remove From Itinerary"
   );
 
-  const toggleButtonAddToItinerary = () => {
+  const toggleButtonAddToItinerary = useCallback(() => {
     onPress();
     setAddToItineraryClicked((prevValue) => !prevValue);
     setButtonText((prevText) =>
@@ -26,7 +26,7 @@ const ToDoSingleEventMaximised = ({
         ? "Remove From Itinerary"
         : "Add to Itinerary"
     );
-  };
+  }, [onPress]);
 
   return (
     <Card style={styles.card}>
@@ -40,7 +40,11 @@ const ToDoSingleEventMaximised = ({
         <Text variant="headlineLarge">{title}</Text>
         <Text variant="bodyMedium">{body}</Text>
       </Card.Content>
-      <Card.Cover style={styles.cardImage} source={{ uri: link }} />
+      <Card.Cover
+        style={styles.cardImage}
+        source={{ uri: link }}
+        loading="lazy"
+      />
       <Card.Actions style={styles.buttons}>
         <Button onPress={() => Linking.openURL(website)}>Website</Button>
         <Button onPress={toggleButtonAddToItinerary}>{buttonText}</Button>

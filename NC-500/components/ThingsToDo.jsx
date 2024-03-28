@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 const JourneyPlanner = () => {
   return (
     <View>
-      <Text>JourneyPlanner page</Text>
+      <Text>Things To Do page</Text>
     </View>
   );
 };
