@@ -34,25 +34,14 @@ function LogoTitle() {
 const App = () => {
   const [auth, setAuth] = useState(null);
 
-
-  useEffect(()=>{
-    supabase.auth.getSession()
-    .then(({data: { session }})=>{
-      setAuth(session)
-    })
-
-    supabase.auth.onAuthStateChange((_event, session)=>{
-
-      setAuth(session)
-    })
-  
-    
-
-
-  },[])
-
-
-
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setAuth(session);
+    });
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setAuth(session);
+    });
+  }, []);
 
   return (
     <AuthContext.Provider value={{ auth: auth, setAuth: setAuth }}>
@@ -110,18 +99,18 @@ const App = () => {
             }}
           />
           <Stack.Screen name="JourneyPlanner" component={JourneyPlanner} />
-        <Stack.Screen name="ThingsToDo" component={ThingsToDo} />
-        <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="CreateUser" component={CreateUser} />
-        <Stack.Screen name="Maps" component={FullMaps} />
-        <Stack.Screen name="DayList" component={DayList} />
-        <Stack.Screen name='SingleDayList' component={SingleDayList}/>
-        <Stack.Screen name='WholeRouteList' component={WholeRouteList}/>
+          <Stack.Screen name="ThingsToDo" component={ThingsToDo} />
+          <Stack.Screen name="SignIn" component={SignIn} />
+          <Stack.Screen name="CreateUser" component={CreateUser} />
+          <Stack.Screen name="Maps" component={FullMaps} />
+          <Stack.Screen name="DayList" component={DayList} />
+          <Stack.Screen name="SingleDayList" component={SingleDayList} />
+          <Stack.Screen name="WholeRouteList" component={WholeRouteList} />
 
-        <Stack.Screen name="ToDoEvent" component={ThingsToDo} />
-        <Stack.Screen name="nav" component={BottomBarNavigation} />
-      </Stack.Navigator>
-    </NavigationContainer>
+          <Stack.Screen name="ToDoEvent" component={ThingsToDo} />
+          <Stack.Screen name="nav" component={BottomBarNavigation} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </AuthContext.Provider>
   );
 };
