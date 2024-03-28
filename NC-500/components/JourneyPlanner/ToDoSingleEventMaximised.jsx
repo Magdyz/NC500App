@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Linking, StyleSheet } from "react-native";
 import { Card, Text, Button } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -18,7 +18,7 @@ const ToDoSingleEventMaximised = ({
     status === "unchecked" ? "Add to Itinerary" : "Remove From Itinerary"
   );
 
-  useCallback(() => {
+  const toggleButtonAddToItinerary = useCallback(() => {
     onPress();
     setAddToItineraryClicked((prevValue) => !prevValue);
     setButtonText((prevText) =>
