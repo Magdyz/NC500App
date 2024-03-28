@@ -19,6 +19,7 @@ import BottomBarNavigation from "./components/BottomBarNavigation";
 import AboutPage from "./components/AboutPage";
 import DayList from "./components/itineraryComponents/DayList";
 import WholeRouteList from "./components/itineraryComponents/WholeRouteList.jsx";
+import DayDirections from './components/itineraryComponents/DayDirections.jsx'
 // import SingleDayList f
 
 const Stack = createNativeStackNavigator();
@@ -116,6 +117,7 @@ const App = () => {
         <Stack.Screen name="DayList" component={DayList} />
         <Stack.Screen name='SingleDayList' component={SingleDayList}/>
         <Stack.Screen name='WholeRouteList' component={WholeRouteList}/>
+        <Stack.Screen name='DayDirections' component ={DayDirections}/>
 
         <Stack.Screen name="ToDoEvent" component={ThingsToDo} />
         <Stack.Screen name="nav" component={BottomBarNavigation} />
