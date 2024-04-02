@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, Dimensions, ScrollView, FlatList } from "react-native";
+import { Text, View, ActivityIndicator, StyleSheet, Dimensions, ScrollView, FlatList } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
 import apiKey from "../apiKey";
@@ -56,10 +56,15 @@ function SmallMap({ dayNum, dayLocations=[], dayStart, dayEnd, selectedLocationI
       5: { name: "Inverness", lat: 57.4700272, long: -4.224261 }
     };
 
-    
+    const [mapLoaded, setMapLoaded] = useState(false);
 
     return (
-      <View pointerEvents="none" style={{ flex: 1, backgroundColor: "pink" }}>
+      <View pointerEvents="none" style={{ flex: 1, backgroundColor: "#472D30" }}>
+            {!mapLoaded && (
+                <View style={{height:400, marginTop: 180}}>
+                    <ActivityIndicator size="large" color="#E26D5C" />
+                </View>
+            )}
         <MapView
         pitchEnabled={false} rotateEnabled={false} zoomEnabled={false} scrollEnabled={false}
           style={{
@@ -73,7 +78,7 @@ function SmallMap({ dayNum, dayLocations=[], dayStart, dayEnd, selectedLocationI
             latitudeDelta: dayRegionRef[dayNum].delta,
             longitudeDelta: dayRegionRef[dayNum].delta,
           }}
-
+          onMapLoaded={() => setMapLoaded(true)}
         >
 
             {dayLocations.map((location)=>{
