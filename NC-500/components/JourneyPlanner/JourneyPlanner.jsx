@@ -39,13 +39,13 @@ const JourneyPlanner = (props) => {
   },[day])
 
   // Function to toggle the checked state of a card
-  const toggleChecked = useCallback((label) => {
-    setCheckedItems((prevCheckedItems) => ({
-      ...prevCheckedItems,
-      [label]: !prevCheckedItems[label],
-    }));
+  // const toggleChecked = useCallback((label) => {
+  //   setCheckedItems((prevCheckedItems) => ({
+  //     ...prevCheckedItems,
+  //     [label]: !prevCheckedItems[label],
+  //   }));
 
-  }, [day]);
+  // }, [day]);
 
   const data = [
     { key: "0", value: "all" },
@@ -119,16 +119,7 @@ const JourneyPlanner = (props) => {
                 link={locationItem.img_url}
                 route_id={route_id}
                 location_id={locationItem.location_id}
-                
-                label="add"
-                status={
-                  checkedItems[locationItem.name] ? "checked" : "unchecked"
-                }
                 isSelected = {checkedItems[locationItem.name]?true:false }
-               
-                onPress={() => {
-                  toggleChecked(locationItem.name, locationItem.location_id);
-                }}
                 website={locationItem.website_url}
               />
             );

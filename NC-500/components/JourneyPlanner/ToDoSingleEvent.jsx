@@ -16,9 +16,6 @@ const ToDoSingleEvent = React.memo(
     title,
     body,
     link,
-    label,
-    status,
-    onPress,
     website,
     isSelected,
     route_id,
@@ -28,7 +25,7 @@ const ToDoSingleEvent = React.memo(
     const [buttonLoading, setButtonLoading] = useState(false);
 
     const [selected, setSelected] = useState(isSelected);
-
+    
     const toggleMaximised = () => {
       setMaximised(!maximised);
     };
@@ -68,11 +65,13 @@ const ToDoSingleEvent = React.memo(
           title={title}
           body={body}
           link={link}
-          label={label}
-          status={status}
-          onPress={onPress}
           toggleMaximised={toggleMaximised}
           website={website}
+          selected={selected}
+          route_id={route_id}
+          location_id={location_id}
+          addLocationButton={addLocationButton}
+          removeLocationButton={removeLocationButton}
         />
       );
     }
@@ -103,7 +102,6 @@ const ToDoSingleEvent = React.memo(
                 onPress={(e) => removeLocationButton(e, route_id, location_id)}
               >{`Remove`}</Button>
             )}
-            {/* <Checkbox.Item label={label} status={status} onPress={onPress} /> */}
           </Card.Actions>
         </TouchableOpacity>
       </Card>

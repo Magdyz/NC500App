@@ -3,33 +3,19 @@ import { Linking, StyleSheet } from "react-native";
 import { Card, Text, Button } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-
 const ToDoSingleEventMaximised = ({
   title,
   body,
   link,
-  label,
-  status,
-  onPress,
   toggleMaximised,
   website,
- 
+  selected,
+  route_id,
+  addLocationButton,
+  removeLocationButton,
+  location_id,
 }) => {
-  const [addToItineraryClicked, setAddToItineraryClicked] = useState(false);
-  const [buttonText, setButtonText] = useState(
-    status === "unchecked" ? "Add to Itinerary" : "Remove From Itinerary"
-  );
-
-  const toggleButtonAddToItinerary = useCallback(() => {
-    onPress();
-    setAddToItineraryClicked((prevValue) => !prevValue);
-    setButtonText((prevText) =>
-      prevText === "Add to Itinerary"
-        ? "Remove From Itinerary"
-        : "Add to Itinerary"
-    );
-  }, [onPress]);
-
+  
   return (
     <Card style={styles.card}>
       <Icon
@@ -49,7 +35,23 @@ const ToDoSingleEventMaximised = ({
       />
       <Card.Actions style={styles.buttons}>
         <Button onPress={() => Linking.openURL(website)}>Website</Button>
-        <Button onPress={toggleButtonAddToItinerary}>{buttonText}</Button>
+        {/* <Button onPress={toggleButtonAddToItinerary}>{buttonText}</Button> */}
+        {selected === false ? (
+          <Button
+            style={{ width: 140 }}
+            onPress={(e) => addLocationButton(e, route_id, location_id)}
+          >
+            {"Add to Itinerary"}
+          </Button>
+        ) : (
+          <Button
+            // disabled={buttonLoading}
+            style={{ width: 140 }}
+            onPress={(e) => removeLocationButton(e, route_id, location_id)}
+          >
+            {"Remove From Itinerary"}
+          </Button>
+        )}
       </Card.Actions>
     </Card>
   );
