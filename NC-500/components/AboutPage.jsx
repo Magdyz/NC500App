@@ -38,7 +38,11 @@ const AboutPage = ({ navigation }) => {
       </Card.Content>
 
       <Card.Actions>
-        <Button onPress={() => navigation.navigate("Maps")}>
+        <Button
+          buttonColor="#ffe5d9"
+          mode="contained-tonal"
+          onPress={() => navigation.navigate("Maps")}
+        >
           Start Your Journey
         </Button>
       </Card.Actions>

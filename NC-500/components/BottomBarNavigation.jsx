@@ -16,9 +16,8 @@ import HomePage from "./HomePage/HomePage";
 const Tab = createBottomTabNavigator();
 
 const BottomBarNavigation = () => {
-
- const auth = useContext(AuthContext)
- const [isNewUser, setIsNewUser] = useState(false);
+  const auth = useContext(AuthContext);
+  const [isNewUser, setIsNewUser] = useState(false);
   return (
     <Tab.Navigator
       screenOptions={{
@@ -26,6 +25,7 @@ const BottomBarNavigation = () => {
       }}
       tabBar={({ navigation, state, descriptors, insets }) => (
         <BottomNavigation.Bar
+          style={{ backgroundColor: "#C9CBA3" }}
           navigationState={state}
           safeAreaInsets={insets}
           onTabPress={({ route, preventDefault }) => {
@@ -47,7 +47,11 @@ const BottomBarNavigation = () => {
           renderIcon={({ route, focused, color }) => {
             const { options } = descriptors[route.key];
             if (options.tabBarIcon) {
-              return options.tabBarIcon({ focused, color, size: 24 });
+              return options.tabBarIcon({
+                focused,
+                color: "#472D30",
+                size: 24,
+              });
             }
 
             return null;
@@ -99,8 +103,15 @@ const BottomBarNavigation = () => {
       />
       <Tab.Screen
         name="Profile"
-          children={()=>auth.auth!==null&&isNewUser===false?<Profile/>:isNewUser===false?<SignIn isNewUser={isNewUser} setIsNewUser={setIsNewUser}/>:<CreateUser isNewUser={isNewUser} setIsNewUser={setIsNewUser}/>}
-        
+        children={() =>
+          auth.auth !== null && isNewUser === false ? (
+            <Profile />
+          ) : isNewUser === false ? (
+            <SignIn isNewUser={isNewUser} setIsNewUser={setIsNewUser} />
+          ) : (
+            <CreateUser isNewUser={isNewUser} setIsNewUser={setIsNewUser} />
+          )
+        }
         options={{
           tabBarLabel: "Profile",
           tabBarIcon: ({ color, size }) => {
