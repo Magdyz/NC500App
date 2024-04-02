@@ -49,6 +49,7 @@ const Profile = ({navigation}) => {
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Profile page</Text>
       <Text>{`Username: ${userInfo.username!==undefined?userInfo.username:null}`}</Text>
+      
       <Image 
       style={{width: 150, height: 150}}
       

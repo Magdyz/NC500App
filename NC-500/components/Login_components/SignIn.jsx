@@ -66,7 +66,7 @@ const SignIn = (props) => {
   }, []);
 
   function doSignIn(userData) {
-    console.log(userData);
+    
 
     return supabase.auth
       .signInWithPassword({
@@ -74,6 +74,7 @@ const SignIn = (props) => {
         password: userData.password,
       })
       .then((response) => {
+        
         if (response.error !== undefined) {
           errorAlert({
             title: "Could not be signed in",
