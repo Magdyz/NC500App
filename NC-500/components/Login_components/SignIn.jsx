@@ -4,10 +4,10 @@ import { useContext, useEffect, useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import supabase from "../../utils/supabase";
 import { Button, Text, Card, TextInput } from "react-native-paper";
-
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import AuthContext from "../../contexts/AuthContext";
+import Header from "../Header";
 
 export const loginSchema = yup.object().shape({
   email: yup
@@ -91,54 +91,57 @@ const SignIn = (props) => {
   }
 
   return (
-    <Card
-      style={{
-        backgroundColor: "#FFE1A8",
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <TextInput
-        placeholder="Email Address"
-        id="email"
-        style={styles.input}
-        textContentType="emailAddress"
-        autoCapitalize="none"
-        onChangeText={(text) => setValue("email", text)}
-      />
-      <ErrorText name="email" errors={errors} />
-      <TextInput
-        placeholder="Password"
-        id="password"
-        style={styles.input}
-        secureTextEntry={true}
-        textContentType="password"
-        autoCapitalize="none"
-        onChangeText={(text) => setValue("password", text)}
-      />
-      <ErrorText name="password" errors={errors} />
-      <Button
-        uppercase="true"
-        style={styles.button}
-        buttonColor="#723D46"
-        textColor="white"
-        mode="contained-tonal"
-        onPress={handleSubmit(doSignIn)}
+    <View style={{height:"100%"}}>
+      <Header title="Profile" />
+      <Card
+        style={{
+          backgroundColor: "#FFE1A8",
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
-        Sign In
-      </Button>
-      <Button
-        uppercase="true"
-        style={styles.button}
-        buttonColor="#723D46"
-        textColor="white"
-        mode="contained-tonal"
-        onPress={(e) => newUserButton(e)}
-      >
-        Create new user
-      </Button>
-    </Card>
+        <TextInput
+          placeholder="Email Address"
+          id="email"
+          style={styles.input}
+          textContentType="emailAddress"
+          autoCapitalize="none"
+          onChangeText={(text) => setValue("email", text)}
+        />
+        <ErrorText name="email" errors={errors} />
+        <TextInput
+          placeholder="Password"
+          id="password"
+          style={styles.input}
+          secureTextEntry={true}
+          textContentType="password"
+          autoCapitalize="none"
+          onChangeText={(text) => setValue("password", text)}
+        />
+        <ErrorText name="password" errors={errors} />
+        <Button
+          uppercase="true"
+          style={styles.button}
+          buttonColor="#723D46"
+          textColor="white"
+          mode="contained-tonal"
+          onPress={handleSubmit(doSignIn)}
+        >
+          Sign In
+        </Button>
+        <Button
+          uppercase="true"
+          style={styles.button}
+          buttonColor="#723D46"
+          textColor="white"
+          mode="contained-tonal"
+          onPress={(e) => newUserButton(e)}
+        >
+          Create new user
+        </Button>
+      </Card>
+    </View>
   );
 };
 const styles = StyleSheet.create({

@@ -4,9 +4,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import supabase from "../../utils/supabase";
 import React from "react";
 import { Button, Text, Card, TextInput } from "react-native-paper";
-
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import Header from "../Header";
 
 function CreateUser(props) {
   const setIsNewUser = props.setIsNewUser;
@@ -104,6 +104,9 @@ function CreateUser(props) {
   }
 
   return (
+        <View style={{height:"100%"}}>
+      <Header title="Profile" />
+
     <Card
       style={{
         backgroundColor: "#FFE1A8",
@@ -165,7 +168,8 @@ function CreateUser(props) {
       >
         Sign in as existing user
       </Button>
-    </Card>
+      </Card>
+      </View>
   );
 }
 

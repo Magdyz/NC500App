@@ -3,7 +3,8 @@ import { View, Image, StyleSheet } from "react-native";
 import AuthContext from "../contexts/AuthContext";
 import supabase from "../utils/supabase";
 import { getUserInfo } from "../utils/supabase-api-calls";
-import { Button, Text } from "react-native-paper";
+import { Button, Text, Card } from "react-native-paper";
+import Header from "./Header";
 
 const Profile = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
@@ -39,35 +40,56 @@ const Profile = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.main}>
-      <Image
-        style={{ width: 150, height: 150 }}
-        source={{
-          uri: userInfo.avatar_url !== undefined ? userInfo.avatar_url : null,
-        }}
-      ></Image>
+    <View>
+      <Header title="Profile" />
+      <View style={styles.main}>
 
-      <Text>Profile page</Text>
-      <Text>{`Username: ${
-        userInfo.username !== undefined ? userInfo.username : null
-      }`}</Text>
 
-      <Button
-        buttonColor="#ffe5d9"
-        mode="contained-tonal"
-        onPress={(e) => doSignOut(e)}
-      >
-        Sign Out
-      </Button>
+        <Image
+          style={{ width: 150, height: 150 }}
+          source={{
+            uri: userInfo.avatar_url !== undefined ? userInfo.avatar_url : null,
+          }}
+        ></Image>
+        <Card style={styles.card}>
+          <Text variant="bodyLarge" style={styles.text}>{`Username: ${
+            userInfo.username !== undefined ? userInfo.username : null
+          }`}</Text>
+        </Card>
+        <Button
+          uppercase="true"
+          style={styles.button}
+          buttonColor="#723D46"
+          textColor="white"
+          mode="contained-tonal"
+          onPress={(e) => doSignOut(e)}
+        >
+          Sign Out
+        </Button>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   main: {
+    height: "90%",
+    justifyContent:"center",
     alignItems: "center",
+    backgroundColor: "#FFE1A8",
+  },
+  button: {
+    margin: 5,
+    height: 60,
     justifyContent: "center",
-    flex: 1,
+  },
+  text: {
+    margin: 14,
+    alignSelf: "flex-start",
+  },
+  card: {
+    margin: 20,
+    backgroundColor: "#C9CBA3",
   },
 });
 

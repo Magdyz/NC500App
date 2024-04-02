@@ -16,9 +16,9 @@ const HomePage = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Appbar.Header style={styles.header}>
-        <Appbar.Content title="NC500" />
+        <Appbar.Content title="Plan your NC500" />
         <Avatar.Image
-          size={60}
+          size={55}
           source={require("../../assets/NC500-Logo800.jpg")}
         />
       </Appbar.Header>
@@ -64,15 +64,17 @@ const HomePage = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 5,
-    paddingVertical: 5,
+    
   },
-  header: {},
+  header: {
+    backgroundColor: "#C9CBA3",
+  },
   body: {},
   firstRow: {
     marginBottom: 10,
     flexDirection: "row",
     justifyContent: "space-between",
+    paddingHorizontal: 7,
   },
   secondRow: {
     paddingHorizontal: 10,

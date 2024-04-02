@@ -4,16 +4,17 @@ import { Button, Text, Card } from "react-native-paper";
 const AboutPage = ({ navigation }) => {
   return (
     <Card style={styles.main}>
+
       <Card.Title title="About the NC500" />
       <Card.Content>
-        <Text variant="bodyMedium">
+        <Text variant="bodyLarge">
           The North Coast 500 is Scotland's biggest roadtrip with the over 500
           mile scenic route taking you around the coast of north Scotland. The
           journey begins and ends at the northern city of Inverness, at one of
           the many highlights of history and heritage in the area, Inverness
           Castle.
         </Text>
-        <Text variant="bodyMedium">
+        <Text variant="bodyLarge">
           The route will take you on a journey into the past as you discover
           ruins, castles and other landmarks, some of which dating back almost a
           thousand years! Above all there is plenty to do besides sight seeing.
@@ -25,7 +26,7 @@ const AboutPage = ({ navigation }) => {
           of bottlenose dolphins, harbour porpoises, seals, minke whales and a
           wide variety of seabirds.
         </Text>
-        <Text variant="bodyMedium">
+        <Text variant="bodyLarge">
           This App is designed for you to get the best out of your roadtrip. Use
           our journey planner to view a list or a map of the activities you can
           choose from to get the most out of each day. Select which activities
@@ -39,7 +40,10 @@ const AboutPage = ({ navigation }) => {
 
       <Card.Actions>
         <Button
-          buttonColor="#ffe5d9"
+          uppercase="true"
+          style={styles.button}
+          buttonColor="#723D46"
+          textColor="white"
           mode="contained-tonal"
           onPress={() => navigation.navigate("Maps")}
         >
@@ -56,6 +60,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flex: 1,
     padding: 10,
+    backgroundColor: "#FFE1A8",
+  },
+  header: {
+    backgroundColor: "#C9CBA3",
+  },
+
+  button: {
+    margin: 5,
+    height: 60,
+    justifyContent: "center",
   },
 });
 

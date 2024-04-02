@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Text, BottomNavigation } from "react-native-paper";
+import { BottomNavigation } from "react-native-paper";
 import { CommonActions } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 // Tabs
