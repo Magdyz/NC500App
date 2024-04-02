@@ -48,10 +48,10 @@ const HomePage = ({ navigation }) => {
               />
               <Text style={styles.textOverlay}>Journey Planner</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate("Itinerary")}>
+            <TouchableOpacity onPress={() => navigation.navigate("Itinerary")} style={{backgroundColor: "#FFE1A8"}}>
               <Card.Cover
-                source={require("../../assets/routePlanning.jpg")}
-                style={[styles.fullWidth, { height: cardHeight }]}
+                source={require("../../assets/ItineraryPlanning.png")}
+                style={[styles.fullWidth, { height: cardHeight, backgroundColor: "#FFE1A8", width: 200, margin: 80}]}
               />
               <Text style={styles.textOverlay}>Itinerary</Text>
             </TouchableOpacity>
