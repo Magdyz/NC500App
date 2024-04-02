@@ -36,7 +36,7 @@ function SmallMap({ dayNum, dayLocations=[], dayStart, dayEnd, selectedLocationI
       2: { lat: 58, long: -3.7, delta: 1.8 },
       3: { lat: 57.7, long: -5, delta: 1.8 },
       4: { lat: 57.4, long: -5.3, delta: 1.1 },
-      5: { lat: 57, long: -4.9, delta: 1.6 },
+      5: { lat: 57, long: -4.9, delta: 1.8 },
     };
 
     const dayStartRef = {

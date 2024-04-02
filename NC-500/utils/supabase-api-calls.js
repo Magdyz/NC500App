@@ -108,4 +108,56 @@ function getMarkersData() {
     })
 }
 
-export { getAllLocations, getSingleLocation, getUserInfo, getUserRoutes, getRouteLocations, getAllLocationsPlusCategories, getMarkersData}
+function addLocationToRoute(route_id, location_id){
+  return supabase
+  .from('routes_locations')
+  .insert({route_id:route_id, location_id:location_id})
+  .then((res)=>{
+    return res.status
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+}
+
+function deleteLocationFromRoute(route_id, location_id){
+  return supabase
+  .from('routes_locations')
+  .delete()
+  .eq('route_id', route_id).eq('location_id', location_id)
+  .then((res)=>{
+    return res
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+}
+
+function deleteRoute(route_id){
+  return supabase
+  .from('routes')
+  .delete()
+  .eq('route_id', route_id)
+  .then((res)=>{
+   
+    return res
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+}
+
+function createRoute(routeName, auth){
+  const userEmail = auth.auth.user.email
+  return supabase
+  .from('routes')
+  .insert({route_name:routeName, user_email:userEmail})
+  .then((res)=>{
+    return res
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+}
+
+export { getAllLocations, getSingleLocation, getUserInfo, getUserRoutes, getRouteLocations, getAllLocationsPlusCategories, getMarkersData, addLocationToRoute, deleteLocationFromRoute, deleteRoute, createRoute}

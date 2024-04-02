@@ -1,19 +1,66 @@
 import React, { useState } from "react";
-import { Card, Text, Checkbox } from "react-native-paper";
+import { Card, Text, Checkbox, Button } from "react-native-paper";
 import ToDoSingleEventMaximised from "./ToDoSingleEventMaximised";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { Image } from "expo-image";
+import {
+  addLocationToRoute,
+  deleteLocationFromRoute,
+} from "../../utils/supabase-api-calls";
 
 const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 
 const ToDoSingleEvent = React.memo(
-  ({ title, body, link, label, status, onPress, website}) => {
+  ({
+    title,
+    body,
+    link,
+    label,
+    status,
+    onPress,
+    website,
+    isSelected,
+    route_id,
+    location_id,
+  }) => {
     const [maximised, setMaximised] = useState(false);
+    const [buttonLoading, setButtonLoading] = useState(false);
+
+    const [selected, setSelected] = useState(isSelected);
 
     const toggleMaximised = () => {
       setMaximised(!maximised);
     };
+
+    function addLocationButton(e, route_id, location_id) {
+      e.preventDefault();
+      setButtonLoading(true);
+      setSelected(true);
+      addLocationToRoute(route_id, location_id)
+        .then(() => {
+          setButtonLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setSelected(false);
+          setButtonLoading(false);
+        });
+    }
+
+    function removeLocationButton(e, route_id, location_id) {
+      e.preventDefault();
+      setButtonLoading(true);
+      setSelected(false);
+      deleteLocationFromRoute(route_id, location_id)
+        .then(() => {
+          setButtonLoading(false);
+        })
+        .catch((err) => {
+          setSelected(true);
+          setButtonLoading(false);
+        });
+    }
 
     if (maximised) {
       return (
@@ -26,7 +73,6 @@ const ToDoSingleEvent = React.memo(
           onPress={onPress}
           toggleMaximised={toggleMaximised}
           website={website}
-
         />
       );
     }
@@ -45,7 +91,19 @@ const ToDoSingleEvent = React.memo(
             <Text style={styles.title} variant="titleLarge">
               {title}
             </Text>
-            <Checkbox.Item label={label} status={status} onPress={onPress} />
+            {selected === false ? (
+              <Button
+                style={{ width: 140 }}
+                onPress={(e) => addLocationButton(e, route_id, location_id)}
+              >{`Add`}</Button>
+            ) : (
+              <Button
+                disabled={buttonLoading}
+                style={{ width: 140 }}
+                onPress={(e) => removeLocationButton(e, route_id, location_id)}
+              >{`Remove`}</Button>
+            )}
+            {/* <Checkbox.Item label={label} status={status} onPress={onPress} /> */}
           </Card.Actions>
         </TouchableOpacity>
       </Card>

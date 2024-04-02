@@ -1,80 +1,75 @@
-
 import { useContext, useEffect, useState } from "react";
 import { View, Text, Button } from "react-native";
 import { TouchableOpacity } from "react-native";
 import AuthContext from "../contexts/AuthContext";
 import { getUserRoutes } from "../utils/supabase-api-calls";
 
+const Itinerary = ({ navigation }) => {
+  const auth = useContext(AuthContext);
+  const [userRoutes, setUserRoutes] = useState([]);
 
-const Itinerary = ({navigation}) => {
+  useEffect(() => {
+    if (auth !== null && auth.auth !== null) {
+      getUserRoutes(auth).then((response) => {
+        setUserRoutes(response);
+      });
+    }
+  }, [auth]);
 
-  
-
-  const auth = useContext(AuthContext)
-  const [userRoutes, setUserRoutes] = useState([])
-
-  
-    useEffect(()=>{
-
-if (auth!==null&&auth.auth!==null){ 
-  console.log(1)
-
-
-    
-    getUserRoutes(auth)
-    .then((response)=>{
-      setUserRoutes(response)
-    })
-}
-  },[auth])
-
-
- 
-
-  if (auth.auth === null || auth === null){
-    return(
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}><Text>Nothing here, sign in</Text></View>
-    )
-  }
-
-  
+  if (auth.auth === null || auth === null) {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Itinerary</Text>
-        {userRoutes.map((route, index)=>{
-          return (
-            <RouteBox key ={index} routeName={route.route_name} route_id={route.route_id} navigation={navigation}></RouteBox>
-          )
-        })}
-       
-      </View>
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }} >
-        
-
-      </View>
+        <Text>Nothing here, sign in</Text>
       </View>
     );
-}
+  }
 
-
-function routeSelectButton(routeName, route_id, navigation){
-  navigation.navigate('DayList', {routeName:routeName, route_id:route_id})
-}
-
-
-
-function RouteBox({routeName, route_id, navigation}){
-  return <View style={{borderWidth: 3, width:300, height:70, marginTop: 30}}>
-    
-      <Text style={{textAlign: 'center'}}>{`Route: ${routeName}`}</Text>
-      <View style={{flexDirection:'row', alignItems:'center', justifyContent: "space-evenly" }}>
-      <Button title='Select' onPress={()=>routeSelectButton(routeName, route_id, navigation)}></Button>
-      <Button title='Delete'></Button>
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text>Itinerary</Text>
+        {userRoutes.map((route, index) => {
+          return (
+            <RouteBox
+              key={index}
+              routeName={route.route_name}
+              route_id={route.route_id}
+              navigation={navigation}
+            ></RouteBox>
+          );
+        })}
       </View>
+      <View
+        style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+      ></View>
+    </View>
+  );
+};
 
-  </View>
+function routeSelectButton(routeName, route_id, navigation) {
+  navigation.navigate("DayList", { routeName: routeName, route_id: route_id });
 }
- 
-export default Itinerary;
 
+function RouteBox({ routeName, route_id, navigation }) {
+  return (
+    <View style={{ borderWidth: 3, width: 300, height: 70, marginTop: 30 }}>
+      <Text style={{ textAlign: "center" }}>{`Route: ${routeName}`}</Text>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-evenly",
+        }}
+      >
+        <Button
+          title="Select"
+          onPress={() => routeSelectButton(routeName, route_id, navigation)}
+        ></Button>
+        <Button title="Delete"></Button>
+      </View>
+    </View>
+  );
+}
+
+export default Itinerary;
