@@ -1,14 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import { View, Text, Button, TextInput } from "react-native";
-import { TouchableOpacity } from "react-native";
 import AuthContext from "../../contexts/AuthContext";
 import {
   getUserRoutes,
   deleteRoute,
   createRoute,
 } from "../../utils/supabase-api-calls";
+import ItineraryContext from "../../contexts/ItineraryContext";
 
 const RoutePlanRouteSelect = ({ navigation }) => {
+    const { itineraryRefresh, setItineraryRefresh } =
+      useContext(ItineraryContext);
   const auth = useContext(AuthContext);
   const [userRoutes, setUserRoutes] = useState([]);
   const [buttonLoading, setButtonLoading] = useState(false);
@@ -54,6 +56,8 @@ const RoutePlanRouteSelect = ({ navigation }) => {
           newRouteName={newRouteName}
           setNewRouteName={setNewRouteName}
           auth={auth}
+          setItineraryRefresh={setItineraryRefresh}
+          itineraryRefresh={itineraryRefresh}
         ></NewRouteBox>
       </View>
       <View
@@ -88,9 +92,12 @@ function routeCreateButton(
   newRouteName,
   setNewRouteName,
   auth,
-  setButtonLoading
+  setButtonLoading,
+  setItineraryRefresh,
+  itineraryRefresh
 ) {
   setButtonLoading(true);
+  setItineraryRefresh(!itineraryRefresh);
   createRoute(newRouteName, auth)
     .then(() => {
       setButtonLoading(false);
@@ -107,6 +114,8 @@ function NewRouteBox({
   newRouteName,
   setNewRouteName,
   auth = null,
+  setItineraryRefresh,
+  itineraryRefresh,
 }) {
   return (
     <View style={{ borderWidth: 3, width: 300, height: 70, marginTop: 30 }}>
@@ -132,7 +141,9 @@ function NewRouteBox({
               newRouteName,
               setNewRouteName,
               auth,
-              setButtonLoading
+              setButtonLoading,
+              setItineraryRefresh,
+              itineraryRefresh
             )
           }
         ></Button>

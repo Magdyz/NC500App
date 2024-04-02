@@ -3,8 +3,12 @@ import { View, Text, Button } from "react-native";
 import { TouchableOpacity } from "react-native";
 import AuthContext from "../contexts/AuthContext";
 import { getUserRoutes } from "../utils/supabase-api-calls";
+import ItineraryContext from "../contexts/ItineraryContext";
 
 const Itinerary = ({ navigation }) => {
+  const { itineraryRefresh, setItineraryRefresh } =
+    useContext(ItineraryContext);
+
   const auth = useContext(AuthContext);
   const [userRoutes, setUserRoutes] = useState([]);
 
@@ -14,7 +18,7 @@ const Itinerary = ({ navigation }) => {
         setUserRoutes(response);
       });
     }
-  }, [auth]);
+  }, [auth, itineraryRefresh]);
 
   if (auth.auth === null || auth === null) {
     return (
