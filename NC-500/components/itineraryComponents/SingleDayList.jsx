@@ -32,6 +32,7 @@ function SingleDayList(props) {
   }, []);
 
   function ListSection({ dayLocations }) {
+    
     function selectCard(id) {
       setSelectedLocationId(id);
     }
@@ -48,6 +49,7 @@ function SingleDayList(props) {
           {dayLocations.map((location, index) => {
             return (
               <Card
+              key={index}
                 style={{
                   height: 50,
                   width: 350,

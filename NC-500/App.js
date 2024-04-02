@@ -14,6 +14,7 @@ import SingleDayList from "./components/itineraryComponents/SingleDayList";
 import ThingsToDo from "./components/ThingsToDo.jsx";
 import AuthContext from "./contexts/AuthContext";
 import JourneyPlanner from "./components/JourneyPlanner/JourneyPlanner.jsx";
+import RoutePlanRouteSelect from './components/JourneyPlanner/RoutePlanRouteSelect.jsx'
 
 import BottomBarNavigation from "./components/BottomBarNavigation";
 import AboutPage from "./components/AboutPage";
@@ -110,6 +111,7 @@ const App = () => {
         <Stack.Screen name='SingleDayList' component={SingleDayList}/>
         <Stack.Screen name='WholeRouteList' component={WholeRouteList}/>
         <Stack.Screen name='DayDirections' component ={DayDirections}/>
+        <Stack.Screen name='RoutePlanRouteSelect' component={RoutePlanRouteSelect}></Stack.Screen>
 
         <Stack.Screen name="ToDoEvent" component={ThingsToDo} />
         <Stack.Screen name="nav" component={BottomBarNavigation} />
