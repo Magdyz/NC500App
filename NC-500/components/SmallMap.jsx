@@ -59,10 +59,10 @@ function SmallMap({ dayNum, dayLocations=[], dayStart, dayEnd, selectedLocationI
     const [mapLoaded, setMapLoaded] = useState(false);
 
     return (
-      <View pointerEvents="none" style={{ flex: 1, backgroundColor: "#472D30" }}>
+      <View pointerEvents="none" style={{ flex: 1, backgroundColor: "#DDE5B6" }}>
             {!mapLoaded && (
                 <View style={{height:400, marginTop: 180}}>
-                    <ActivityIndicator size="large" color="#E26D5C" />
+                    <ActivityIndicator size="large" color="#ADC178" />
                 </View>
             )}
         <MapView

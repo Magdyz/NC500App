@@ -12,7 +12,7 @@ const Header = ({title}) => {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: "#C9CBA3",
+    backgroundColor: "#DDE5B6",
   },
 });
 
