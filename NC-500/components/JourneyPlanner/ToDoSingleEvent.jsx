@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Card, Text, Checkbox, Button } from "react-native-paper";
+import { Card, Text, Checkbox} from "react-native-paper";
 import ToDoSingleEventMaximised from "./ToDoSingleEventMaximised";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity, Button } from "react-native";
 import { Image } from "expo-image";
 import {
   addLocationToRoute,
@@ -76,7 +76,7 @@ const ToDoSingleEvent = React.memo(
       );
     }
     return (
-      <Card>
+      <Card style={{backgroundColor:selected?'#DDE5B6':'white', marginBottom:10}}>
         <TouchableOpacity onPress={toggleMaximised}>
           <Card.Actions style={styles.container}>
             <Image
@@ -88,19 +88,23 @@ const ToDoSingleEvent = React.memo(
               transition={100}
             />
             <Text style={styles.title} variant="titleLarge">
-              {title}
+              {`${title}`}
             </Text>
             {selected === false ? (
               <Button
-                style={{ width: 140 }}
+              title='    Add    '
+              color={'#ADC178'}
+                style={{ width: 140}}
                 onPress={(e) => addLocationButton(e, route_id, location_id)}
-              >{`Add`}</Button>
+              ></Button>
             ) : (
               <Button
+              title='Remove'
+              color={'#C67974'}
                 disabled={buttonLoading}
                 style={{ width: 140 }}
                 onPress={(e) => removeLocationButton(e, route_id, location_id)}
-              >{`Remove`}</Button>
+              ></Button>
             )}
           </Card.Actions>
         </TouchableOpacity>

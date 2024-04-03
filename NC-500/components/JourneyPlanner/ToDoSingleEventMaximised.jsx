@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
-import { Linking, StyleSheet } from "react-native";
-import { Card, Text, Button } from "react-native-paper";
+import { Linking, StyleSheet, Button, View } from "react-native";
+import { Card, Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const ToDoSingleEventMaximised = ({
@@ -15,9 +15,10 @@ const ToDoSingleEventMaximised = ({
   removeLocationButton,
   location_id,
 }) => {
-  
   return (
-    <Card style={styles.card}>
+    <Card
+      style={(styles.card, { backgroundColor: selected ? "#DDE5B6" : "white", marginBottom:10 })}
+    >
       <Icon
         name="close"
         onPress={toggleMaximised}
@@ -34,24 +35,41 @@ const ToDoSingleEventMaximised = ({
         loading="lazy"
       />
       <Card.Actions style={styles.buttons}>
-        <Button onPress={() => Linking.openURL(website)}>Website</Button>
-        {/* <Button onPress={toggleButtonAddToItinerary}>{buttonText}</Button> */}
-        {selected === false ? (
+        <View
+          style={{
+            flexDirection: "row",
+            width:200,
+            alignItems: "center",
+            justifyContent: "space-between",
+            right: 90,
+          }}
+        >
           <Button
-            style={{ width: 140 }}
-            onPress={(e) => addLocationButton(e, route_id, location_id)}
-          >
-            {"Add to Itinerary"}
-          </Button>
-        ) : (
-          <Button
-            // disabled={buttonLoading}
-            style={{ width: 140 }}
-            onPress={(e) => removeLocationButton(e, route_id, location_id)}
-          >
-            {"Remove From Itinerary"}
-          </Button>
-        )}
+            title="Website"
+            color={'#E7C5C5'}
+            titleStyle={{color:'black'}}
+            disabled={website === null ? true : false}
+            onPress={() => Linking.openURL(website)}
+          ></Button>
+          {/* <Button onPress={toggleButtonAddToItinerary}>{buttonText}</Button> */}
+          {selected === false ? (
+            <Button
+              title="    Add    "
+              color={"#ADC178"}
+              onPress={(e) => addLocationButton(e, route_id, location_id)}
+            >
+              {"Add to Itinerary"}
+            </Button>
+          ) : (
+            <Button
+              title="Remove"
+              color={"#C67974"}
+              onPress={(e) => removeLocationButton(e, route_id, location_id)}
+            >
+              {"Remove From Itinerary"}
+            </Button>
+          )}
+        </View>
       </Card.Actions>
     </Card>
   );
@@ -61,7 +79,7 @@ const styles = StyleSheet.create({
   card: {
     paddingHorizontal: 5,
     height: "auto",
-    marginBottom: "5%",
+    marginBottom: '5%',
     justifyContent: "center",
     alignItems: "center",
   },
@@ -76,7 +94,9 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   buttons: {
+    alignItems: "center",
     margin: 10,
+    justifyContent: "center",
   },
 });
 export default ToDoSingleEventMaximised;

@@ -36,7 +36,7 @@ const JourneyPlanner = (props) => {
 
     })
  
-  },[day])
+  },[day, selected])
 
   // Function to toggle the checked state of a card
   // const toggleChecked = useCallback((label) => {
@@ -93,7 +93,7 @@ const JourneyPlanner = (props) => {
   
 
   return (
-    <View style={{ height: "100%" }}>
+    <View style={{ height: "100%", backgroundColor:'#F0EAD2' }}>
       <View style={styles.buttonDayToggle}>
         <Button onPress={() => handleDayPress("minus")}>
           <Icon name="arrow-left" size={20} />
