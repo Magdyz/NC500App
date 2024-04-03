@@ -38,15 +38,6 @@ const JourneyPlanner = (props) => {
  
   },[day])
 
-  // Function to toggle the checked state of a card
-  // const toggleChecked = useCallback((label) => {
-  //   setCheckedItems((prevCheckedItems) => ({
-  //     ...prevCheckedItems,
-  //     [label]: !prevCheckedItems[label],
-  //   }));
-
-  // }, [day]);
-
   const data = [
     { key: "0", value: "all" },
     { key: "1", value: "museums" },
@@ -96,14 +87,15 @@ const JourneyPlanner = (props) => {
     <View style={{ height: "100%" }}>
       <View style={styles.buttonDayToggle}>
         <Button onPress={() => handleDayPress("minus")}>
-          <Icon name="arrow-left" size={20} />
+          <Icon name="arrow-left" size={25} />
         </Button>
-        <Text>Day {day}</Text>
+        <Text style={{ fontSize: 23 }}>Day {day}</Text>
         <Button onPress={() => handleDayPress("plus")}>
-          <Icon name="arrow-right" size={20} />
+          <Icon name="arrow-right" size={25} />
         </Button>
       </View>
       <SelectList
+        style={{margin:5}}
         setSelected={(val) => setSelected(val)}
         data={data}
         save="value"
@@ -119,7 +111,7 @@ const JourneyPlanner = (props) => {
                 link={locationItem.img_url}
                 route_id={route_id}
                 location_id={locationItem.location_id}
-                isSelected = {checkedItems[locationItem.name]?true:false }
+                isSelected={checkedItems[locationItem.name] ? true : false}
                 website={locationItem.website_url}
               />
             );
@@ -146,6 +138,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#ccc",
   },
   buttonDayToggle: {
+    height:"5%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
