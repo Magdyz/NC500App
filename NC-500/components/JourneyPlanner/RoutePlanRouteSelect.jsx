@@ -16,7 +16,7 @@ const RoutePlanRouteSelect = ({ navigation }) => {
   const auth = useContext(AuthContext);
   const [userRoutes, setUserRoutes] = useState([]);
   const [buttonLoading, setButtonLoading] = useState(false);
-
+  const [errMessage, setErrMessage] = useState("")
   const [newRouteName, setNewRouteName] = useState("");
 
   useEffect(() => {
@@ -65,6 +65,8 @@ const RoutePlanRouteSelect = ({ navigation }) => {
           auth={auth}
           setItineraryRefresh={setItineraryRefresh}
           itineraryRefresh={itineraryRefresh}
+          setErrMessage={setErrMessage}
+          errMessage={errMessage}
         ></NewRouteBox>
         </View>
       </View>
@@ -101,9 +103,20 @@ function routeCreateButton(
   auth,
   setButtonLoading,
   setItineraryRefresh,
-  itineraryRefresh
+  itineraryRefresh,
+  setErrMessage
 ) {
   setButtonLoading(true);
+  setErrMessage('')
+
+  if(newRouteName.length<4){
+    setErrMessage('Name must be at least 4 characters')
+    setButtonLoading(false)
+    return;
+
+  }
+
+
   setItineraryRefresh(!itineraryRefresh);
   createRoute(newRouteName, auth)
     .then(() => {
@@ -123,9 +136,11 @@ function NewRouteBox({
   auth = null,
   setItineraryRefresh,
   itineraryRefresh,
+  setErrMessage,
+  errMessage
 }) {
   return (
-    <Card style={{width: 380, height: 80, marginTop: 30}}>
+    <Card style={{width: 380, height: 100, marginTop: 30}}>
       <Text style={{ textAlign: "center", padding:4 }}>{`Create new route`}</Text>
       <View
         style={{
@@ -142,7 +157,7 @@ function NewRouteBox({
         ></TextInput>
         <Button
           disabled={buttonLoading}
-          color={'#E7C5C5'}
+          color={'#ADC178'}
           title="Create"
           onPress={(e) =>
             routeCreateButton(
@@ -152,11 +167,14 @@ function NewRouteBox({
               auth,
               setButtonLoading,
               setItineraryRefresh,
-              itineraryRefresh
+              itineraryRefresh,
+              setErrMessage
             )
           }
         ></Button>
-      </View>
+       
+      </View> 
+      <Text style={{left:30, fontStyle:'italic'}}>{`${errMessage}`}</Text>
     </Card>
   );
 }
