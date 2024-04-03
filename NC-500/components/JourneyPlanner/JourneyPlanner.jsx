@@ -22,6 +22,7 @@ const JourneyPlanner = (props) => {
   const [selected, setSelected] = useState("all");
   const [day, setDay] = useState(1);
 
+
   useEffect(() => {
     getRouteLocations(route_id).then((response) => {
       let locations = {};
@@ -30,7 +31,7 @@ const JourneyPlanner = (props) => {
       });
       setCheckedItems(locations);
     });
-  }, [day]);
+  }, [day, selected]);
 
   const data = [
     { key: "0", value: "all" },
@@ -76,7 +77,7 @@ const JourneyPlanner = (props) => {
   }, [selected, day]);
 
   return (
-    <View style={{ height: "100%" }}>
+    <View style={{ height: "100%", backgroundColor:'#F0EAD2' }}>
       <View style={styles.buttonDayToggle}>
         <Button onPress={() => handleDayPress("minus")}>
           <Icon name="arrow-left" size={25} />

@@ -37,7 +37,7 @@ const RoutePlanRouteSelect = ({ navigation }) => {
   }
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor:'#DDE5B6' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor:'#F0EAD2' }}>
       
         <ScrollView style={{flex:4}}>
         
