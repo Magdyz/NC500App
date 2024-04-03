@@ -45,6 +45,18 @@ const Profile = ({ navigation }) => {
       <View style={styles.main}>
 
 
+ 
+    return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text>Profile page</Text>
+      <Text>{`Username: ${userInfo.username!==undefined?userInfo.username:null}`}</Text>
+      
+      <Image 
+      style={{width: 150, height: 150}}
+      
+      source={{uri:userInfo.avatar_url!==undefined?userInfo.avatar_url:null}}></Image>
+
+
         <Image
           style={{ width: 150, height: 150 }}
           source={{

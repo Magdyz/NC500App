@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { View, Text, Button, TextInput } from "react-native";
+import { View, Text, Button, TextInput, ScrollView } from "react-native";
+import { Card } from "react-native-paper";
 import AuthContext from "../../contexts/AuthContext";
 import {
   getUserRoutes,
@@ -7,6 +8,7 @@ import {
   createRoute,
 } from "../../utils/supabase-api-calls";
 import ItineraryContext from "../../contexts/ItineraryContext";
+
 
 const RoutePlanRouteSelect = ({ navigation }) => {
     const { itineraryRefresh, setItineraryRefresh } =
@@ -36,8 +38,9 @@ const RoutePlanRouteSelect = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Select a route</Text>
+      
+        <ScrollView style={{flex:4}}>
+        
         {userRoutes.map((route, index) => {
           return (
             <RouteBox
@@ -47,9 +50,13 @@ const RoutePlanRouteSelect = ({ navigation }) => {
               routeName={route.route_name}
               route_id={route.route_id}
               navigation={navigation}
+              itineraryRefresh={itineraryRefresh}
+              setItineraryRefresh={setItineraryRefresh}
             ></RouteBox>
           );
         })}
+        </ScrollView>
+        <View style={{flex:1}}>
         <NewRouteBox
           buttonLoading={buttonLoading}
           setButtonLoading={setButtonLoading}
@@ -59,11 +66,10 @@ const RoutePlanRouteSelect = ({ navigation }) => {
           setItineraryRefresh={setItineraryRefresh}
           itineraryRefresh={itineraryRefresh}
         ></NewRouteBox>
+        </View>
       </View>
-      <View
-        style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-      ></View>
-    </View>
+      
+    
   );
 };
 
@@ -74,12 +80,13 @@ function routeSelectButton(routeName, route_id, navigation) {
   });
 }
 
-function routeDelete(e, route_id, setButtonLoading) {
+function routeDeleteButton(e, route_id, setButtonLoading, itineraryRefresh, setItineraryRefresh) {
   setButtonLoading(true);
 
   deleteRoute(route_id)
     .then(() => {
       setButtonLoading(false);
+      setItineraryRefresh(!itineraryRefresh)
     })
     .catch((err) => {
       console.log(err);
@@ -118,8 +125,8 @@ function NewRouteBox({
   itineraryRefresh,
 }) {
   return (
-    <View style={{ borderWidth: 3, width: 300, height: 70, marginTop: 30 }}>
-      <Text style={{ textAlign: "center" }}>{`Create new route`}</Text>
+    <Card style={{width: 380, height: 80, marginTop: 30}}>
+      <Text style={{ textAlign: "center", padding:4 }}>{`Create new route`}</Text>
       <View
         style={{
           flexDirection: "row",
@@ -128,12 +135,14 @@ function NewRouteBox({
         }}
       >
         <TextInput
+          style={{backgroundColor:'white', width:200, padding:10}}
           placeholder="Name your route"
           value={newRouteName}
           onChangeText={(text) => setNewRouteName(text)}
         ></TextInput>
         <Button
           disabled={buttonLoading}
+          color={'#E26D5C'}
           title="Create"
           onPress={(e) =>
             routeCreateButton(
@@ -148,7 +157,7 @@ function NewRouteBox({
           }
         ></Button>
       </View>
-    </View>
+    </Card>
   );
 }
 
@@ -158,10 +167,23 @@ function RouteBox({
   navigation,
   buttonLoading,
   setButtonLoading,
+  itineraryRefresh, 
+  setItineraryRefresh
 }) {
   return (
-    <View style={{ borderWidth: 3, width: 300, height: 70, marginTop: 30 }}>
-      <Text style={{ textAlign: "center" }}>{`Route: ${routeName}`}</Text>
+    <Card style={{ width: 380, height: 80, marginTop: 30 }}>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          marginBottom: 10,
+        }}
+      >
+        <Text style={{ textAlign: "center" }}>{`Route: `}</Text>
+        <Text style={{ fontWeight: "bold" }}>{`${
+          routeName[0].toUpperCase() + routeName.slice(1)
+        }`}</Text>
+      </View>
       <View
         style={{
           flexDirection: "row",
@@ -170,17 +192,25 @@ function RouteBox({
         }}
       >
         <Button
+          color="#C9CBA3"
           title="Select"
-          disabled={buttonLoading}
           onPress={() => routeSelectButton(routeName, route_id, navigation)}
         ></Button>
         <Button
-          disabled={buttonLoading}
+          color='#723D46'
           title="Delete"
-          onPress={(e) => routeDelete(e, route_id, setButtonLoading)}
+          onPress={(e) =>
+            routeDeleteButton(
+              e,
+              route_id,
+              setButtonLoading,
+              itineraryRefresh,
+              setItineraryRefresh
+            )
+          }
         ></Button>
       </View>
-    </View>
+    </Card>
   );
 }
 
