@@ -43,37 +43,33 @@ const Profile = ({ navigation }) => {
     <View>
       <Header title="Profile" />
       <View style={styles.main}>
-
-
- 
-    
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      
-
-
-        <Image
-          style={{ width: 150, height: 150 }}
-          source={{
-            uri: userInfo.avatar_url !== undefined ? userInfo.avatar_url : null,
-          }}
-        ></Image>
-        <Card style={styles.card}>
-          <Text variant="bodyLarge" style={styles.text}>{`Username: ${
-            userInfo.username !== undefined ? userInfo.username : null
-          }`}</Text>
-        </Card>
-        <Button
-          uppercase="true"
-          style={styles.button}
-          buttonColor="#723D46"
-          textColor="white"
-          mode="contained-tonal"
-          onPress={(e) => doSignOut(e)}
+        <View
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         >
-          Sign Out
-        </Button>
+          <Image
+            style={{ width: 150, height: 150 }}
+            source={{
+              uri:
+                userInfo.avatar_url !== undefined ? userInfo.avatar_url : null,
+            }}
+          ></Image>
+          <Card style={styles.card}>
+            <Text variant="bodyLarge" style={styles.text}>{`Username: ${
+              userInfo.username !== undefined ? userInfo.username : null
+            }`}</Text>
+          </Card>
+          <Button
+            uppercase="true"
+            style={styles.button}
+            buttonColor="#C67974"
+            textColor="white"
+            mode="contained-tonal"
+            onPress={(e) => doSignOut(e)}
+          >
+            Sign Out
+          </Button>
+        </View>
       </View>
-    </View>
     </View>
   );
 };
@@ -81,9 +77,9 @@ const Profile = ({ navigation }) => {
 const styles = StyleSheet.create({
   main: {
     height: "90%",
-    justifyContent:"center",
+    justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#DDE5B6",
+    backgroundColor: "#F0EAD2",
   },
   button: {
     margin: 5,
@@ -96,7 +92,7 @@ const styles = StyleSheet.create({
   },
   card: {
     margin: 20,
-    backgroundColor: "#C9CBA3",
+    backgroundColor: "#DDE5B6",
   },
 });
 

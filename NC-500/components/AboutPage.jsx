@@ -42,7 +42,7 @@ const AboutPage = ({ navigation }) => {
           <Button
             uppercase="true"
             style={styles.button}
-            buttonColor="#723D46"
+            buttonColor="#C67974"
             textColor="white"
             mode="contained-tonal"
             onPress={() => navigation.navigate("Maps")}
@@ -61,10 +61,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flex: 1,
     padding: 10,
-    backgroundColor: "#FFE1A8",
+    backgroundColor: "#F0EAD2",
   },
   header: {
-    backgroundColor: "#C9CBA3",
   },
 
   button: {

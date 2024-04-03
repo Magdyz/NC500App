@@ -92,11 +92,11 @@ const SignIn = (props) => {
   }
 
   return (
-    <View style={{height:"100%"}}>
+    <View style={{ height: "100%" }}>
       <Header title="Profile" />
       <Card
         style={{
-          backgroundColor: "#FFE1A8",
+          backgroundColor: "#F0EAD2",
           flex: 1,
           alignItems: "center",
           justifyContent: "center",
@@ -124,7 +124,7 @@ const SignIn = (props) => {
         <Button
           uppercase="true"
           style={styles.button}
-          buttonColor="#723D46"
+          buttonColor="#C67974"
           textColor="white"
           mode="contained-tonal"
           onPress={handleSubmit(doSignIn)}
@@ -134,7 +134,7 @@ const SignIn = (props) => {
         <Button
           uppercase="true"
           style={styles.button}
-          buttonColor="#723D46"
+          buttonColor="#C67974"
           textColor="white"
           mode="contained-tonal"
           onPress={(e) => newUserButton(e)}
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     width: 300,
     borderWidth: 1,
     padding: 10,
-    backgroundColor: "#FFE1A8",
+    backgroundColor: "#F0EAD2",
   },
 
   button: {
