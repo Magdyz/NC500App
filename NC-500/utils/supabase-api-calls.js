@@ -160,4 +160,18 @@ function createRoute(routeName, auth){
   })
 }
 
-export { getAllLocations, getSingleLocation, getUserInfo, getUserRoutes, getRouteLocations, getAllLocationsPlusCategories, getMarkersData, addLocationToRoute, deleteLocationFromRoute, deleteRoute, createRoute}
+function updateUserPic(uri, auth){
+  const userEmail = auth.auth.user.email
+  return supabase
+  .from('user_data')
+  .update({avatar_url:uri})
+  .eq('email', userEmail)
+  .then((res)=>{
+    return res
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+}
+
+export { getAllLocations, getSingleLocation, getUserInfo, getUserRoutes, getRouteLocations, getAllLocationsPlusCategories, getMarkersData, addLocationToRoute, deleteLocationFromRoute, deleteRoute, createRoute, updateUserPic}
