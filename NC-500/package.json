@@ -23,6 +23,7 @@
     "axios": "^1.6.8",
     "expo": "~50.0.14",
     "expo-image": "~1.10.6",
+    "expo-image-picker": "~14.7.1",
     "expo-location": "~16.5.5",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
@@ -40,8 +41,8 @@
     "react-native-screens": "~3.29.0",
     "react-native-vector-icons": "^10.0.3",
     "react-native-web": "~0.19.6",
-    "yup": "^1.4.0",
-    "expo-image-picker": "~14.7.1"
+    "react-native-webview": "^13.8.4",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
