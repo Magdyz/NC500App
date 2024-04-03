@@ -21,7 +21,8 @@ const ToDoSingleEvent = React.memo(
     route_id,
     location_id,
     lat,
-    long
+    long,
+    day
     
   }) => {
 
@@ -78,6 +79,7 @@ const ToDoSingleEvent = React.memo(
           removeLocationButton={removeLocationButton}
           lat={lat}
           long={long}
+          day={day}
         />
       );
     }

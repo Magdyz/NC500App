@@ -16,7 +16,8 @@ const ToDoSingleEventMaximised = ({
   removeLocationButton,
   location_id,
   lat,
-  long
+  long,
+  day
   
 }) => {
   return (
@@ -77,7 +78,7 @@ const ToDoSingleEventMaximised = ({
         </View>
 
       </Card.Actions>
-      <SmallMap  dayNum={1} dayLocations={[{long:long, lat:lat}]} dayStart={null} dayEnd={null}> </SmallMap>
+      <SmallMap  dayNum={day} dayLocations={[{long:long, lat:lat}]} dayStart={null} dayEnd={null}> </SmallMap>
 
     </Card>
   );
