@@ -25,10 +25,10 @@ const HomePage = ({ navigation }) => {
       <View style={styles.body}>
         <View style={styles.firstRow}>
           <HomepageButton
-            imageSource={require("../../assets/Archery.jpg")}
-            text={"Things To Do"}
+            imageSource={require("../../assets/Google-Maps.jpg")}
+            text={"Map"}
             navigation={navigation}
-            navLink={"ThingsToDo"}
+            navLink={"Maps"}
           />
           <HomepageButton
             imageSource={require("../../assets/aboutNC500.jpg")}
