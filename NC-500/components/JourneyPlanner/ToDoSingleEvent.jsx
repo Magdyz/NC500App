@@ -20,12 +20,11 @@ const ToDoSingleEvent = React.memo(
     isSelected,
     route_id,
     location_id,
-    dayStart,
-    dayNum,
-    dayLocations,
-    dayEnd
+    lat,
+    long
     
   }) => {
+
     const [maximised, setMaximised] = useState(false);
     const [buttonLoading, setButtonLoading] = useState(false);
 
@@ -77,6 +76,8 @@ const ToDoSingleEvent = React.memo(
           location_id={location_id}
           addLocationButton={addLocationButton}
           removeLocationButton={removeLocationButton}
+          lat={lat}
+          long={long}
         />
       );
     }
