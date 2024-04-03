@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button, StyleSheet, ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { Card } from "react-native-paper";
 
@@ -45,11 +45,15 @@ const Itinerary = ({ navigation }) => {
   }
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Itinerary</Text>
-        {userRoutes.map((route, index) => {
+   <View style={{flex:1, backgroundColor:'#DDE5B6'}}>
+    <Header title="Itinerary" />
+    <View style={{flex:1, alignItems: "center", backgroundColor:'#DDE5B6'}}> 
+    
+    
+        
+        {userRoutes.length>0?userRoutes.map((route, index) => {
           return (
+            
             <RouteBox
               key={index}
               routeName={route.route_name}
@@ -58,12 +62,12 @@ const Itinerary = ({ navigation }) => {
               setItineraryRefresh={setItineraryRefresh}
               navigation={navigation}
             ></RouteBox>
+            
           );
-        })}
-      </View>
-      <View
-        style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-      ></View>
+        }):<Text>No routes created!</Text>}
+    
+      
+    </View>
     </View>
   );
 };

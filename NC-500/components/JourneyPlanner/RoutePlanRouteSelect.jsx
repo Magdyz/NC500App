@@ -37,7 +37,7 @@ const RoutePlanRouteSelect = ({ navigation }) => {
   }
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor:'#DDE5B6' }}>
       
         <ScrollView style={{flex:4}}>
         
@@ -142,7 +142,7 @@ function NewRouteBox({
         ></TextInput>
         <Button
           disabled={buttonLoading}
-          color={'#E26D5C'}
+          color={'#E7C5C5'}
           title="Create"
           onPress={(e) =>
             routeCreateButton(
@@ -192,12 +192,12 @@ function RouteBox({
         }}
       >
         <Button
-          color="#C9CBA3"
+          color="#ADC178"
           title="Select"
           onPress={() => routeSelectButton(routeName, route_id, navigation)}
         ></Button>
         <Button
-          color='#723D46'
+          color='#C67974'
           title="Delete"
           onPress={(e) =>
             routeDeleteButton(
