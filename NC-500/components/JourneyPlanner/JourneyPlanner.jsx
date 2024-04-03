@@ -121,6 +121,8 @@ const JourneyPlanner = (props) => {
                 location_id={locationItem.location_id}
                 isSelected = {checkedItems[locationItem.name]?true:false }
                 website={locationItem.website_url}
+                lat={locationItem.lat}
+                long={locationItem.long}
               />
             );
           })
