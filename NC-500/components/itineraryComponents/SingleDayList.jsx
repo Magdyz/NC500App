@@ -23,7 +23,7 @@ function SingleDayList(props) {
   let dayEnd = null;
   const [dayLocations, setDayLocations] = useState([]);
 
-  const [selectedLocationId, setSelectedLocationId] = useState(null);
+  const [selectedLocationId, setSelectedLocationId] = useState(0);
   const navigation = props.navigation;
   useEffect(() => {
     getRouteLocations(route_id).then((response) => {
@@ -40,6 +40,7 @@ function SingleDayList(props) {
   function ListSection({ dayLocations }) {
     function selectCard(id) {
       setSelectedLocationId(id);
+      
     }
 
     return (

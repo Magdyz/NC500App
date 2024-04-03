@@ -25,14 +25,25 @@ function SmallMap({ dayNum, dayLocations=[], dayStart, dayEnd, selectedLocationI
 
     const waypoints = []
 
+    
+
+    const [waypointHighlight, setWaypointHighlight] = useState(0)
+
     dayLocations.forEach((location)=>{
         waypoints.push((`${location.lat},${location.long}`))
     })
+
+    useEffect(()=>{
+      setWaypointHighlight(selectedLocationId)
+     
+
+
+    },[selectedLocationId])
  
 
 
     const dayRegionRef = {
-      1: { lat: 57.3022523, long: -3.71908, delta: 2.5 },
+      1: { lat: 58.0022523, long: -3.71908, delta: 1.2 },
       2: { lat: 58, long: -3.7, delta: 1.8 },
       3: { lat: 57.7, long: -5, delta: 1.8 },
       4: { lat: 57.4, long: -5.3, delta: 1.1 },
@@ -59,17 +70,19 @@ function SmallMap({ dayNum, dayLocations=[], dayStart, dayEnd, selectedLocationI
     const [mapLoaded, setMapLoaded] = useState(false);
 
     return (
-      <View pointerEvents="none" style={{ flex: 1, backgroundColor: "#DDE5B6" }}>
+      <View pointerEvents="none" style={{ flex: 1, backgroundColor:'white', borderColor:'#C67974',borderRadius:10, margin:10 }}>
             {!mapLoaded && (
                 <View style={{height:400, marginTop: 180}}>
                     <ActivityIndicator size="large" color="#ADC178" />
                 </View>
             )}
         <MapView
+        key={waypointHighlight}
         pitchEnabled={false} rotateEnabled={false} zoomEnabled={false} scrollEnabled={false}
           style={{
-            width: Dimensions.get("window").width,
-            height: Dimensions.get("window").height,
+            margin:10,
+            width: Dimensions.get("window").width*0.9,
+            height: Dimensions.get("window").height*0.45,
           }}
           loadingEnabled={true}
           initialRegion={{
@@ -87,7 +100,7 @@ function SmallMap({ dayNum, dayLocations=[], dayStart, dayEnd, selectedLocationI
                         key={location.location_id}
                         coordinate={{latitude: location.lat, longitude:location.long}}
                         title={location.name}
-                        // pinColor={location.location_id===selectedLocationId?'aqua':'red'}
+                        pinColor={location.location_id===waypointHighlight?'aqua':'red'}
                         onClick={(e)=>mapMarkerFunc(e)} >
                             
                         </Marker>
