@@ -114,22 +114,6 @@ const App = () => {
                 ),
               }}
             />
-
-            <Stack.Screen
-              name="ThingsToDo"
-              component={ThingsToDo}
-              options={{
-                headerStyle: {
-                  backgroundColor: "#DDE5B6",
-                },
-                headerRight: () => (
-                  <Avatar.Image
-                    size={55}
-                    source={require("./assets/NC500-Logo800.jpg")}
-                  />
-                ),
-              }}
-            />
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="CreateUser" component={CreateUser} />
             <Stack.Screen name="Maps" component={FullMaps} />
