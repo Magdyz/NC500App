@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Dimensions } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import { StyleSheet, View, Dimensions, Text, Image } from "react-native";
+import MapView, { Marker, Callout } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
 import apiKey from "../apiKey";
 import { getMarkersData } from "../utils/supabase-api-calls";
-import Museum from "../assets/Church_7.png"
-import Nature from "../assets/Leaf_8.png"
-import Food from "../assets/Fork & Knife_6.png"
-import OutdoorActivities from "../assets/Tennis_5-2.png"
-import Accomodation from "../assets/Home_8.png"
-import Tour from "../assets/Tour_8.png"
-import History from "../assets/history.png"
-
+import Museum from "../assets/Church_7.png";
+import Nature from "../assets/Leaf_8.png";
+import Food from "../assets/Fork & Knife_6.png";
+import OutdoorActivities from "../assets/Tennis_5-2.png";
+import Accomodation from "../assets/Home_8.png";
+import Tour from "../assets/Tour_8.png";
+import History from "../assets/history.png";
+import { WebView } from "react-native-webview";
 
 //markers pngs based on categoryId
 const categoryImg = {
-  1: Museum, 
-  2: Food, 
-  3: Nature, 
+  1: Museum,
+  2: Food,
+  3: Nature,
   4: History,
   5: OutdoorActivities,
   6: Tour,
-  8: Accomodation
-}
+  8: Accomodation,
+};
 
 // default Coordinates when map opens
 const { width, height } = Dimensions.get("window");
@@ -89,10 +89,9 @@ const FullMaps = () => {
     });
   }, []);
 
-
   return (
     <View style={styles.container}>
-      {(
+      {
         <MapView
           style={styles.map}
           zoomEnabled={true}
@@ -128,20 +127,36 @@ const FullMaps = () => {
           })}
 
           {allMarkers.map((location) => {
-            const {category_id, location_id, lat, long, name} = location
-            if(categoryImg[category_id])
-            return (
-              <Marker
-                key={location_id}
-                coordinate={{
-                  latitude: lat,
-                  longitude: long,
-                }}
-                image= {categoryImg[category_id]}
-                title={name}
-              />
-            );
-        })}
+            const { category_id, location_id, lat, long, name, img_url } =
+              location;
+            if (categoryImg[category_id])
+              return (
+                <Marker
+                  key={location_id}
+                  coordinate={{
+                    latitude: lat,
+                    longitude: long,
+                  }}
+                  image={categoryImg[category_id]}
+                  title={name}
+                >
+                
+                  <Callout>
+                    <View style={styles.markerContainer}>
+                      <Text style={styles.title}>
+                        {name}
+                      </Text>
+                      <WebView
+                        resizeMode="cover"
+                        source={{ uri: img_url }}
+                        style={styles.imageAndroid}
+                      />
+                    </View>
+                  </Callout>
+  
+                </Marker>
+              );
+          })}
 
           <MapViewDirections
             origin={origin}
@@ -154,7 +169,7 @@ const FullMaps = () => {
             optimizeWaypoints={true}
           />
         </MapView>
-      )}
+      }
     </View>
   );
 };
@@ -166,6 +181,29 @@ const styles = StyleSheet.create({
   map: {
     flex: 1,
   },
+
+  imageAndroid: {
+    height: 200,
+    width: 300,
+    resizeMode: 'contain',
+    
+  },
+
+  title: {
+    textAlign: "center",
+    color: "black",
+    fontSize: 20,
+    justifyContent: 'center',
+  },
+
+  markerContainer: {
+    flex: 1,
+    alignItems: 'center',
+  }
 });
 
 export default FullMaps;
+
+
+
+

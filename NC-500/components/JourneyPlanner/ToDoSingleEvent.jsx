@@ -23,6 +23,11 @@ const ToDoSingleEvent = React.memo(
     isSelected,
     route_id,
     location_id,
+    dayStart,
+    dayNum,
+    dayLocations,
+    dayEnd
+    
   }) => {
     const [maximised, setMaximised] = useState(false);
     const [buttonLoading, setButtonLoading] = useState(false);
@@ -73,6 +78,10 @@ const ToDoSingleEvent = React.memo(
           onPress={onPress}
           toggleMaximised={toggleMaximised}
           website={website}
+          dayNum={dayNum}
+          dayStart={dayStart}
+          dayEnd={dayEnd}
+          dayLocations={dayLocations}
         />
       );
     }
@@ -106,6 +115,7 @@ const ToDoSingleEvent = React.memo(
             {/* <Checkbox.Item label={label} status={status} onPress={onPress} /> */}
           </Card.Actions>
         </TouchableOpacity>
+        <SmallMap dayNum={1} dayLocations={[]} dayStart={null} dayEnd={null}> </SmallMap>
       </Card>
     );
   }
