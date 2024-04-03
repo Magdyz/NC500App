@@ -34,7 +34,7 @@ const Itinerary = ({ navigation }) => {
             alignItems: "center",
             justifyContent: "center",
             height: "100%",
-            backgroundColor: "#FFE1A8",
+            backgroundColor: "#F0EAcD2",
           }}
         >
           <Text>Itinerary</Text>

@@ -50,7 +50,7 @@ const App = () => {
           <Stack.Navigator
             screenOptions={{
               headerStyle: {
-                backgroundColor: "white",
+                backgroundColor: "DDE5B6",
               },
               headerTintColor: "",
               headerTitleStyle: {
@@ -89,7 +89,7 @@ const App = () => {
               component={AboutPage}
               options={{
                 headerStyle: {
-                  backgroundColor: "#C9CBA3",
+                  backgroundColor: "#DDE5B6",
                 },
                 headerRight: () => (
                   <Avatar.Image
@@ -99,14 +99,28 @@ const App = () => {
                 ),
               }}
             />
-            <Stack.Screen name="JourneyPlanner" component={JourneyPlanner} />
+            <Stack.Screen
+              name="JourneyPlanner"
+              component={JourneyPlanner}
+              options={{
+                headerStyle: {
+                  backgroundColor: "#DDE5B6",
+                },
+                headerRight: () => (
+                  <Avatar.Image
+                    size={55}
+                    source={require("./assets/NC500-Logo800.jpg")}
+                  />
+                ),
+              }}
+            />
 
             <Stack.Screen
               name="ThingsToDo"
               component={ThingsToDo}
               options={{
                 headerStyle: {
-                  backgroundColor: "#C9CBA3",
+                  backgroundColor: "#DDE5B6",
                 },
                 headerRight: () => (
                   <Avatar.Image
@@ -119,16 +133,97 @@ const App = () => {
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="CreateUser" component={CreateUser} />
             <Stack.Screen name="Maps" component={FullMaps} />
-            <Stack.Screen name="DayList" component={DayList} />
-            <Stack.Screen name="SingleDayList" component={SingleDayList} />
-            <Stack.Screen name="WholeRouteList" component={WholeRouteList} />
-            <Stack.Screen name="DayDirections" component={DayDirections} />
+            <Stack.Screen
+              name="DayList"
+              component={DayList}
+              options={{
+                headerStyle: {
+                  backgroundColor: "#DDE5B6",
+                },
+                headerRight: () => (
+                  <Avatar.Image
+                    size={55}
+                    source={require("./assets/NC500-Logo800.jpg")}
+                  />
+                ),
+              }}
+            />
+            <Stack.Screen
+              name="SingleDayList"
+              component={SingleDayList}
+              options={{
+                headerStyle: {
+                  backgroundColor: "#DDE5B6",
+                },
+                headerRight: () => (
+                  <Avatar.Image
+                    size={55}
+                    source={require("./assets/NC500-Logo800.jpg")}
+                  />
+                ),
+              }}
+            />
+            <Stack.Screen
+              name="WholeRouteList"
+              component={WholeRouteList}
+              options={{
+                headerStyle: {
+                  backgroundColor: "#DDE5B6",
+                },
+                headerRight: () => (
+                  <Avatar.Image
+                    size={55}
+                    source={require("./assets/NC500-Logo800.jpg")}
+                  />
+                ),
+              }}
+            />
+            <Stack.Screen
+              name="DayDirections"
+              component={DayDirections}
+              options={{
+                headerStyle: {
+                  backgroundColor: "#DDE5B6",
+                },
+                headerRight: () => (
+                  <Avatar.Image
+                    size={55}
+                    source={require("./assets/NC500-Logo800.jpg")}
+                  />
+                ),
+              }}
+            />
             <Stack.Screen
               name="RoutePlanRouteSelect"
               component={RoutePlanRouteSelect}
+              options={{
+                headerStyle: {
+                  backgroundColor: "#DDE5B6",
+                },
+                headerRight: () => (
+                  <Avatar.Image
+                    size={55}
+                    source={require("./assets/NC500-Logo800.jpg")}
+                  />
+                ),
+              }}
             ></Stack.Screen>
 
-            <Stack.Screen name="ToDoEvent" component={ThingsToDo} />
+            <Stack.Screen
+              name="ToDoEvent"
+              component={ThingsToDo}
+              options={{
+                headerStyle: {
+                  backgroundColor: "#DDE5B6",
+                },
+                headerRight: () => (
+                  <Avatar.Image
+                    size={55}
+                    source={require("./assets/NC500-Logo800.jpg")}
+                  />
+                ),
+              }}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </ItineraryContext.Provider>

@@ -34,20 +34,27 @@ const ToDoSingleEventMaximised = ({
         loading="lazy"
       />
       <Card.Actions style={styles.buttons}>
-        <Button onPress={() => Linking.openURL(website)}>Website</Button>
-        {/* <Button onPress={toggleButtonAddToItinerary}>{buttonText}</Button> */}
+        <Button
+          onPress={() => Linking.openURL(website)}
+          labelStyle={{ color: "#C67974" }}
+          style={{
+            borderColor: "#C67974",
+          }}
+        >
+          Website
+        </Button>
         {selected === false ? (
           <Button
-            style={{ width: 140 }}
             onPress={(e) => addLocationButton(e, route_id, location_id)}
+            buttonColor="#C67974"
           >
             {"Add to Itinerary"}
           </Button>
         ) : (
           <Button
             // disabled={buttonLoading}
-            style={{ width: 140 }}
             onPress={(e) => removeLocationButton(e, route_id, location_id)}
+            buttonColor="#C67974"
           >
             {"Remove From Itinerary"}
           </Button>

@@ -7,7 +7,6 @@ import {
   addLocationToRoute,
   deleteLocationFromRoute,
 } from "../../utils/supabase-api-calls";
-import SmallMap from "../SmallMap"
 
 const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
@@ -100,17 +99,18 @@ const ToDoSingleEvent = React.memo(
               <Button
                 style={{ width: 140 }}
                 onPress={(e) => addLocationButton(e, route_id, location_id)}
+                buttonColor="#C67974"
               >{`Add`}</Button>
             ) : (
               <Button
                 disabled={buttonLoading}
                 style={{ width: 140 }}
                 onPress={(e) => removeLocationButton(e, route_id, location_id)}
+                buttonColor="#C67974"
               >{`Remove`}</Button>
             )}
           </Card.Actions>
         </TouchableOpacity>
-        <SmallMap dayNum={1} dayLocations={[]} dayStart={null} dayEnd={null}> </SmallMap>
       </Card>
     );
   }

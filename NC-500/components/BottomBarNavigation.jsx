@@ -25,7 +25,7 @@ const BottomBarNavigation = () => {
       }}
       tabBar={({ navigation, state, descriptors, insets }) => (
         <BottomNavigation.Bar
-          style={{ backgroundColor: "#C9CBA3" }}
+          style={{ backgroundColor: "#ADC178" }}
           navigationState={state}
           safeAreaInsets={insets}
           onTabPress={({ route, preventDefault }) => {

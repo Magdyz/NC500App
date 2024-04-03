@@ -63,11 +63,9 @@ const HomePage = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    
-  },
+  container: {},
   header: {
-    backgroundColor: "#C9CBA3",
+    backgroundColor: "#DDE5B6",
   },
   body: {},
   firstRow: {
