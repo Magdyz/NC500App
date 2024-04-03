@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import { Linking, StyleSheet, Button, View } from "react-native";
 import { Card, Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import SmallMap from "../SmallMap"
 
 const ToDoSingleEventMaximised = ({
   title,
@@ -14,6 +15,9 @@ const ToDoSingleEventMaximised = ({
   addLocationButton,
   removeLocationButton,
   location_id,
+  lat,
+  long
+  
 }) => {
   return (
     <Card
@@ -35,6 +39,7 @@ const ToDoSingleEventMaximised = ({
         loading="lazy"
       />
       <Card.Actions style={styles.buttons}>
+
         <View
           style={{
             flexDirection: "row",
@@ -70,7 +75,10 @@ const ToDoSingleEventMaximised = ({
             </Button>
           )}
         </View>
+
       </Card.Actions>
+      <SmallMap  dayNum={1} dayLocations={[{long:long, lat:lat}]} dayStart={null} dayEnd={null}> </SmallMap>
+
     </Card>
   );
 };

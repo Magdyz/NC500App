@@ -20,7 +20,11 @@ const ToDoSingleEvent = React.memo(
     isSelected,
     route_id,
     location_id,
+    lat,
+    long
+    
   }) => {
+
     const [maximised, setMaximised] = useState(false);
     const [buttonLoading, setButtonLoading] = useState(false);
 
@@ -72,6 +76,8 @@ const ToDoSingleEvent = React.memo(
           location_id={location_id}
           addLocationButton={addLocationButton}
           removeLocationButton={removeLocationButton}
+          lat={lat}
+          long={long}
         />
       );
     }
@@ -96,7 +102,9 @@ const ToDoSingleEvent = React.memo(
               color={'#ADC178'}
                 style={{ width: 140}}
                 onPress={(e) => addLocationButton(e, route_id, location_id)}
+
               ></Button>
+
             ) : (
               <Button
               title='Remove'
@@ -104,7 +112,9 @@ const ToDoSingleEvent = React.memo(
                 disabled={buttonLoading}
                 style={{ width: 140 }}
                 onPress={(e) => removeLocationButton(e, route_id, location_id)}
+
               ></Button>
+
             )}
           </Card.Actions>
         </TouchableOpacity>

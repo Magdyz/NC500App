@@ -102,7 +102,7 @@ function getAllLocationsPlusCategories() {
 function getMarkersData() {
     return supabase
     .from('Location_Data')
-    .select("location_id, lat, long, category_id, name")
+    .select("location_id, lat, long, category_id, name, img_url")
     .then((res) => {
         return res.data
     })
