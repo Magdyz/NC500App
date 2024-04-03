@@ -75,6 +75,7 @@ const JourneyPlanner = (props) => {
       })
       .catch((err) => console.log(err));
   }, [selected, day]);
+ 
 
   return (
     <View style={{ height: "100%", backgroundColor:'#F0EAD2' }}>
@@ -97,7 +98,7 @@ const JourneyPlanner = (props) => {
       />
       <ScrollView>
         {!loading ? (
-          locations.map((locationItem, index) => {
+          locations.map((locationItem) => {
             return (
               <ToDoSingleEvent
                 key={locationItem.location_id}
@@ -110,6 +111,7 @@ const JourneyPlanner = (props) => {
                 website={locationItem.website_url}
                 lat={locationItem.lat}
                 long={locationItem.long}
+                day={day}
               />
             );
           })
