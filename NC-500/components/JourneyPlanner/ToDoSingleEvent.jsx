@@ -7,6 +7,7 @@ import {
   addLocationToRoute,
   deleteLocationFromRoute,
 } from "../../utils/supabase-api-calls";
+import SmallMap from "../SmallMap"
 
 const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
@@ -20,6 +21,11 @@ const ToDoSingleEvent = React.memo(
     isSelected,
     route_id,
     location_id,
+    dayStart,
+    dayNum,
+    dayLocations,
+    dayEnd
+    
   }) => {
     const [maximised, setMaximised] = useState(false);
     const [buttonLoading, setButtonLoading] = useState(false);
@@ -104,6 +110,7 @@ const ToDoSingleEvent = React.memo(
             )}
           </Card.Actions>
         </TouchableOpacity>
+        <SmallMap dayNum={1} dayLocations={[]} dayStart={null} dayEnd={null}> </SmallMap>
       </Card>
     );
   }
