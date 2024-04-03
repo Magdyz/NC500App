@@ -22,20 +22,12 @@ import BottomBarNavigation from "./components/BottomBarNavigation";
 import AboutPage from "./components/AboutPage";
 import DayList from "./components/itineraryComponents/DayList";
 import WholeRouteList from "./components/itineraryComponents/WholeRouteList.jsx";
-
 import DayDirections from "./components/itineraryComponents/DayDirections.jsx";
+import { Avatar } from "react-native-paper";
 
 // import SingleDayList f
 
 const Stack = createNativeStackNavigator();
-function LogoTitle() {
-  return (
-    <Image
-      style={{ width: 50, height: 50 }}
-      source={require("../NC-500/assets/NC500-Logo800.jpg")}
-    />
-  );
-}
 const App = () => {
   const [auth, setAuth] = useState(null);
   const [itineraryRefresh, setItineraryRefresh] = useState(false);
@@ -57,7 +49,6 @@ const App = () => {
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
-              headerTitle: (props) => <LogoTitle {...props} />,
               headerStyle: {
                 backgroundColor: "white",
               },
@@ -97,19 +88,34 @@ const App = () => {
               name="AboutPage"
               component={AboutPage}
               options={{
-                title: "NC500",
+                headerStyle: {
+                  backgroundColor: "#C9CBA3",
+                },
                 headerRight: () => (
-                  <Button
-                    onPress={() => alert("This is a button!")}
-                    title="Info"
-                    color="black"
+                  <Avatar.Image
+                    size={55}
+                    source={require("./assets/NC500-Logo800.jpg")}
                   />
                 ),
               }}
             />
             <Stack.Screen name="JourneyPlanner" component={JourneyPlanner} />
 
-            <Stack.Screen name="ThingsToDo" component={ThingsToDo} />
+            <Stack.Screen
+              name="ThingsToDo"
+              component={ThingsToDo}
+              options={{
+                headerStyle: {
+                  backgroundColor: "#C9CBA3",
+                },
+                headerRight: () => (
+                  <Avatar.Image
+                    size={55}
+                    source={require("./assets/NC500-Logo800.jpg")}
+                  />
+                ),
+              }}
+            />
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="CreateUser" component={CreateUser} />
             <Stack.Screen name="Maps" component={FullMaps} />
@@ -123,7 +129,6 @@ const App = () => {
             ></Stack.Screen>
 
             <Stack.Screen name="ToDoEvent" component={ThingsToDo} />
-            <Stack.Screen name="nav" component={BottomBarNavigation} />
           </Stack.Navigator>
         </NavigationContainer>
       </ItineraryContext.Provider>

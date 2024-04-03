@@ -16,9 +16,9 @@ const HomePage = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Appbar.Header style={styles.header}>
-        <Appbar.Content title="NC500" />
+        <Appbar.Content title="Plan your NC500" />
         <Avatar.Image
-          size={60}
+          size={55}
           source={require("../../assets/NC500-Logo800.jpg")}
         />
       </Appbar.Header>
@@ -48,10 +48,10 @@ const HomePage = ({ navigation }) => {
               />
               <Text style={styles.textOverlay}>Journey Planner</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate("Itinerary")}>
+            <TouchableOpacity onPress={() => navigation.navigate("Itinerary")} style={{backgroundColor: "#FFE1A8"}}>
               <Card.Cover
-                source={require("../../assets/routePlanning.jpg")}
-                style={[styles.fullWidth, { height: cardHeight }]}
+                source={require("../../assets/ItineraryPlanning.png")}
+                style={[styles.fullWidth, { height: cardHeight, backgroundColor: "#FFE1A8", width: 200, margin: 80}]}
               />
               <Text style={styles.textOverlay}>Itinerary</Text>
             </TouchableOpacity>
@@ -64,15 +64,17 @@ const HomePage = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 5,
-    paddingVertical: 5,
+    
   },
-  header: {},
+  header: {
+    backgroundColor: "#C9CBA3",
+  },
   body: {},
   firstRow: {
     marginBottom: 10,
     flexDirection: "row",
     justifyContent: "space-between",
+    paddingHorizontal: 7,
   },
   secondRow: {
     paddingHorizontal: 10,

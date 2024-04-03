@@ -11,7 +11,7 @@ import OutdoorActivities from "../assets/Tennis_5-2.png"
 import Accomodation from "../assets/Home_8.png"
 import Tour from "../assets/Tour_8.png"
 import History from "../assets/history.png"
-
+import Header from "./Header";
 
 //markers pngs based on categoryId
 const categoryImg = {
@@ -92,7 +92,8 @@ const FullMaps = () => {
 
   return (
     <View style={styles.container}>
-      {(
+      <Header title="Map" />
+      {
         <MapView
           style={styles.map}
           zoomEnabled={true}
@@ -128,20 +129,20 @@ const FullMaps = () => {
           })}
 
           {allMarkers.map((location) => {
-            const {category_id, location_id, lat, long, name} = location
-            if(categoryImg[category_id])
-            return (
-              <Marker
-                key={location_id}
-                coordinate={{
-                  latitude: lat,
-                  longitude: long,
-                }}
-                image= {categoryImg[category_id]}
-                title={name}
-              />
-            );
-        })}
+            const { category_id, location_id, lat, long, name } = location;
+            if (categoryImg[category_id])
+              return (
+                <Marker
+                  key={location_id}
+                  coordinate={{
+                    latitude: lat,
+                    longitude: long,
+                  }}
+                  image={categoryImg[category_id]}
+                  title={name}
+                />
+              );
+          })}
 
           <MapViewDirections
             origin={origin}
@@ -154,7 +155,7 @@ const FullMaps = () => {
             optimizeWaypoints={true}
           />
         </MapView>
-      )}
+      }
     </View>
   );
 };
@@ -165,6 +166,9 @@ const styles = StyleSheet.create({
   },
   map: {
     flex: 1,
+  },
+  header: {
+    backgroundColor: "#C9CBA3",
   },
 });
 

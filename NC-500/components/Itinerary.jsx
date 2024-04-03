@@ -1,10 +1,14 @@
 import { useContext, useEffect, useState } from "react";
+
 import { View, Text, Button } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { Card } from "react-native-paper";
+
 import AuthContext from "../contexts/AuthContext";
 import { getUserRoutes, deleteRoute } from "../utils/supabase-api-calls";
 import ItineraryContext from "../contexts/ItineraryContext";
+import { Card, Text } from "react-native-paper";
+import Header from "./Header";
 
 const Itinerary = ({ navigation }) => {
   const { itineraryRefresh, setItineraryRefresh } =
@@ -23,9 +27,19 @@ const Itinerary = ({ navigation }) => {
 
   if (auth.auth === null || auth === null) {
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Itinerary</Text>
-        <Text>Nothing here, sign in</Text>
+      <View>
+        <Header title="Itinerary" />
+        <Card
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+            backgroundColor: "#FFE1A8",
+          }}
+        >
+          <Text>Itinerary</Text>
+          <Text>Nothing here, sign in</Text>
+        </Card>
       </View>
     );
   }
@@ -117,5 +131,11 @@ function RouteBox({
     </Card>
   );
 }
+
+const styles = StyleSheet.create({
+  header: {
+    backgroundColor: "#C9CBA3",
+  },
+});
 
 export default Itinerary;
