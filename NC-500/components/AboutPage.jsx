@@ -1,4 +1,4 @@
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, Image, StyleSheet, ScrollView } from "react-native";
 import { Button, Text, Card } from "react-native-paper";
 
 const AboutPage = ({ navigation }) => {
@@ -14,6 +14,10 @@ const AboutPage = ({ navigation }) => {
             the many highlights of history and heritage in the area, Inverness
             Castle.
           </Text>
+          <Image
+        style={styles.Image}
+        source={require('../assets/Inverness-Castle.jpeg')}
+      />
           <Text variant="bodyLarge">
             The route will take you on a journey into the past as you discover
             ruins, castles and other landmarks, some of which dating back almost
@@ -26,7 +30,11 @@ const AboutPage = ({ navigation }) => {
             regular appearances of bottlenose dolphins, harbour porpoises,
             seals, minke whales and a wide variety of seabirds.
           </Text>
-          <Text variant="bodyLarge">
+          <Image
+        style={styles.Image}
+        source={require('../assets/AboutPageImg1.jpeg')}
+      />
+          <Text variant="bodyLarge" style={{marginTop:5}}>
             This App is designed for you to get the best out of your roadtrip.
             Use our journey planner to view a list or a map of the activities
             you can choose from to get the most out of each day. Select which
@@ -70,6 +78,10 @@ const styles = StyleSheet.create({
     margin: 5,
     height: 60,
     justifyContent: "center",
+  },
+  Image: {
+    width: 350,
+    height: 200,
   },
 });
 
