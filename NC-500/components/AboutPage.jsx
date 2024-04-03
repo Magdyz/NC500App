@@ -1,7 +1,11 @@
 import { View, Image, StyleSheet, ScrollView } from "react-native";
 import { Button, Text, Card } from "react-native-paper";
+import AuthContext from "../contexts/AuthContext";
+import { useContext } from "react";
 
 const AboutPage = ({ navigation }) => {
+  const auth = useContext(AuthContext)
+
   return (
     <ScrollView>
       <Card style={styles.main}>
@@ -47,16 +51,26 @@ const AboutPage = ({ navigation }) => {
         </Card.Content>
 
         <Card.Actions>
-          <Button
+          {auth !== null && auth.auth !== null ? <Button
             uppercase="true"
             style={styles.button}
             buttonColor="#C67974"
             textColor="white"
             mode="contained-tonal"
-            onPress={() => navigation.navigate("Maps")}
+            onPress={() => navigation.navigate("RoutePlanRouteSelect")}
           >
-            Start Your Journey
-          </Button>
+            Start Your Journey!
+          </Button>:<Button
+            uppercase="true"
+            style={styles.button}
+            buttonColor="#C67974"
+            textColor="white"
+            mode="contained-tonal"
+            onPress={() => navigation.navigate("Profile")}
+          >
+            Start Your Journey!
+          </Button>}
+          
         </Card.Actions>
       </Card>
     </ScrollView>
