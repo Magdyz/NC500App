@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useCallback, Suspense } from "react";
 import { StyleSheet, ScrollView, View } from "react-native";
-import { getAllLocationsPlusCategories, getRouteLocations } from "../../utils/supabase-api-calls";
+import {
+  getAllLocationsPlusCategories,
+  getRouteLocations,
+} from "../../utils/supabase-api-calls";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import { SelectList } from "react-native-dropdown-select-list";
 import { Button, Text } from "react-native-paper";
@@ -8,11 +11,9 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const ToDoSingleEvent = React.lazy(() => import("./ToDoSingleEvent"));
 
-
 const JourneyPlanner = (props) => {
+  const route_id = props.route.params.route_id;
 
-  const route_id = props.route.params.route_id
-  
   // checked items adds to itinerary to be sent to user it in database
 
   const [checkedItems, setCheckedItems] = useState({});
@@ -20,23 +21,16 @@ const JourneyPlanner = (props) => {
   const [loading, isLoading] = useState(true);
   const [selected, setSelected] = useState("all");
   const [day, setDay] = useState(1);
- 
 
-
-
-  useEffect(()=>{
-
-    getRouteLocations(route_id)
-    .then((response)=>{
-      let locations = {}
-      response.forEach((location)=>{
-        locations[location.name] = true
-      })
-      setCheckedItems(locations)
-
-    })
- 
-  },[day])
+  useEffect(() => {
+    getRouteLocations(route_id).then((response) => {
+      let locations = {};
+      response.forEach((location) => {
+        locations[location.name] = true;
+      });
+      setCheckedItems(locations);
+    });
+  }, [day]);
 
   const data = [
     { key: "0", value: "all" },
@@ -81,8 +75,6 @@ const JourneyPlanner = (props) => {
       .catch((err) => console.log(err));
   }, [selected, day]);
 
-  
-
   return (
     <View style={{ height: "100%" }}>
       <View style={styles.buttonDayToggle}>
@@ -95,10 +87,12 @@ const JourneyPlanner = (props) => {
         </Button>
       </View>
       <SelectList
-        style={{margin:5}}
+        style={{ margin: 5 }}
         setSelected={(val) => setSelected(val)}
         data={data}
         save="value"
+        search={false}
+        defaultOption={{ key: "0", value: "all" }}
       />
       <ScrollView>
         {!loading ? (
@@ -138,7 +132,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#ccc",
   },
   buttonDayToggle: {
-    height:"5%",
+    height: "5%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
