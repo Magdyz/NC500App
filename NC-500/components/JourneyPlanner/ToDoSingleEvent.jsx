@@ -99,12 +99,14 @@ const ToDoSingleEvent = React.memo(
               <Button
                 style={{ width: 140 }}
                 onPress={(e) => addLocationButton(e, route_id, location_id)}
+                buttonColor="#C67974"
               >{`Add`}</Button>
             ) : (
               <Button
                 disabled={buttonLoading}
                 style={{ width: 140 }}
                 onPress={(e) => removeLocationButton(e, route_id, location_id)}
+                buttonColor="#C67974"
               >{`Remove`}</Button>
             )}
           </Card.Actions>
