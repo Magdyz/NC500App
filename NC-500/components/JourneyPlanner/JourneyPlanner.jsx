@@ -93,7 +93,7 @@ const JourneyPlanner = (props) => {
         data={data}
         save="value"
         search={false}
-        defaultOption={{ key: "0", value: "all" }}
+        placeholder={"filter"}
       />
       <ScrollView>
         {!loading ? (
