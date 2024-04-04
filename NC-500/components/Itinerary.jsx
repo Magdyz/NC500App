@@ -81,7 +81,7 @@ const Itinerary = ({ navigation }) => {
 };
 
 function routeSelectButton(routeName, route_id, navigation) {
-  navigation.navigate("DayList", { routeName: routeName, route_id: route_id });
+  navigation.navigate("Days", { routeName: routeName, route_id: route_id });
 }
 function routeDeleteButton(e, route_id, itineraryRefresh, setItineraryRefresh) {
   e.preventDefault();

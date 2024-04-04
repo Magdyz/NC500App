@@ -58,7 +58,10 @@ const DayList = (props) => {
 };
 
 function dayButtonNav(e, dayNum, navigation, route_id) {
-  navigation.navigate("SingleDayList", { dayNum: dayNum, route_id: route_id });
+  navigation.navigate("Daily Locations", {
+    dayNum: dayNum,
+    route_id: route_id,
+  });
 }
 
 function fullRouteButtonNav(e, navigation, route_id) {

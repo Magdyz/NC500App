@@ -36,7 +36,6 @@ const SignIn = (props) => {
   const auth = useContext(AuthContext);
   useEffect(() => {
     if (auth.auth !== null) {
-      console.log("sign in useContext");
     }
   }, [auth]);
 

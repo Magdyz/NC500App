@@ -40,7 +40,7 @@ const HomePage = ({ navigation }) => {
         <View style={styles.secondRow}>
           <Card>
             <TouchableOpacity
-              onPress={() => navigation.navigate("RoutePlanRouteSelect")}
+              onPress={() => navigation.navigate("Routes")}
             >
               <Card.Cover
                 source={require("../../assets/routePlanning.jpg")}

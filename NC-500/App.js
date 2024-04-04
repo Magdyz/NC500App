@@ -118,7 +118,7 @@ const App = () => {
             <Stack.Screen name="CreateUser" component={CreateUser} />
             <Stack.Screen name="Maps" component={FullMaps} />
             <Stack.Screen
-              name="DayList"
+              name="Days"
               component={DayList}
               options={{
                 headerStyle: {
@@ -133,7 +133,7 @@ const App = () => {
               }}
             />
             <Stack.Screen
-              name="SingleDayList"
+              name="Daily Locations"
               component={SingleDayList}
               options={{
                 headerStyle: {
@@ -179,7 +179,7 @@ const App = () => {
               }}
             />
             <Stack.Screen
-              name="RoutePlanRouteSelect"
+              name="Routes"
               component={RoutePlanRouteSelect}
               options={{
                 headerStyle: {

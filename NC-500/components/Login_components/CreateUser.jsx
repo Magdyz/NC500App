@@ -47,7 +47,6 @@ function CreateUser(props) {
   }, []);
 
   function ErrorText({ name, errors }) {
-    console.log(name, errors);
     return (
       <View style={{ color: "red" }}>
         {errors[name] && (
@@ -62,7 +61,6 @@ function CreateUser(props) {
   }
 
   function doCreateUser(data) {
-    console.log(data);
     return supabase.auth
       .signUp({ email: data.email, password: data.password })
       .then((response) => {

@@ -44,7 +44,6 @@ const ToDoSingleEvent = React.memo(
           setButtonLoading(false);
         })
         .catch((err) => {
-          console.log(err);
           setSelected(false);
           setButtonLoading(false);
         });

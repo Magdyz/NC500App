@@ -165,7 +165,7 @@ function SingleDayList(props) {
       ></SmallMap></>:
       <>
       <Text style={{color:'#C67974', textAlign:'center', fontSize:40, bottom:100}}>No locations selected for this day</Text>
-      <Button color='#ADC178' title='Go to route planner' onPress={()=>navigation.navigate('RoutePlanRouteSelect')}></Button>
+      <Button color='#ADC178' title='Go to route planner' onPress={()=>navigation.navigate('Routes')}></Button>
       </>}
       
     </View>
