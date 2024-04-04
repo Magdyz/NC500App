@@ -1,28 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Dimensions, Text, Image } from "react-native";
+import { StyleSheet, View, Dimensions, Text } from "react-native";
 import MapView, { Marker, Callout } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
 import apiKey from "../apiKey";
 import { getMarkersData } from "../utils/supabase-api-calls";
 import Header from "./Header";
-import Museum from "../assets/Church_7.png";
-import Nature from "../assets/Leaf_8.png";
-import Food from "../assets/Fork & Knife_6.png";
-import OutdoorActivities from "../assets/Tennis_5-2.png";
-import Accomodation from "../assets/Home_8.png";
-import Tour from "../assets/Tour_8.png";
-import History from "../assets/history.png";
-import { WebView } from "react-native-webview";
+import { Image } from "expo-image";
 
 //markers pngs based on categoryId
 const categoryImg = {
-  1: Museum,
-  2: Food,
-  3: Nature,
-  4: History,
-  5: OutdoorActivities,
-  6: Tour,
-  8: Accomodation,
+  1: require("../assets/Church_7.png"),
+  2: require("../assets/Fork & Knife_6.png"),
+  3: require("../assets/Leaf_8.png"),
+  4: require("../assets/history.png"),
+  5: require("../assets/Tennis_5-2.png"),
+  6: require("../assets/Tour_8.png"),
+  8: require("../assets/Home_8.png"),
 };
 
 // default Coordinates when map opens
@@ -142,20 +135,16 @@ const FullMaps = () => {
                   image={categoryImg[category_id]}
                   title={name}
                 >
-                
                   <Callout>
                     <View style={styles.markerContainer}>
-                      <Text style={styles.title}>
-                        {name}
-                      </Text>
-                      <WebView
-                        resizeMode="cover"
+                      <Text style={styles.title}>{name}</Text>
+
+                      <Image
                         source={{ uri: img_url }}
                         style={styles.imageAndroid}
                       />
                     </View>
                   </Callout>
-  
                 </Marker>
               );
           })}
@@ -172,7 +161,6 @@ const FullMaps = () => {
           />
         </MapView>
       }
-
     </View>
   );
 };
@@ -188,20 +176,19 @@ const styles = StyleSheet.create({
   imageAndroid: {
     height: 200,
     width: 300,
-    resizeMode: 'contain',
-    
+    resizeMode: "stretch",
   },
 
   title: {
     textAlign: "center",
     color: "black",
     fontSize: 20,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 
   markerContainer: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
   header: {
     backgroundColor: "#C9CBA3",
@@ -209,7 +196,3 @@ const styles = StyleSheet.create({
 });
 
 export default FullMaps;
-
-
-
-
