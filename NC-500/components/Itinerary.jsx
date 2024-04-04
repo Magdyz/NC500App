@@ -16,14 +16,21 @@ const Itinerary = ({ navigation }) => {
 
   const auth = useContext(AuthContext);
   const [userRoutes, setUserRoutes] = useState([]);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
     if (auth !== null && auth.auth !== null) {
       getUserRoutes(auth).then((response) => {
         setUserRoutes(response);
       });
     }
+    setLoading(false)
   }, [auth, itineraryRefresh]);
+
+  if (loading===true){
+    return (<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}><Text>Loading...</Text></View>)
+  }
 
   if (auth.auth === null || auth === null) {
     return (
@@ -34,11 +41,12 @@ const Itinerary = ({ navigation }) => {
             alignItems: "center",
             justifyContent: "center",
             height: "100%",
-            backgroundColor: "#qF0EAD2",
+            backgroundColor: "#F0EAD2",
           }}
         >
-          <Text>Itinerary</Text>
-          <Text>Nothing here, sign in</Text>
+          
+          <Text style={{color:'#C67974', fontSize:40, bottom:150, textAlign:'center'}}>Sign in to create a route plan</Text>
+          <Button title='Go to sign in' color='#C67974' onPress={()=>navigation.navigate('Profile')}></Button>
         </Card>
       </View>
     );
@@ -64,7 +72,7 @@ const Itinerary = ({ navigation }) => {
             ></RouteBox>
             
           );
-        }):<Text>No routes created!</Text>}
+        }):<View style={{top:150}}><Text style ={{color:'white', fontSize:50,textAlign:'center', margin:20}}>No routes created yet!</Text><Button marginTop='20%' color='#C67974' title='Go to route planner' onPress={()=>navigation.navigate('RoutePlanRouteSelect')}></Button></View>}
     
       
     </View>

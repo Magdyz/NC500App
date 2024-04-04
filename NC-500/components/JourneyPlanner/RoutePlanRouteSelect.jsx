@@ -30,16 +30,27 @@ const RoutePlanRouteSelect = ({ navigation }) => {
   if (auth.auth === null || auth === null) {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Journey Planner</Text>
-        <Text>Nothing here, sign in</Text>
+         <Card
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            width:'100%',
+            height: "100%",
+            backgroundColor: "#F0EAD2",
+          }}
+        >
+          
+          <Text style={{color:'#C67974', fontSize:40, bottom:150, textAlign:'center'}}>Sign in to create a route plan</Text>
+          <Button title='Go to sign in' color='#C67974' onPress={()=>navigation.navigate('Profile')}></Button>
+        </Card>
       </View>
     );
   }
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor:'#F0EAD2' }}>
-      
-        <ScrollView style={{flex:4}}>
+
+      {userRoutes.length===0?<Text style={{flex:1, fontSize:40, margin:20, top:150, textAlign:'center', color:'#C67974'}}>Create a new route to get started</Text>:<ScrollView style={{flex:4}}>
         
         {userRoutes.map((route, index) => {
           return (
@@ -55,7 +66,9 @@ const RoutePlanRouteSelect = ({ navigation }) => {
             ></RouteBox>
           );
         })}
-        </ScrollView>
+        </ScrollView>}
+      
+        
         <View style={{flex:1}}>
         <NewRouteBox
           buttonLoading={buttonLoading}
