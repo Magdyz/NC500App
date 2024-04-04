@@ -21,7 +21,7 @@ const ToDoSingleEventMaximised = ({
   
 }) => {
   return (
-    <Card
+    <Card 
       style={(styles.card, { backgroundColor: selected ? "#DDE5B6" : "white", marginBottom:10 })}
     >
       <Icon
@@ -78,7 +78,7 @@ const ToDoSingleEventMaximised = ({
         </View>
 
       </Card.Actions>
-      <SmallMap  dayNum={day} dayLocations={[{long:long, lat:lat}]} dayStart={null} dayEnd={null}> </SmallMap>
+      <SmallMap dayNum={day} dayLocations={[{long:long, lat:lat}]} dayStart={null} dayEnd={null}> </SmallMap>
 
     </Card>
   );
