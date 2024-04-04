@@ -59,7 +59,7 @@ const Itinerary = ({ navigation }) => {
     
     
         
-        {userRoutes.length>0?userRoutes.map((route, index) => {
+        {userRoutes.length>0&&loading===false?userRoutes.map((route, index) => {
           return (
             
             <RouteBox

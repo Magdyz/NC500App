@@ -132,6 +132,8 @@ function SingleDayList(props) {
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      {dayLocations.length!==0?
+      <>
       <ListSection dayLocations={dayLocations}></ListSection>
       <DirectionsSection
         navigation={navigation}
@@ -142,7 +144,12 @@ function SingleDayList(props) {
         dayNum={dayNum}
         dayLocations={dayLocations}
         selectedLocationId={selectedLocationId}
-      ></SmallMap>
+      ></SmallMap></>:
+      <>
+      <Text style={{color:'#C67974', textAlign:'center', fontSize:40, bottom:100}}>No locations selected for this day</Text>
+      <Button color='#ADC178' title='Go to route planner' onPress={()=>navigation.navigate('RoutePlanRouteSelect')}></Button>
+      </>}
+      
     </View>
   );
 }
