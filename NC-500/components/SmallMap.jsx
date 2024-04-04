@@ -45,7 +45,7 @@ function SmallMap({ dayNum, dayLocations=[], dayStart, dayEnd, selectedLocationI
     const dayRegionRef = {
       1: { lat: 58.0022523, long: -3.71908, delta: 1.2 },
       2: { lat: 58.5, long: -3.7, delta: 1 },
-      3: { lat: 58.2, long: -5, delta: 0.8 },
+      3: { lat: 58.2, long: -5, delta: 1 },
       4: { lat: 57.8, long: -5.3, delta: 0.8 },
       5: { lat: 57.6, long: -4.6, delta: 1.1 },
     };
@@ -77,7 +77,7 @@ function SmallMap({ dayNum, dayLocations=[], dayStart, dayEnd, selectedLocationI
                 </View>
             )}
         <MapView
-        key={waypointHighlight}
+        key={waypointHighlight+selectedLocationId}
         pitchEnabled={false} rotateEnabled={false} zoomEnabled={true} scrollEnabled={true}
           style={{
             margin:10,

@@ -16,8 +16,8 @@ const DayList = (props) => {
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor:'#DDE5B6' }}>
-      <Card style={{width: 380, height: 80, backgroundColor:'#C67974'}}>
-        <Text style={{ color:'white', fontWeight:'bold',fontSize:40, textAlign: "center"}}>{`${routeName}`}</Text>
+      <Card style={{width: 380, height: 80, backgroundColor:'#C67974', width:500}}>
+        <Text style={{ color:'white', fontWeight:'bold',fontSize:30, textAlign: "center", top:20}}>{`Route: ${routeName[0].toUpperCase()+routeName.slice(1)}`}</Text>
         </Card>
       <FullRouteButton
         navigation={navigation}

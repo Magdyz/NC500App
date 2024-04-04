@@ -52,7 +52,7 @@ function SingleDayList(props) {
         
         }}
       >
-        <ScrollView style={{flex:1, alignContent:'center'}}>
+        <ScrollView style={{flex:1, alignContent:'center', marginTop:10}}>
           {dayLocations.map((location, index) => {
             return (
               <Card
@@ -66,7 +66,7 @@ function SingleDayList(props) {
                   justifyContent:'space-between',
                   backgroundColor:
                     location.location_id === selectedLocationId
-                      ? "pink"
+                      ? "#E7C5C5"
                       : "white",
                   marginBottom: 2,
                 }}
@@ -81,6 +81,7 @@ function SingleDayList(props) {
                       flexDirection: "row",
                       alignItems: "center",
                       justifyContent:'space-between',
+                      margin:5
                       
                       
                     }}
@@ -100,7 +101,8 @@ function SingleDayList(props) {
                       allowDownscaling={true}
                       source={{ uri: location.img_url }}
                     ></Image>
-                    <Text style={{fontWeight:'bold', flex:1}}>{location.name}</Text>
+                    <Text style={{fontWeight:'bold', flex:1, margin:10}}>{location.name}</Text>
+                    {/* <Button title='rate'></Button> */}
                   </Card.Actions>
                 </TouchableOpacity>
               </Card>
@@ -115,6 +117,7 @@ function SingleDayList(props) {
     return (
       <View style={{ margin: 10 }}>
         <Button
+        color='#ADC178'
           title="Get Directions"
           onPress={(e) =>
             navigation.navigate("DayDirections", {
