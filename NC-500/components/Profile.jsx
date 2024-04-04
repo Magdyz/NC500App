@@ -55,7 +55,7 @@ const Profile = ({ navigation }) => {
     updateUserPic(uri, auth)
     .then((response)=>{
       setImage(result.assets[0].uri)
-      console.log(response)
+      
     })
     .catch((err)=>{
       console.log(err)

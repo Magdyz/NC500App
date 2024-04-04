@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Alert } from "react-native";
 import { useContext, useEffect, useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import supabase from "../../utils/supabase";
@@ -103,6 +103,7 @@ const SignIn = (props) => {
         }}
       >
         <TextInput
+
           placeholder="Email Address"
           id="email"
           style={styles.input}
@@ -152,7 +153,7 @@ const styles = StyleSheet.create({
     width: 300,
     borderWidth: 1,
     padding: 10,
-    backgroundColor: "#F0EAD2",
+    backgroundColor: "white",
   },
 
   button: {
