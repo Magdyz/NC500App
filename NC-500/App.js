@@ -149,6 +149,7 @@ const App = () => {
             />
             <Stack.Screen
               name="WholeRouteList"
+              
               component={WholeRouteList}
               options={{
                 headerStyle: {

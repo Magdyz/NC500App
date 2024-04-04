@@ -22,11 +22,14 @@ function SingleDayList(props) {
   let dayStart = null;
   let dayEnd = null;
   const [dayLocations, setDayLocations] = useState([]);
+  const [loading, setLoading] = useState(false)
 
   const [selectedLocationId, setSelectedLocationId] = useState(0);
   const navigation = props.navigation;
   useEffect(() => {
+    setLoading(true)
     getRouteLocations(route_id).then((response) => {
+      
       const dayNumArray = [];
       response.forEach((location) => {
         if (location.day === dayNum) {
@@ -34,13 +37,28 @@ function SingleDayList(props) {
         }
       });
       setDayLocations(dayNumArray);
+      
     });
+    setLoading(false)
   }, []);
 
   function ListSection({ dayLocations }) {
     function selectCard(id) {
       setSelectedLocationId(id);
       
+    }
+
+    if (loading===true){
+      return (
+        <View  style={{
+          flex: 0.8,
+          alignItems: "center",
+          
+        
+        }}>
+          <Text>Loading...</Text>
+        </View>
+      )
     }
 
     return (
@@ -132,7 +150,7 @@ function SingleDayList(props) {
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      {dayLocations.length!==0?
+      {dayLocations.length!==0&&loading===false?
       <>
       <ListSection dayLocations={dayLocations}></ListSection>
       <DirectionsSection

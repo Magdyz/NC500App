@@ -32,7 +32,7 @@ const Itinerary = ({ navigation }) => {
     return (<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}><Text>Loading...</Text></View>)
   }
 
-  if (auth.auth === null || auth === null) {
+  if ((auth.auth === null || auth === null)&&loading===false) {
     return (
       <View>
         <Header title="Itinerary" />
