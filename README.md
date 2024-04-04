@@ -48,7 +48,7 @@ The NC500 App is a mobile application designed to enhance the experience of trav
 
 ## Installation
 
-1. Clone the repository: `git clone [https://github.com/magdyz/nc500-app.git`](https://github.com/Magdyz/NC500App)
+1. Clone the repository: `git clone [https://github.com/magdyz/nc500-app.git`
 2. Install dependencies: `npm install`
 3. Run the app: `npm start`
 
