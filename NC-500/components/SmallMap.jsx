@@ -36,7 +36,7 @@ function SmallMap({
       2: { lat: 58.5, long: -3.7, delta: 1 },
       3: { lat: 58.2, long: -5, delta: 1 },
       4: { lat: 57.8, long: -5.3, delta: 0.8 },
-      5: { lat: 57.6, long: -4.6, delta: 1.1 },
+      5: { lat: 57.6, long: -4.8, delta: 1.3 },
     };
 
   const dayStartRef = {
