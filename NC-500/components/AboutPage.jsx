@@ -57,7 +57,7 @@ const AboutPage = ({ navigation }) => {
             buttonColor="#C67974"
             textColor="white"
             mode="contained-tonal"
-            onPress={() => navigation.navigate("RoutePlanRouteSelect")}
+            onPress={() => navigation.navigate("Routes")}
           >
             Start Your Journey!
           </Button>:<Button

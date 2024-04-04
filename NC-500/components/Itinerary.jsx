@@ -72,7 +72,7 @@ const Itinerary = ({ navigation }) => {
             ></RouteBox>
             
           );
-        }):<View style={{top:150}}><Text style ={{color:'white', fontSize:50,textAlign:'center', margin:20}}>No routes created yet!</Text><Button marginTop='20%' color='#C67974' title='Go to route planner' onPress={()=>navigation.navigate('RoutePlanRouteSelect')}></Button></View>}
+        }):<View style={{top:150}}><Text style ={{color:'white', fontSize:50,textAlign:'center', margin:20}}>No routes created yet!</Text><Button marginTop='20%' color='#C67974' title='Go to route planner' onPress={()=>navigation.navigate('Routes')}></Button></View>}
     
       
     </View>
