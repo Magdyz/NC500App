@@ -31,7 +31,7 @@ The NC500 App is a mobile application designed to enhance the experience of trav
   
 - **Expo:** Framework and platform for universal React applications.
 
-## Relevance for Employability
+## Relevance
 
 - **Demonstration of Technical Skills:** Proficiency in mobile app development technologies such as React Native, JavaScript, and integration of third-party libraries.
   
