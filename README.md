@@ -43,8 +43,8 @@ The NC500 App is a mobile application designed to enhance the experience of trav
 
 ## Screenshots
 
-![Screenshot 1](/Screenshots/screenshot1.gif)
-![Screenshot 2](/screenshots/screenshot2.gif)
+![Screenshot 1](/NC-500/Screenshots/screenshot1.gif)
+![Screenshot 2](/NC-500/Screenshots/screenshot2.gif)
 
 ## Installation
 
