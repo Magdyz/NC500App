@@ -30,7 +30,7 @@ const { width, height } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
 const LATITUDE = 57.7038169;
 let LONGITUDE = -4.1384248;
-let LATITUDE_DELTA = 2.2922;
+let LATITUDE_DELTA = 4.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 // Get API key
