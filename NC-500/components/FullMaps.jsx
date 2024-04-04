@@ -142,6 +142,7 @@ const FullMaps = () => {
                       <Image
                         source={{ uri: img_url }}
                         style={styles.imageAndroid}
+                        contentFit="cover"
                       />
                     </View>
                   </Callout>
@@ -176,7 +177,6 @@ const styles = StyleSheet.create({
   imageAndroid: {
     height: 200,
     width: 300,
-    resizeMode: "stretch",
   },
 
   title: {
