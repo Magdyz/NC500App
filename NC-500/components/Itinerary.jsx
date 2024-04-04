@@ -16,14 +16,21 @@ const Itinerary = ({ navigation }) => {
 
   const auth = useContext(AuthContext);
   const [userRoutes, setUserRoutes] = useState([]);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
     if (auth !== null && auth.auth !== null) {
       getUserRoutes(auth).then((response) => {
         setUserRoutes(response);
       });
     }
+    setLoading(false)
   }, [auth, itineraryRefresh]);
+
+  if (loading===true){
+    return (<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}><Text>Loading...</Text></View>)
+  }
 
   if (auth.auth === null || auth === null) {
     return (

@@ -63,11 +63,11 @@ function DayDirections(props) {
   }, [routeStr, wayQuery]);
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor:'#F0EAD2' }}>
       <ScrollView>
         {routeDirections.map((leg, index) => {
           return (
-            <Card style={{ width: 340, margin: 20 }} key={index}>
+            <Card style={{ width: 340, margin: 20 }} key={index+1000}>
               <Card.Title
                 style={{ height: 80 }}
                 title={`${
@@ -85,7 +85,7 @@ function DayDirections(props) {
                 return (
                   <View key={index}>
                     <Text
-                      style={{ color: "white", backgroundColor: "black" }}
+                      style={{ color: "white", backgroundColor: "#C67974" }}
                     >{`${step.distance.text}      ${step.duration.text}`}</Text>
                     <Text>
                       {step.html_instructions.replace(/<[^>]+>/g, " ")}
