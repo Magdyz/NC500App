@@ -34,7 +34,7 @@ const HomePage = ({ navigation }) => {
             imageSource={require("../../assets/aboutNC500.jpg")}
             text={"About the NC500"}
             navigation={navigation}
-            navLink={"AboutPage"}
+            navLink={"About"}
           />
         </View>
         <View style={styles.secondRow}>

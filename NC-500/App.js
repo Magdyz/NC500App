@@ -85,7 +85,7 @@ const App = () => {
               }}
             />
             <Stack.Screen
-              name="AboutPage"
+              name="About"
               component={AboutPage}
               options={{
                 headerStyle: {
