@@ -9,7 +9,7 @@ const AboutPage = ({ navigation }) => {
   return (
     <ScrollView>
       <Card style={styles.main}>
-        <Card.Title title="About the NC500" />
+        <Card.Title title="About the NC500"/>
         <Card.Content>
           <Text variant="bodyLarge">
             The North Coast 500 is Scotland's biggest roadtrip with the over 500
@@ -85,18 +85,16 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "#F0EAD2",
   },
-  header: {
-  },
-
   button: {
     margin: 5,
     height: 60,
     justifyContent: "center",
   },
   Image: {
-    width: 350,
-    height: 200,
-  },
+    width: '100%',
+    height: undefined,
+    aspectRatio: 1,
+}
 });
 
 export default AboutPage;
