@@ -82,10 +82,10 @@ function SmallMap({
           onMapLoaded={() => setMapLoaded(true)}
         >
 
-            {dayLocations.map((location)=>{
+            {dayLocations.map((location, index)=>{
                 return (
                     <Marker
-                        key={location.location_id}
+                        key={index}
                         coordinate={{latitude: location.lat, longitude:location.long}}
                         title={location.name}
                         pinColor={location.location_id===waypointHighlight?'aqua':'red'}
